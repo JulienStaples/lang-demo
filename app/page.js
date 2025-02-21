@@ -1,5 +1,5 @@
-import Image from "next/image"
+"use server"
 
-export default function Home() {
-  return <main className=" bg-black"></main>
+export default async function Home() {
+  return <main className=" bg-gray-950 h-[667px] w-[375px]"></main>
 }
