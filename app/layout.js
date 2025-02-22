@@ -1,3 +1,4 @@
+import AppProvider from "./context/AppContext"
 import "./globals.css"
 
 export const metadata = {
@@ -11,7 +12,7 @@ export default function RootLayout({ children }) {
       <body
         className={` bg-black antialiased flex justify-center items-center h-[100vh]`}
       >
-        {children}
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   )
