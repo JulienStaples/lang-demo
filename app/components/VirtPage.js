@@ -3,7 +3,9 @@
 import { useState } from "react"
 
 export default function VirtPage(startingText) {
-  const [view, setView] = useState(readingView)
+  const [text, setText] = useState(startingText.startingText)
+
+  const [view, setView] = useState(editView)
 
   function toggleView() {}
   function pageNext() {}
@@ -22,6 +24,16 @@ export default function VirtPage(startingText) {
     </div>
   )
 
-  function editView() {}
+  function editView() {
+    return (
+      <textarea
+        key={`editView`}
+        className=" bg-black w-full h-full"
+        defaultValue={text}
+        onChange={(e) => setText(e.target.value)}
+      ></textarea>
+    )
+  }
+
   function readingView() {}
 }
