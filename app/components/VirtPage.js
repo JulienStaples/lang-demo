@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useEffect } from "react"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
 
@@ -12,13 +12,26 @@ export default function VirtPage(startingText) {
   }, [text])
   const [view, setView] = useState(readingView)
 
+  //this runs on first load
+  //effectively making it redundant for
+  //the initial setView value
+  useEffect(() => {
+    setView(readingView)
+  }, [page])
+
   function toggleView() {
     view.key == `readingView` ? setView(editView) : setView(readingView)
   }
 
-  function pageNext() {}
+  function pageNext() {
+    if (page == pages.length - 1) return
+    setPage((prev) => prev + 1)
+  }
 
-  function pagePrev() {}
+  function pagePrev() {
+    if (page == 0) return
+    setPage((prev) => prev - 1)
+  }
 
   function textToPages(text) {
     let nlp = nlpObj(text)
