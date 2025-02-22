@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useMemo, useEffect } from "react"
+import { difficultyColors } from "../lib/constants/constants"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
 
@@ -18,6 +19,20 @@ export default function VirtPage(startingText) {
   useEffect(() => {
     setView(readingView)
   }, [page])
+
+  //these should probably find their
+  //own home
+  //
+  function handleEnter(e) {
+    e.target.querySelector("#bgSpan").dataset.hovered = "true"
+    e.target.querySelector("#wordSpan").dataset.hovered = "true"
+  }
+
+  function handleExit(e) {
+    e.target.querySelector("#bgSpan").dataset.hovered = "false"
+    e.target.querySelector("#wordSpan").dataset.hovered = "false"
+  }
+  //
 
   function toggleView() {
     view.key == `readingView` ? setView(editView) : setView(readingView)
@@ -79,6 +94,36 @@ export default function VirtPage(startingText) {
   }
 
   function readingView() {
-    return <div key={`readingView`}>readingView</div>
+    return (
+      <p key={`readingView`}>
+        {pages[page].map((e) => {
+          let bgColor = difficultyColors.hard
+          return (
+            <span className=" " key={crypto.randomUUID()}>
+              <span
+                onMouseEnter={(e) => handleEnter(e)}
+                onMouseLeave={(e) => handleExit(e)}
+                className={`relative ${`bgColor`} inline-block hover:invert hover:-translate-y-[3px] duration-100 ease-in-out`}
+              >
+                <span
+                  id="wordSpan"
+                  data-hovered="false"
+                  className={`pointer-events-none relative z-10 data-[hovered=true]:z-30`}
+                >
+                  {e.text}
+                </span>
+
+                <span
+                  id="bgSpan"
+                  data-hovered="false"
+                  className={`data-[hovered=true]:z-20 rounded-[2px] pointer-events-none ${bgColor} absolute  top-[3px] bottom-[3px] -right-[1px] -left-[1px] data-[hovered=true]:-left-[3px] data-[hovered=true]:-right-[3px] data-[hovered=true]:top-[1px] data-[hovered=true]:bottom-[1px] duration-100 ease-in-out`}
+                ></span>
+              </span>
+              <span className="mx-[2px]">{e.post}</span>
+            </span>
+          )
+        })}
+      </p>
+    )
   }
 }
