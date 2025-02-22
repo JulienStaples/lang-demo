@@ -10,8 +10,8 @@ My fair lady`,
 ]
 
 export let difficultyColors = {
-  hard: "orange-950",
-  med: "yellow-950",
-  easy: "green-950",
+  hard: "bg-orange-900",
+  med: "bg-yellow-900",
+  easy: "bg-green-900",
   known: "",
 }
