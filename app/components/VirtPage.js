@@ -5,9 +5,12 @@ import { useState } from "react"
 export default function VirtPage(startingText) {
   const [text, setText] = useState(startingText.startingText)
 
-  const [view, setView] = useState(editView)
+  const [view, setView] = useState(readingView)
 
-  function toggleView() {}
+  function toggleView() {
+    view.key == `readingView` ? setView(editView) : setView(readingView)
+  }
+
   function pageNext() {}
   function pagePrev() {}
 
@@ -35,5 +38,7 @@ export default function VirtPage(startingText) {
     )
   }
 
-  function readingView() {}
+  function readingView() {
+    return <div key={`readingView`}>readingView</div>
+  }
 }
