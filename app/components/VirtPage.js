@@ -1,24 +1,17 @@
 "use client"
 
-import { useState, useMemo, useEffect } from "react"
+import { useState, useContext } from "react"
+import { AppContext } from "../context/AppContext"
 import { difficultyColors } from "../lib/constants/constants"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
 
 export default function VirtPage(startingText) {
-  const [text, setText] = useState(startingText.startingText)
-  const [page, setPage] = useState(0)
-  const pages = useMemo(() => {
-    return textToPages(text)
-  }, [text])
-  const [view, setView] = useState(readingView)
+  const { handleClick } = useContext(AppContext)
 
-  //this runs on first load
-  //effectively making it redundant for
-  //the initial setView value
-  useEffect(() => {
-    setView(readingView)
-  }, [page])
+  const [text, setText] = useState(startingText.startingText)
+  const [words, setWords] = useState(() => genHtmWords(text))
+  const [view, setView] = useState(() => readingView(words))
 
   //these should probably find their
   //own home
@@ -35,45 +28,62 @@ export default function VirtPage(startingText) {
   //
 
   function toggleView() {
-    view.key == `readingView` ? setView(editView) : setView(readingView)
+    view.key == "readingView"
+      ? setView(editView)
+      : (setWords(genHtmWords(text)), setView(readingView(words)))
   }
 
-  function pageNext() {
-    if (page == pages.length - 1) return
-    setPage((prev) => prev + 1)
-  }
+  function pageNext() {}
 
-  function pagePrev() {
-    if (page == 0) return
-    setPage((prev) => prev - 1)
-  }
+  function pagePrev() {}
 
-  function textToPages(text) {
-    let nlp = nlpObj(text)
-    let pages = []
-    let page = []
-    let wordIndex = 0
+  function genHtmWords(text) {
+    const nlp = nlpObj(text)
+    let bgColor = difficultyColors.hard
+    let htmWords = []
 
-    nlp.termList().forEach((word, i) => {
-      if (wordIndex < 79) {
-        page.push(word)
-        wordIndex++
-      } else {
-        page.push(word)
-        pages.push(page)
-        page = []
-        wordIndex = 0
-      }
+    nlp.termList().map((e) => {
+      htmWords.push(
+        <span className=" " key={crypto.randomUUID()}>
+          <span
+            onMouseEnter={(e) => handleEnter(e)}
+            onMouseLeave={(e) => handleExit(e)}
+            onClick={() => handleClick()}
+            className={`relative ${`bgColor`} inline-block hover:invert hover:-translate-y-[3px] duration-100 ease-in-out`}
+          >
+            <span
+              id="wordSpan"
+              data-hovered="false"
+              className={`pointer-events-none relative z-10 data-[hovered=true]:z-30`}
+            >
+              {e.text}
+            </span>
+
+            <span
+              id="bgSpan"
+              data-hovered="false"
+              className={`data-[hovered=true]:z-20 rounded-[2px] pointer-events-none ${bgColor} absolute  top-[3px] bottom-[3px] -right-[1px] -left-[1px] data-[hovered=true]:-left-[3px] data-[hovered=true]:-right-[3px] data-[hovered=true]:top-[1px] data-[hovered=true]:bottom-[1px] duration-100 ease-in-out`}
+            ></span>
+          </span>
+          <span className="mx-[2px]">{e.post}</span>
+        </span>
+      )
     })
-    pages.push(page)
-    return pages
+
+    return htmWords
   }
 
   return (
     <div className="w-full h-full flex justify-center items-end overflow-visible">
-      <div className="flex flex-col items-end w-[80%] h-[97%] gap-3 overflow-visible">
+      <div className="flex flex-col items-end w-[90%] h-[97%] gap-3 overflow-visible">
         <button onClick={toggleView}>=</button>
-        <div className="w-full h-full">{view}</div>
+        <div
+          className={`w-full h-full 
+            ${view.key == "readingView" ? "overflow-y-scroll" : ""} 
+            px-[2rem]`}
+        >
+          {view}
+        </div>
         <div className=" flex gap-7">
           <button onClick={pagePrev}>{`<`}</button>
           <button onClick={pageNext}>{`>`}</button>
@@ -81,6 +91,16 @@ export default function VirtPage(startingText) {
       </div>
     </div>
   )
+
+  function readingView() {
+    return (
+      <p key={"readingView"}>
+        {words.map((word) => {
+          return word
+        })}
+      </p>
+    )
+  }
 
   function editView() {
     return (
@@ -90,40 +110,6 @@ export default function VirtPage(startingText) {
         defaultValue={text}
         onChange={(e) => setText(e.target.value)}
       ></textarea>
-    )
-  }
-
-  function readingView() {
-    return (
-      <p key={`readingView`}>
-        {pages[page].map((e) => {
-          let bgColor = difficultyColors.hard
-          return (
-            <span className=" " key={crypto.randomUUID()}>
-              <span
-                onMouseEnter={(e) => handleEnter(e)}
-                onMouseLeave={(e) => handleExit(e)}
-                className={`relative ${`bgColor`} inline-block hover:invert hover:-translate-y-[3px] duration-100 ease-in-out`}
-              >
-                <span
-                  id="wordSpan"
-                  data-hovered="false"
-                  className={`pointer-events-none relative z-10 data-[hovered=true]:z-30`}
-                >
-                  {e.text}
-                </span>
-
-                <span
-                  id="bgSpan"
-                  data-hovered="false"
-                  className={`data-[hovered=true]:z-20 rounded-[2px] pointer-events-none ${bgColor} absolute  top-[3px] bottom-[3px] -right-[1px] -left-[1px] data-[hovered=true]:-left-[3px] data-[hovered=true]:-right-[3px] data-[hovered=true]:top-[1px] data-[hovered=true]:bottom-[1px] duration-100 ease-in-out`}
-                ></span>
-              </span>
-              <span className="mx-[2px]">{e.post}</span>
-            </span>
-          )
-        })}
-      </p>
     )
   }
 }
