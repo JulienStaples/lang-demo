@@ -10,8 +10,7 @@ export default function VirtPage(startingText) {
   const { handleClick } = useContext(AppContext)
 
   const [text, setText] = useState(startingText.startingText)
-  const [words, setWords] = useState(() => genHtmWords(text))
-  const [view, setView] = useState(() => readingView(words))
+  const [view, setView] = useState(() => readingView())
 
   //these should probably find their
   //own home
@@ -28,9 +27,7 @@ export default function VirtPage(startingText) {
   //
 
   function toggleView() {
-    view.key == "readingView"
-      ? setView(editView)
-      : (setWords(genHtmWords(text)), setView(readingView(words)))
+    view.key == "readingView" ? setView(editView) : setView(readingView)
   }
 
   function pageNext() {}
@@ -48,7 +45,7 @@ export default function VirtPage(startingText) {
           <span
             onMouseEnter={(e) => handleEnter(e)}
             onMouseLeave={(e) => handleExit(e)}
-            onClick={() => handleClick()}
+            onClick={handleClick}
             className={`relative ${`bgColor`} inline-block hover:invert hover:-translate-y-[3px] duration-100 ease-in-out`}
           >
             <span
@@ -93,6 +90,8 @@ export default function VirtPage(startingText) {
   )
 
   function readingView() {
+    let words = genHtmWords(text)
+
     return (
       <p key={"readingView"}>
         {words.map((word) => {
