@@ -2,9 +2,12 @@
 
 import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
+import { diffColors } from "../lib/constants/constants"
 
 export default function TranslateTab() {
   const { showFlyout, handleClick, activeWord } = useContext(AppContext)
+
+  console.log(diffColors.easyHover)
 
   if (showFlyout) {
     return (
@@ -32,7 +35,7 @@ export default function TranslateTab() {
             <div>
               <div className=" flex gap-2 px-1">
                 <h1 className=" ">Word:</h1>
-                <p className="">word</p>
+                <p className="">{activeWord.normal}</p>
               </div>
               <textarea className=" w-full bg-slate-800" name="" id=""></textarea>
             </div>
@@ -59,15 +62,19 @@ export default function TranslateTab() {
             </div>
           </div>
           <div className=" w-full flex flex-col gap-5">
-            <div className=" flex gap-3 w-full justify-center">
-              <button className=" bg-slate-700 p-1 rounded-md">easy</button>
-              <button className=" bg-slate-700 p-1 rounded-md">med</button>
-              <button className=" bg-slate-700 p-1 rounded-md">hard</button>
-              <button className=" bg-slate-700 p-1 rounded-md">wk</button>
+            <div className=" flex w-full justify-between">
+              <button className={`${diffColors.easy}  px-3 py-1 rounded-md`}>easy</button>
+              <button className={`${diffColors.med} px-3 py-1 rounded-md`}>med</button>
+              <button className={`${diffColors.hard} px-3 py-1 rounded-md`}>hard</button>
+              <button className={`${diffColors.known} px-3 py-1 rounded-md`}>wk</button>
             </div>
             <div className=" flex gap-3 w-full">
-              <button className=" bg-slate-700 p-1 rounded-md w-full">del</button>
-              <button className=" bg-slate-700 p-1 rounded-md w-full">save</button>
+              <button className=" bg-red-700 hover:bg-red-600 active:bg-red-800 p-1 rounded-md w-full">
+                del
+              </button>
+              <button className=" bg-green-700 hover:bg-green-600 active:bg-green-800 p-1 rounded-md w-full">
+                save
+              </button>
             </div>
           </div>
         </div>
