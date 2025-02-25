@@ -39,13 +39,13 @@ export default function VirtPage(startingText) {
     let bgColor = difficultyColors.hard
     let htmWords = []
 
-    nlp.termList().map((e) => {
+    nlp.termList().map((wordObj) => {
       htmWords.push(
-        <span className=" " key={crypto.randomUUID()}>
+        <span key={crypto.randomUUID()}>
           <span
             onMouseEnter={(e) => handleEnter(e)}
             onMouseLeave={(e) => handleExit(e)}
-            onClick={handleClick}
+            onClick={() => handleClick(wordObj)}
             className={`relative ${`bgColor`} inline-block hover:invert hover:-translate-y-[3px] duration-100 ease-in-out`}
           >
             <span
@@ -53,7 +53,7 @@ export default function VirtPage(startingText) {
               data-hovered="false"
               className={`pointer-events-none relative z-10 data-[hovered=true]:z-30`}
             >
-              {e.text}
+              {wordObj.text}
             </span>
 
             <span
@@ -62,7 +62,7 @@ export default function VirtPage(startingText) {
               className={`data-[hovered=true]:z-20 rounded-[2px] pointer-events-none ${bgColor} absolute  top-[3px] bottom-[3px] -right-[1px] -left-[1px] data-[hovered=true]:-left-[3px] data-[hovered=true]:-right-[3px] data-[hovered=true]:top-[1px] data-[hovered=true]:bottom-[1px] duration-100 ease-in-out`}
             ></span>
           </span>
-          <span className="mx-[2px]">{e.post}</span>
+          <span className="mx-[2px]">{wordObj.post}</span>
         </span>
       )
     })

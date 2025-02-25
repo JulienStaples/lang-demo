@@ -4,7 +4,7 @@ import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
 
 export default function TranslateTab() {
-  const { showFlyout, handleClick } = useContext(AppContext)
+  const { showFlyout, handleClick, activeWord } = useContext(AppContext)
 
   if (showFlyout) {
     return (
@@ -71,8 +71,14 @@ export default function TranslateTab() {
             </div>
           </div>
         </div>
-        <div className=" w-full bg-gray-800 flex flex-col justify-end">
-          <p className=" pt-[50rem]">eof</p>
+        <div className=" w-full flex justify-center">
+          <a
+            target="_blank"
+            className=" w-full rounded-md text-center p-3 bg-blue-800 hover:bg-blue-700 active:bg-blue-900"
+            href={`https://www.wordreference.com/fren/${activeWord.normal}`}
+          >
+            Translate
+          </a>
         </div>
       </div>
     )
