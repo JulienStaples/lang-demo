@@ -6,10 +6,11 @@ export const AppContext = createContext()
 
 export default function AppProvider({ children }) {
   const [showFlyout, setShowFlyout] = useState(false)
-  const [activeWord, setActiveWord] = useState("")
+  const [activeWordObj, setActiveWordObj] = useState("")
 
   function handleClick(wordObj) {
-    setActiveWord(wordObj)
+    setActiveWordObj(wordObj)
+
     setShowFlyout((prev) => !prev)
     //animation issue
     setTimeout(() => {
@@ -20,7 +21,7 @@ export default function AppProvider({ children }) {
 
   return (
     <AppContext.Provider
-      value={{ showFlyout, setShowFlyout, activeWord, setActiveWord, handleClick }}
+      value={{ showFlyout, setShowFlyout, activeWordObj, setActiveWordObj, handleClick }}
     >
       {children}
     </AppContext.Provider>
