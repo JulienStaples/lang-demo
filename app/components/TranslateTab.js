@@ -15,14 +15,28 @@ export default function TranslateTab() {
     setDiff(findDiff(activeWord))
   }, [showFlyout])
 
-  function saveEntry() {
+  function saveEntry(e) {
     const entryObj = JSON.parse(sessionStorage.getItem(activeWord))
 
     entryObj ? changeEntry() : makeEntry()
+
+    //animation issue
+    e.target.parentNode.dataset.active = "false"
+    setTimeout(() => {
+      handleClick(activeWord)
+    }, 200)
+    //
   }
 
-  function delEntry() {
+  function delEntry(e) {
     sessionStorage.removeItem(activeWord)
+
+    //animation issue
+    e.target.parentNode.dataset.active = "false"
+    setTimeout(() => {
+      handleClick(activeWord)
+    }, 200)
+    //
   }
 
   function changeDiff(diff) {
@@ -36,7 +50,7 @@ export default function TranslateTab() {
     setDiff(findDiff(activeWord))
   }
 
-  function makeEntry(diff = "") {
+  function makeEntry(diff = "hard") {
     const newEntryObj = {
       word: "",
       def: "",
@@ -155,13 +169,13 @@ export default function TranslateTab() {
             <div className=" flex gap-3 w-full">
               <button
                 className=" bg-red-700 hover:bg-red-600 active:bg-red-800 p-1 rounded-md w-full"
-                onClick={delEntry}
+                onClick={(e) => delEntry(e)}
               >
                 del
               </button>
               <button
                 className=" bg-green-700 hover:bg-green-600 active:bg-green-800 p-1 rounded-md w-full"
-                onClick={saveEntry}
+                onClick={(e) => saveEntry(e)}
               >
                 save
               </button>
