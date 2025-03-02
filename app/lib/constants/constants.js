@@ -18,3 +18,11 @@ export let diffBtnColors = {
   wk: "bg-gray-500 hover:bg-gray-400 active:bg-gray-600",
   uk: "bg-purple-500 hover:bg-purple-400 active:bg-purple-600",
 }
+
+export function findDiff(word) {
+  try {
+    return JSON.parse(sessionStorage.getItem(word)).diff
+  } catch {
+    return "uk"
+  }
+}

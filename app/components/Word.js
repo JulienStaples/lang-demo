@@ -1,20 +1,12 @@
 import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
-import { diffWordColors } from "../lib/constants/constants"
+import { diffWordColors, findDiff } from "../lib/constants/constants"
 
 export default function Word(props) {
   const { handleClick } = useContext(AppContext)
 
   let wordObj = props.wordObj
-  let wordDiff = findDiff()
-
-  function findDiff() {
-    try {
-      return JSON.parse(sessionStorage.getItem(wordObj.normal)).diff
-    } catch {
-      return "uk"
-    }
-  }
+  let wordDiff = findDiff(wordObj.normal)
 
   function handleEnter(e) {
     e.currentTarget.querySelector(".word-text").dataset.hovered = "true"

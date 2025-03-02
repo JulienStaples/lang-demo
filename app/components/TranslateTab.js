@@ -1,14 +1,19 @@
 "use client"
 
-import { useContext, useRef } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../context/AppContext"
-import { diffBtnColors } from "../lib/constants/constants"
+import { diffBtnColors, diffWordColors, findDiff } from "../lib/constants/constants"
 
 export default function TranslateTab() {
   const { showFlyout, handleClick, activeWordObj } = useContext(AppContext)
   const defBox = useRef()
   const rootBox = useRef()
   const activeWord = activeWordObj.normal
+  const [diff, setDiff] = useState()
+
+  useEffect(() => {
+    setDiff(findDiff(activeWord))
+  }, [showFlyout])
 
   function saveEntry() {
     const entryObj = JSON.parse(sessionStorage.getItem(activeWord))
@@ -27,6 +32,8 @@ export default function TranslateTab() {
       ? ((entryObj.diff = diff),
         sessionStorage.setItem(activeWord, JSON.stringify(entryObj)))
       : makeEntry(diff)
+
+    setDiff(findDiff(activeWord))
   }
 
   function makeEntry(diff = "") {
@@ -80,7 +87,9 @@ export default function TranslateTab() {
             <div>
               <div className=" flex gap-2 px-1">
                 <h1 className="">Word:</h1>
-                <p className="">{activeWord}</p>
+                <p data-diff={diff} className={`${diffWordColors} rounded-md px-1`}>
+                  {activeWord}
+                </p>
               </div>
             </div>
             <div>
