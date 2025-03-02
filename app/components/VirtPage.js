@@ -1,16 +1,21 @@
 "use client"
+
 import Word from "./Word"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
 
 export default function VirtPage(startingText) {
   const [text, setText] = useState(startingText.startingText)
-  const [view, setView] = useState(() => readingView())
+  const [view, setView] = useState("")
 
   function toggleView() {
     view.key == "readingView" ? setView(editView) : setView(readingView)
   }
+
+  useEffect(() => {
+    setView(readingView)
+  }, [])
 
   function pageNext() {}
 
