@@ -41,7 +41,6 @@ export default function TranslateTab() {
     newEntryObj.word = activeWord
     newEntryObj.def = defBox.current.value
     newEntryObj.root = rootBox.current.value
-    console.log(newEntryObj)
 
     sessionStorage.setItem(activeWord, JSON.stringify(newEntryObj))
   }
