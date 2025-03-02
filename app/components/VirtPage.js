@@ -1,7 +1,6 @@
 "use client"
 import Word from "./Word"
 import { useState } from "react"
-import { diffColors } from "../lib/constants/constants"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
 
@@ -19,7 +18,6 @@ export default function VirtPage(startingText) {
 
   function genHtmWords(text) {
     const nlp = nlpObj(text)
-    let bgColor = diffColors.hard
     let htmWords = []
 
     nlp.termList().map((wordObj) => {

@@ -2,7 +2,7 @@
 
 import { useContext, useRef } from "react"
 import { AppContext } from "../context/AppContext"
-import { diffColors } from "../lib/constants/constants"
+import { diffBtnColors } from "../lib/constants/constants"
 
 export default function TranslateTab() {
   const { showFlyout, handleClick, activeWordObj } = useContext(AppContext)
@@ -119,25 +119,25 @@ export default function TranslateTab() {
           <div className=" w-full flex flex-col gap-5">
             <div className=" flex w-full justify-between">
               <button
-                className={`${diffColors.easy}  px-3 py-1 rounded-md`}
+                className={`${diffBtnColors.easy}  px-3 py-1 rounded-md`}
                 onClick={() => changeDiff("easy")}
               >
                 easy
               </button>
               <button
-                className={`${diffColors.med} px-3 py-1 rounded-md`}
+                className={`${diffBtnColors.med} px-3 py-1 rounded-md`}
                 onClick={() => changeDiff("med")}
               >
                 med
               </button>
               <button
-                className={`${diffColors.hard} px-3 py-1 rounded-md`}
+                className={`${diffBtnColors.hard} px-3 py-1 rounded-md`}
                 onClick={() => changeDiff("hard")}
               >
                 hard
               </button>
               <button
-                className={`${diffColors.known} px-3 py-1 rounded-md`}
+                className={`${diffBtnColors.wk} px-3 py-1 rounded-md`}
                 onClick={() => changeDiff("wk")}
               >
                 wk
