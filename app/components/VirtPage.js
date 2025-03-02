@@ -52,7 +52,7 @@ export default function VirtPage(startingText) {
     let words = genHtmWords(text)
 
     return (
-      <p>
+      <p key={`readingView`}>
         {words.map((word) => {
           return word
         })}
