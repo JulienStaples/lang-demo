@@ -15,7 +15,6 @@ export default function Tabs() {
   }, [])
 
   function selectTab(curTab) {
-    console.log("first")
     if (curTab == "translate") setTab(<TranslateTab selectTab={selectTab}></TranslateTab>)
     if (curTab == "details") setTab(<DetailsTab selectTab={selectTab}></DetailsTab>)
   }
