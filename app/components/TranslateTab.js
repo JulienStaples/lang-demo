@@ -2,7 +2,12 @@
 
 import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../context/AppContext"
-import { diffBtnColors, diffWordColors, findDiff } from "../lib/constants/constants"
+import {
+  diffBtnColors,
+  diffWordColors,
+  findDiff,
+  findEntry,
+} from "../lib/constants/constants"
 
 export default function TranslateTab() {
   const { showFlyout, handleClick, activeWordObj } = useContext(AppContext)
@@ -10,8 +15,10 @@ export default function TranslateTab() {
   const rootBox = useRef()
   const activeWord = activeWordObj.normal
   const [diff, setDiff] = useState()
+  const [entry, setEntry] = useState("")
 
   useEffect(() => {
+    setEntry(findEntry(activeWord))
     setDiff(findDiff(activeWord))
   }, [showFlyout])
 
@@ -109,11 +116,15 @@ export default function TranslateTab() {
             <div>
               <div className=" flex gap-2 px-1">
                 <h1 className="">Def:</h1>
-                <p className="">Def</p>
+                <p className="">
+                  {entry.def !== undefined && entry.def !== "" ? entry.def : "..."}
+                </p>
               </div>
               <textarea
                 ref={defBox}
-                defaultValue={activeWord}
+                defaultValue={
+                  entry.def !== undefined && entry.def !== "" ? entry.def : ""
+                }
                 className=" w-full bg-slate-800"
                 name=""
                 id=""
@@ -122,10 +133,15 @@ export default function TranslateTab() {
             <div>
               <div className=" flex gap-2 px-1">
                 <h1 className="">Root:</h1>
-                <p className="">root</p>
+                <p className="">
+                  {entry.root !== undefined && entry.root !== "" ? entry.root : "..."}
+                </p>
               </div>
               <textarea
                 ref={rootBox}
+                defaultValue={
+                  entry.root !== undefined && entry.root !== "" ? entry.root : ""
+                }
                 className=" w-full bg-slate-800"
                 name=""
                 id=""
@@ -134,9 +150,18 @@ export default function TranslateTab() {
             <div>
               <div className=" flex gap-2 px-1">
                 <h1 className="">Tags:</h1>
-                <p className="">tags ...</p>
+                <p className="">
+                  {entry.tags !== undefined && entry.tags !== "" ? entry.tags : "..."}
+                </p>
               </div>
-              <textarea className=" w-full bg-slate-800" name="" id=""></textarea>
+              <textarea
+                defaultValue={
+                  entry.tags !== undefined && entry.tags !== "" ? entry.tags : ""
+                }
+                className=" w-full bg-slate-800"
+                name=""
+                id=""
+              ></textarea>
             </div>
           </div>
           <div className=" w-full flex flex-col gap-5">
