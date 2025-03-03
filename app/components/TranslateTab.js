@@ -9,7 +9,7 @@ import {
   findEntry,
 } from "../lib/constants/constants"
 
-export default function TranslateTab() {
+export default function TranslateTab(props) {
   const { showFlyout, handleClick, activeWordObj, entry } = useContext(AppContext)
   const defBox = useRef()
   const rootBox = useRef()
@@ -144,6 +144,12 @@ export default function TranslateTab() {
               id=""
             ></textarea>
           </div>
+        </div>
+        <div>
+          <p
+            className=" text-gray-400 underline hover:text-gray-500 cursor-pointer duration-200 ease-in-out select-none"
+            onClick={() => props.selectTab("details")}
+          >{`See More ---->`}</p>
         </div>
         <div className=" w-full flex flex-col gap-5">
           <div className=" flex w-full justify-between">
