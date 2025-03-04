@@ -10,7 +10,8 @@ import {
 } from "../lib/constants/constants"
 
 export default function TranslateTab(props) {
-  const { showFlyout, handleClick, activeWordObj, entry } = useContext(AppContext)
+  const { showFlyout, handleClick, activeWordObj, entry, langOption } =
+    useContext(AppContext)
   const defBox = useRef()
   const rootBox = useRef()
   const activeWord = activeWordObj.normal
@@ -198,7 +199,7 @@ export default function TranslateTab(props) {
         <a
           target="_blank"
           className=" w-full rounded-md text-center p-3 bg-blue-800 hover:bg-blue-700 active:bg-blue-900"
-          href={`https://www.wordreference.com/fren/${activeWord}`}
+          href={`https://www.wordreference.com/${langOption}/${activeWord}`}
         >
           Translate
         </a>

@@ -28,8 +28,8 @@ export let dummyText = new Map([
 ])
 
 export let langOptions = new Map([
-  ["en-fr", "en-fr"],
-  ["fr-en", "fr-en"],
+  ["enfr", "en-fr"],
+  ["fren", "fr-en"],
 ])
 
 export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-black data-[diff=uk]:bg-purple-800`
