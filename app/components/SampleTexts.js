@@ -3,37 +3,26 @@
 import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
 import { dummyText } from "../lib/constants/constants"
+import Dropdown from "./dropdown/Dropdown"
 
 export default function SampleTexts() {
   const { setPresetText, setLangOption, setPage } = useContext(AppContext)
-  let texts = getTexts()
 
-  function getTexts() {
-    let texts = []
-    dummyText.forEach((text, key) => {
-      texts.push(
-        <p
-          key={key}
-          id={key}
-          onClick={() => {
-            setPresetText(dummyText.get(key))
-            setLangOption(text.lang == "en" ? "enfr" : `${text.lang}en`)
-            setPage(0)
-          }}
-          className=" text-nowrap hover:bg-slate-800 active:bg-slate-900 p-3 border-b-2 border-black cursor-pointer duration-100 ease-in-out select-none"
-        >{`${text.lang} - ${text.title}`}</p>
-      )
-    })
+  let textItems = []
 
-    return texts
-  }
+  dummyText.forEach((text, key) => {
+    let textItem = {
+      key: key,
+      value: `${text.lang} - ${text.title}`,
+      action: () => {
+        setPresetText(dummyText.get(key))
+        setLangOption(text.lang == "en" ? "enfr" : `${text.lang}en`)
+        setPage(0)
+      },
+    }
 
-  return (
-    <div className=" group absolute top-0 left-10">
-      <span>Sample texts</span>
-      <div className=" invisible opacity-50 group-hover:opacity-100 absolute group-hover:visible bg-slate-700 w-fit z-40 duration-100 ease-in-out">
-        {texts}
-      </div>
-    </div>
-  )
+    textItems.push(textItem)
+  })
+
+  return <Dropdown title={"Sample Texts"} items={textItems} />
 }
