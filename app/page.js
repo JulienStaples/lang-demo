@@ -1,7 +1,5 @@
 "use server"
 
-import LangSelect from "./components/LangSelect"
-import SampleTexts from "./components/SampleTexts"
 import Tabs from "./components/Tabs"
 import VirtPage from "./components/VirtPage"
 import Nav from "./components/Nav"

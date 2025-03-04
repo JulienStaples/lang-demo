@@ -27,17 +27,6 @@ export let dummyText = new Map([
       lang: "la",
       title: "Lorem ipsum",
       body: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos rem a accusantium voluptas, delectus iste soluta harum officiis optio ullam sunt incidunt at id modi nulla nostrum corrupti neque eaque. Tempora quibusdam temporibus ab vero unde libero culpa veniam fugit sed in excepturi voluptas minus, quis dolores quod cum delectus magnam! Consequatur ullam tenetur quaerat voluptatem! Praesentium aspernatur recusandae, quam modi asperiores voluptatum quisquam aut harum sed nam. Quisquam corporis non iure nihil ullam impedit officia autem eos asperiores maiores fugiat assumenda, ea doloremque totam qui earum accusantium quos voluptates porro reprehenderit quidem dignissimos dolore! Architecto aliquid quo possimus corrupti tempora velit, vel veniam repellendus cupiditate sed! Error ipsam eveniet officia sunt impedit ex porro omnis voluptas vitae et reprehenderit deleniti dolorem, hic quidem velit quia natus, quod odio, totam optio! Sint saepe incidunt natus atque iure deserunt vero officiis optio praesentium animi sed minus voluptate accusantium illo voluptatum id quos quia officia, repudiandae blanditiis hic cumque neque. Eaque corporis itaque soluta culpa a, aspernatur minus? Natus facere asperiores cumque. Nihil, exercitationem totam? Natus ex veniam nihil quidem officiis, eaque quasi quod delectus a deserunt cumque vero sunt vel voluptate, fuga sequi facilis dicta molestiae placeat consectetur exercitationem! Numquam, cupiditate?",
-      ],
-    },
-  ],
-
-  [
-    "lorem-ipsum-pages",
-    {
-      lang: "la",
-      title: "Lorem ipsum-pages",
-      body: [
         "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente consequuntur rerum ipsa dolor deleniti fugiat id repudiandae! Commodi, aperiam dolores! Modi molestiae ea ex fugit saepe maxime vel repudiandae at, officiis repellendus fuga ducimus nesciunt deleniti debitis quos nemo voluptatum pariatur. Voluptas sunt, maiores exercitationem saepe, officiis facilis molestias, consectetur eligendi vitae omnis sequi ipsa deleniti error odio nisi aspernatur.",
         "Ullam culpa dolorem porro, quaerat, numquam fugit tenetur dolores vel amet optio odio dolor illo aut accusamus, quisquam sed inventore beatae animi illum quas aliquam fugiat. Illum inventore modi temporibus, velit error adipisci, dicta accusamus odio, iusto molestiae quis amet similique quasi nulla sint sit ea obcaecati aut. Provident, maxime dolore quos ipsam earum magnam maiores enim ipsum qui totam deserunt, neque expedita asperiores accusantium voluptas mollitia dignissimos?",
         "Pariatur, officia quasi autem facilis rerum ex illum, sequi aliquid tempore non ad facere? Maxime cupiditate neque sequi consectetur ipsam, repudiandae veritatis assumenda nemo quae laudantium, alias beatae exercitationem voluptatem doloribus recusandae repellat eos voluptatum adipisci dignissimos nesciunt suscipit? ",

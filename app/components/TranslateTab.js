@@ -2,12 +2,7 @@
 
 import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../context/AppContext"
-import {
-  diffBtnColors,
-  diffWordColors,
-  findDiff,
-  findEntry,
-} from "../lib/constants/constants"
+import { diffBtnColors, diffWordColors, findDiff } from "../lib/constants/constants"
 
 export default function TranslateTab(props) {
   const { showFlyout, handleClick, activeWordObj, entry, langOption } =
