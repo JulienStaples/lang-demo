@@ -7,30 +7,30 @@ import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
 
 export default function VirtPage() {
-  const { presetText } = useContext(AppContext)
+  const { presetText, page, setPage } = useContext(AppContext)
   const [view, setView] = useState("")
   const editBox = useRef()
+
+  useEffect(() => {
+    setView(readingView)
+  }, [presetText, page])
 
   function toggleView() {
     view.key == "readingView"
       ? setView(editView)
-      : ((presetText.body = editBox.current.value), setView(readingView))
+      : ((presetText.body[page] = editBox.current.value), setView(readingView))
   }
 
-  useEffect(() => {
-    setView(readingView)
-  }, [])
+  function pageNext() {
+    page == presetText.body.length - 1 ? "" : setPage((prev) => (prev += 1))
+  }
 
-  useEffect(() => {
-    setView(readingView)
-  }, [presetText])
-
-  function pageNext() {}
-
-  function pagePrev() {}
+  function pagePrev() {
+    page == 0 ? "" : setPage((prev) => (prev -= 1))
+  }
 
   function genHtmWords() {
-    const nlp = nlpObj(presetText.body)
+    const nlp = nlpObj(presetText.body[page])
     let htmWords = []
 
     nlp.termList().map((wordObj) => {
@@ -53,6 +53,13 @@ export default function VirtPage() {
         </div>
         <div className=" flex gap-7">
           <button onClick={pagePrev}>{`<`}</button>
+          <span>
+            {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
+              presetText.body.length < 10
+                ? `0${presetText.body.length}`
+                : presetText.body.length
+            }`}
+          </span>
           <button onClick={pageNext}>{`>`}</button>
         </div>
       </div>
@@ -77,7 +84,7 @@ export default function VirtPage() {
         key={`editView`}
         ref={editBox}
         className=" bg-black w-full h-full"
-        defaultValue={presetText.body}
+        defaultValue={presetText.body[page]}
       ></textarea>
     )
   }

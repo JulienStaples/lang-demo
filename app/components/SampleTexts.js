@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppContext"
 import { dummyText } from "../lib/constants/constants"
 
 export default function SampleTexts() {
-  const { presetText, setPresetText, setLangOption } = useContext(AppContext)
+  const { setPresetText, setLangOption, setPage } = useContext(AppContext)
   let texts = getTexts()
 
   function getTexts() {
@@ -18,6 +18,7 @@ export default function SampleTexts() {
           onClick={() => {
             setPresetText(dummyText.get(key))
             setLangOption(text.lang == "en" ? "enfr" : `${text.lang}en`)
+            setPage(0)
           }}
           className=" text-nowrap hover:bg-slate-800 active:bg-slate-900 p-3 border-b-2 border-black cursor-pointer duration-100 ease-in-out select-none"
         >{`${text.lang} - ${text.title}`}</p>
