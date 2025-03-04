@@ -1,28 +1,36 @@
 "use client"
 
+import { useEffect, useState, useContext, useRef } from "react"
+import { AppContext } from "../context/AppContext"
 import Word from "./Word"
-import { useEffect, useState } from "react"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
 
-export default function VirtPage(startingText) {
-  const [text, setText] = useState(startingText.startingText)
+export default function VirtPage() {
+  const { presetText } = useContext(AppContext)
   const [view, setView] = useState("")
+  const editBox = useRef()
 
   function toggleView() {
-    view.key == "readingView" ? setView(editView) : setView(readingView)
+    view.key == "readingView"
+      ? setView(editView)
+      : ((presetText.body = editBox.current.value), setView(readingView))
   }
 
   useEffect(() => {
     setView(readingView)
   }, [])
 
+  useEffect(() => {
+    setView(readingView)
+  }, [presetText])
+
   function pageNext() {}
 
   function pagePrev() {}
 
-  function genHtmWords(text) {
-    const nlp = nlpObj(text)
+  function genHtmWords() {
+    const nlp = nlpObj(presetText.body)
     let htmWords = []
 
     nlp.termList().map((wordObj) => {
@@ -52,7 +60,7 @@ export default function VirtPage(startingText) {
   )
 
   function readingView() {
-    let words = genHtmWords(text)
+    let words = genHtmWords()
 
     return (
       <p key={`readingView`}>
@@ -67,9 +75,9 @@ export default function VirtPage(startingText) {
     return (
       <textarea
         key={`editView`}
+        ref={editBox}
         className=" bg-black w-full h-full"
-        defaultValue={text}
-        onChange={(e) => setText(e.target.value)}
+        defaultValue={presetText.body}
       ></textarea>
     )
   }

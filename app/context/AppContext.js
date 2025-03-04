@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useState } from "react"
-import { findEntry } from "../lib/constants/constants"
+import { findEntry, dummyText } from "../lib/constants/constants"
 
 export const AppContext = createContext()
 
@@ -9,6 +9,7 @@ export default function AppProvider({ children }) {
   const [showFlyout, setShowFlyout] = useState(false)
   const [activeWordObj, setActiveWordObj] = useState("")
   const [entry, setEntry] = useState("")
+  const [presetText, setPresetText] = useState(dummyText.get("london-bridge"))
 
   function handleClick(wordObj) {
     setActiveWordObj(wordObj)
@@ -30,6 +31,8 @@ export default function AppProvider({ children }) {
         setActiveWordObj,
         handleClick,
         entry,
+        presetText,
+        setPresetText,
       }}
     >
       {children}
