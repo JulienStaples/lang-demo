@@ -2,34 +2,31 @@
 
 import { useContext } from "react"
 import { AppContext } from "../context/AppContext"
-import { dummyText } from "../lib/constants/constants"
+import { langOptions } from "../lib/constants/constants"
 
-export default function SampleTexts() {
-  const { presetText, setPresetText, setLangOption } = useContext(AppContext)
+export default function LangSelect() {
+  const { setLangOption } = useContext(AppContext)
   let texts = getTexts()
 
   function getTexts() {
-    let texts = []
-    dummyText.forEach((text, key) => {
-      texts.push(
+    let options = []
+    langOptions.forEach((langs, key) => {
+      options.push(
         <p
           key={key}
           id={key}
-          onClick={() => {
-            setPresetText(dummyText.get(key))
-            setLangOption(text.lang == "en" ? "en-fr" : `${text.lang}-en`)
-          }}
+          onClick={() => setLangOption(key)}
           className=" text-nowrap hover:bg-slate-800 active:bg-slate-900 p-3 border-b-2 border-black cursor-pointer duration-100 ease-in-out select-none"
-        >{`${text.lang} - ${text.title}`}</p>
+        >{`${langs}`}</p>
       )
     })
 
-    return texts
+    return options
   }
 
   return (
-    <div className=" group absolute top-0 left-10">
-      <span>Sample texts</span>
+    <div className=" group absolute top-0 left-44">
+      <span>Select Lang</span>
       <div className=" invisible opacity-50 group-hover:opacity-100 absolute group-hover:visible bg-slate-700 w-fit z-40 duration-100 ease-in-out">
         {texts}
       </div>

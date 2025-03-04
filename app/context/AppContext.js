@@ -10,6 +10,7 @@ export default function AppProvider({ children }) {
   const [activeWordObj, setActiveWordObj] = useState("")
   const [entry, setEntry] = useState("")
   const [presetText, setPresetText] = useState(dummyText.get("london-bridge"))
+  const [langOption, setLangOption] = useState("en-fr")
 
   function handleClick(wordObj) {
     setActiveWordObj(wordObj)
@@ -33,6 +34,8 @@ export default function AppProvider({ children }) {
         entry,
         presetText,
         setPresetText,
+        langOption,
+        setLangOption,
       }}
     >
       {children}
