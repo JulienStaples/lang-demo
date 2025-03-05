@@ -42,6 +42,8 @@ export let dummyText = new Map([
   ],
 ])
 
+export let wordDb = new Map([[]])
+
 export let langOptions = new Map([
   ["enfr", "en-fr"],
   ["fren", "fr-en"],
@@ -59,14 +61,13 @@ export let diffBtnColors = {
 
 export function findDiff(word) {
   try {
-    return JSON.parse(sessionStorage.getItem(word)).diff
+    return wordDb.get(word).diff
   } catch {
     return "uk"
   }
 }
 
 export function findEntry(word) {
-  if (JSON.parse(sessionStorage.getItem(word)))
-    return JSON.parse(sessionStorage.getItem(word))
+  if (wordDb.has(word)) return wordDb.get(word)
   else return ""
 }

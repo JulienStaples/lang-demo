@@ -6,6 +6,7 @@ import {
   diffBtnColors,
   diffWordColors,
   findDiff,
+  wordDb,
 } from "../lib/constants/constants"
 
 export default function TranslateTab(props) {
@@ -18,66 +19,46 @@ export default function TranslateTab(props) {
 
   useEffect(() => {
     setDiff(findDiff(activeWord))
+    sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
   }, [showFlyout])
 
-  function saveEntry(e) {
-    const entryObj = JSON.parse(sessionStorage.getItem(activeWord))
-
-    entryObj ? changeEntry() : makeEntry()
-
+  function animationIssue(e) {
     //animation issue
     e.target.parentNode.dataset.active = "false"
     setTimeout(() => {
       handleClick(activeWord)
     }, 200)
     //
+  }
+
+  function addEntry(e, diff) {
+    const newEntryObj = {
+      word: activeWord,
+      def: defBox.current.value,
+      root: rootBox.current.value,
+      diff: diff ? diff : "hard",
+      lang: "lang",
+    }
+
+    wordDb.set(activeWord, newEntryObj)
+    setDiff(diff)
+
+    animationIssue(e)
   }
 
   function delEntry(e) {
-    sessionStorage.removeItem(activeWord)
+    wordDb.delete(activeWord)
 
-    //animation issue
-    e.target.parentNode.dataset.active = "false"
-    setTimeout(() => {
-      handleClick(activeWord)
-    }, 200)
-    //
+    animationIssue(e)
   }
 
   function changeDiff(diff) {
-    let entryObj = JSON.parse(sessionStorage.getItem(activeWord))
-
-    entryObj
-      ? ((entryObj.diff = diff),
-        sessionStorage.setItem(activeWord, JSON.stringify(entryObj)))
-      : makeEntry(diff)
-
-    setDiff(findDiff(activeWord))
-  }
-
-  function makeEntry(diff = "hard") {
-    const newEntryObj = {
-      word: "",
-      def: "",
-      root: "",
-      tags: "",
-      partOfSpeech: "",
-      diff: diff,
+    try {
+      wordDb.get(activeWord).diff = diff
+      setDiff(diff)
+    } catch {
+      addEntry("", diff)
     }
-    newEntryObj.word = activeWord
-    newEntryObj.def = defBox.current.value
-    newEntryObj.root = rootBox.current.value
-
-    sessionStorage.setItem(activeWord, JSON.stringify(newEntryObj))
-  }
-
-  function changeEntry() {
-    const entryObj = JSON.parse(sessionStorage.getItem(activeWord))
-
-    entryObj.def = defBox.current.value
-    entryObj.root = rootBox.current.value
-
-    sessionStorage.setItem(activeWord, JSON.stringify(entryObj))
   }
 
   return (
@@ -197,7 +178,7 @@ export default function TranslateTab(props) {
             </button>
             <button
               className="w-full rounded-md bg-green-700 p-1 hover:bg-green-600 active:bg-green-800"
-              onClick={(e) => saveEntry(e)}
+              onClick={(e) => addEntry(e)}
             >
               save
             </button>

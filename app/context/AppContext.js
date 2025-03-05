@@ -1,7 +1,8 @@
 "use client"
 
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { findEntry, dummyText } from "../lib/constants/constants"
+import { wordDb } from "../lib/constants/constants"
 
 export const AppContext = createContext()
 
@@ -12,6 +13,14 @@ export default function AppProvider({ children }) {
   const [presetText, setPresetText] = useState(dummyText.get("london-bridge"))
   const [langOption, setLangOption] = useState("enfr")
   const [page, setPage] = useState(0)
+
+  useEffect(() => {
+    try {
+      JSON.parse(sessionStorage.wordDb).forEach((entry) => {
+        wordDb.set(entry[0], entry[1])
+      })
+    } catch {}
+  }, [])
 
   function handleClick(wordObj) {
     setActiveWordObj(wordObj)
