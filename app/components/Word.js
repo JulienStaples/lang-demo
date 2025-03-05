@@ -26,7 +26,7 @@ export default function Word(props) {
         onMouseLeave={(e) => handleExit(e)}
         onClick={() => handleClick(wordObj)}
       >
-        <span className="cursor-pointer relative inline-block duration-100 ease-in-out">
+        <span className="relative inline-block cursor-pointer duration-100 ease-in-out">
           <span
             data-hovered="false"
             className="word-text relative z-10 data-[hovered=true]:text-black"
@@ -36,7 +36,7 @@ export default function Word(props) {
           <span
             data-hovered="false"
             data-diff={wordDiff}
-            className={`word-bg absolute inset-x-[-2px] inset-y-[3px] rounded-md z-0 data-[hovered=true]:-inset-x-1 data-[hovered=true]:invert duration-100 ease-in-out data-[hovered=true]:inset-y-0 ${diffWordColors}`}
+            className={`word-bg absolute inset-x-[-2px] inset-y-[3px] z-0 rounded-md duration-100 ease-in-out data-[hovered=true]:-inset-x-1 data-[hovered=true]:inset-y-0 data-[hovered=true]:invert ${diffWordColors}`}
           ></span>
         </span>
       </span>

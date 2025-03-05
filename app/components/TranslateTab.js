@@ -2,7 +2,11 @@
 
 import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../context/AppContext"
-import { diffBtnColors, diffWordColors, findDiff } from "../lib/constants/constants"
+import {
+  diffBtnColors,
+  diffWordColors,
+  findDiff,
+} from "../lib/constants/constants"
 
 export default function TranslateTab(props) {
   const { showFlyout, handleClick, activeWordObj, entry, langOption } =
@@ -79,39 +83,47 @@ export default function TranslateTab(props) {
   return (
     <div
       id="translate-tab"
-      className="z-40 flex flex-col gap-9 items-start p-[2.5rem] pb-0 overflow-x-hidden overflow-y-scroll
-        absolute w-full top-0 bottom-0 right-0 duration-200 ease-in-out"
+      className="absolute bottom-0 right-0 top-0 z-40 flex w-full flex-col items-start gap-9 overflow-x-hidden overflow-y-scroll p-[2.5rem] pb-0 duration-200 ease-in-out"
     >
-      <div className="w-full flex flex-col gap-6">
-        <div className="w-full flex flex-col gap-3">
+      <div className="flex w-full flex-col gap-6">
+        <div className="flex w-full flex-col gap-3">
           <div>
-            <div className=" flex gap-2 px-1">
+            <div className="flex gap-2 px-1">
               <h1 className="">Word:</h1>
-              <p data-diff={diff} className={`${diffWordColors} rounded-md px-1`}>
+              <p
+                data-diff={diff}
+                className={`${diffWordColors} rounded-md px-1`}
+              >
                 {activeWord}
               </p>
             </div>
           </div>
           <div>
-            <div className=" flex gap-2 px-1">
+            <div className="flex gap-2 px-1">
               <h1 className="">Def:</h1>
               <p className="">
-                {entry.def !== undefined && entry.def !== "" ? entry.def : "..."}
+                {entry.def !== undefined && entry.def !== ""
+                  ? entry.def
+                  : "..."}
               </p>
             </div>
             <textarea
               ref={defBox}
-              defaultValue={entry.def !== undefined && entry.def !== "" ? entry.def : ""}
-              className=" w-full bg-slate-800"
+              defaultValue={
+                entry.def !== undefined && entry.def !== "" ? entry.def : ""
+              }
+              className="w-full bg-slate-800"
               name=""
               id=""
             ></textarea>
           </div>
           <div>
-            <div className=" flex gap-2 px-1">
+            <div className="flex gap-2 px-1">
               <h1 className="">Root:</h1>
               <p className="">
-                {entry.root !== undefined && entry.root !== "" ? entry.root : "..."}
+                {entry.root !== undefined && entry.root !== ""
+                  ? entry.root
+                  : "..."}
               </p>
             </div>
             <textarea
@@ -119,23 +131,25 @@ export default function TranslateTab(props) {
               defaultValue={
                 entry.root !== undefined && entry.root !== "" ? entry.root : ""
               }
-              className=" w-full bg-slate-800"
+              className="w-full bg-slate-800"
               name=""
               id=""
             ></textarea>
           </div>
           <div>
-            <div className=" flex gap-2 px-1">
+            <div className="flex gap-2 px-1">
               <h1 className="">Tags:</h1>
               <p className="">
-                {entry.tags !== undefined && entry.tags !== "" ? entry.tags : "..."}
+                {entry.tags !== undefined && entry.tags !== ""
+                  ? entry.tags
+                  : "..."}
               </p>
             </div>
             <textarea
               defaultValue={
                 entry.tags !== undefined && entry.tags !== "" ? entry.tags : ""
               }
-              className=" w-full bg-slate-800"
+              className="w-full bg-slate-800"
               name=""
               id=""
             ></textarea>
@@ -143,46 +157,46 @@ export default function TranslateTab(props) {
         </div>
         <div>
           <p
-            className=" text-gray-400 underline hover:text-gray-500 cursor-pointer duration-200 ease-in-out select-none"
+            className="cursor-pointer select-none text-gray-400 underline duration-200 ease-in-out hover:text-gray-500"
             onClick={() => props.selectTab("details")}
           >{`See More ---->`}</p>
         </div>
-        <div className=" w-full flex flex-col gap-5">
-          <div className=" flex w-full justify-between">
+        <div className="flex w-full flex-col gap-5">
+          <div className="flex w-full justify-between">
             <button
-              className={`${diffBtnColors.easy}  px-3 py-1 rounded-md`}
+              className={`${diffBtnColors.easy} rounded-md px-3 py-1`}
               onClick={() => changeDiff("easy")}
             >
               easy
             </button>
             <button
-              className={`${diffBtnColors.med} px-3 py-1 rounded-md`}
+              className={`${diffBtnColors.med} rounded-md px-3 py-1`}
               onClick={() => changeDiff("med")}
             >
               med
             </button>
             <button
-              className={`${diffBtnColors.hard} px-3 py-1 rounded-md`}
+              className={`${diffBtnColors.hard} rounded-md px-3 py-1`}
               onClick={() => changeDiff("hard")}
             >
               hard
             </button>
             <button
-              className={`${diffBtnColors.wk} px-3 py-1 rounded-md`}
+              className={`${diffBtnColors.wk} rounded-md px-3 py-1`}
               onClick={() => changeDiff("wk")}
             >
               wk
             </button>
           </div>
-          <div className=" flex gap-3 w-full">
+          <div className="flex w-full gap-3">
             <button
-              className=" bg-red-700 hover:bg-red-600 active:bg-red-800 p-1 rounded-md w-full"
+              className="w-full rounded-md bg-red-700 p-1 hover:bg-red-600 active:bg-red-800"
               onClick={(e) => delEntry(e)}
             >
               del
             </button>
             <button
-              className=" bg-green-700 hover:bg-green-600 active:bg-green-800 p-1 rounded-md w-full"
+              className="w-full rounded-md bg-green-700 p-1 hover:bg-green-600 active:bg-green-800"
               onClick={(e) => saveEntry(e)}
             >
               save
@@ -190,10 +204,10 @@ export default function TranslateTab(props) {
           </div>
         </div>
       </div>
-      <div className=" w-full flex justify-center">
+      <div className="flex w-full justify-center">
         <a
           target="_blank"
-          className=" w-full rounded-md text-center p-3 bg-blue-800 hover:bg-blue-700 active:bg-blue-900"
+          className="w-full rounded-md bg-blue-800 p-3 text-center hover:bg-blue-700 active:bg-blue-900"
           href={`https://www.wordreference.com/${langOption}/${activeWord}`}
         >
           Translate

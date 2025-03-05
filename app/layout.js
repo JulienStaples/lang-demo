@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={` bg-black antialiased flex justify-center items-center h-[100vh]`}
+        className={`flex h-[100vh] items-center justify-center bg-black antialiased`}
       >
         <AppProvider>{children}</AppProvider>
       </body>

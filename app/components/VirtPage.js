@@ -41,17 +41,15 @@ export default function VirtPage() {
   }
 
   return (
-    <div className="w-full h-full flex justify-center items-end overflow-visible">
-      <div className="flex flex-col items-end w-[90%] h-[97%] gap-3 overflow-visible">
+    <div className="flex h-full w-full items-end justify-center overflow-visible">
+      <div className="flex h-[97%] w-[90%] flex-col items-end gap-3 overflow-visible">
         <button onClick={toggleView}>=</button>
         <div
-          className={`w-full h-full 
-            ${view.key == "readingView" ? "overflow-y-scroll" : ""} 
-            px-[2rem]`}
+          className={`h-full w-full ${view.key == "readingView" ? "overflow-y-scroll" : ""} px-[2rem]`}
         >
           {view}
         </div>
-        <div className=" flex gap-7">
+        <div className="flex gap-7">
           <button onClick={pagePrev}>{`<`}</button>
           <span>
             {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
@@ -83,7 +81,7 @@ export default function VirtPage() {
       <textarea
         key={`editView`}
         ref={editBox}
-        className=" bg-black w-full h-full"
+        className="h-full w-full bg-black"
         defaultValue={presetText.body[page]}
       ></textarea>
     )
