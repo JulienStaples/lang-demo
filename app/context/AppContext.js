@@ -19,6 +19,8 @@ export default function AppProvider({ children }) {
       JSON.parse(sessionStorage.wordDb).forEach((entry) => {
         wordDb.set(entry[0], entry[1])
       })
+      wordDb.delete(undefined)
+      wordDb.delete(null)
     } catch {}
   }, [])
 

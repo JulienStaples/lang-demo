@@ -49,21 +49,21 @@ export let langOptions = new Map([
   ["fren", "fr-en"],
 ])
 
-export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-black data-[diff=uk]:bg-purple-800`
+export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-black bg-purple-800`
 
 export let diffBtnColors = {
   hard: "bg-orange-800 hover:bg-orange-700 active:bg-orange-900",
   med: "bg-yellow-800 hover:bg-yellow-700 active:bg-yellow-900",
   easy: "bg-green-800 hover:bg-green-700 active:bg-green-900",
   wk: "bg-gray-500 hover:bg-gray-400 active:bg-gray-600",
-  uk: "bg-purple-800 hover:bg-purple-700 active:bg-purple-900",
+  null: "bg-purple-800 hover:bg-purple-700 active:bg-purple-900",
 }
 
 export function findDiff(word) {
   try {
     return wordDb.get(word).diff
   } catch {
-    return "uk"
+    return undefined
   }
 }
 

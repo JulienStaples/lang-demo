@@ -32,16 +32,22 @@ export default function TranslateTab(props) {
   }
 
   function addEntry(e, diff) {
+    let newDiff = diff
+      ? diff
+      : wordDb.has(activeWord)
+        ? wordDb.get(activeWord).diff
+        : "hard"
+
     const newEntryObj = {
       word: activeWord,
       def: defBox.current.value,
       root: rootBox.current.value,
-      diff: diff ? diff : "hard",
+      diff: newDiff,
       lang: "lang",
     }
 
     wordDb.set(activeWord, newEntryObj)
-    setDiff(diff)
+    setDiff(newDiff)
 
     animationIssue(e)
   }
