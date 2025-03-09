@@ -1,49 +1,32 @@
 "use client"
 
-import { useContext, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import Dropdown from "./dropdown/Dropdown"
-import { AppContext } from "../context/AppContext"
 import { wordDb } from "../lib/constants/constants"
 
 export default function DbSearch(props) {
-  const { activeWordObj, setActiveWordObj, presetText, setPresetText } =
-    useContext(AppContext)
-
   let [response, setResponse] = useState([[]])
-  let [searchOption, setSearchOption] = useState("all")
+  let [searchOption, setSearchOption] = useState(undefined)
+  let [included, setIncluded] = useState(undefined)
   let [query, setQuery] = useState("")
 
   useEffect(() => {
-    setResponse(request({ option: searchOption, query: query }))
-  }, [])
-
-  useEffect(() => {
-    setResponse(request({ option: searchOption, query: query }))
-  }, [searchOption, query])
-
-  function editEntry(word = "", def = "", root = "", diff = "") {
-    const newEntry = {
-      word: word,
-      def: def,
-      root: root,
-      diff: diff,
-    }
-
-    wordDb.set(word, newEntry)
-  }
-
-  function delEntry(word) {
-    wordDb.delete(word, newEntry)
-  }
+    setResponse(
+      request({ option: searchOption, query: query, included: included }),
+    )
+  }, [searchOption, query, included])
 
   function request(props) {
     let option = props.option
     let query = props.query
-    let db = [...wordDb]
+    let included = props.included
+    let db = []
+
+    included ? (db = [...wordDb].filter(findIncluded)) : (db = [...wordDb])
 
     let spans = []
 
-    option == "all" ? genSpans(db) : genSpans(colSearch())
+    option ? genSpans(colSearch()) : genSpans(db)
 
     return spans
 
@@ -53,29 +36,25 @@ export default function DbSearch(props) {
         let obj = entry[1]
 
         spans.push(
-          <>
-            <span key={`${key}-db-word`} className="truncate">
-              {obj.word}
-            </span>
-            <span key={`${key}-db-def`} className="truncate">
-              {obj.def}
-            </span>
-            <span key={`${key}-db-root`} className="truncate">
-              {obj.root}
-            </span>
-            <span key={`${key}-db-lang`} className="truncate">
-              {obj.lang}
-            </span>
-            <span key={`${key}-db-diff`} className="truncate">
-              {obj.diff}
-            </span>
-          </>,
+          <React.Fragment key={`${key}-word`}>
+            <span className="truncate">{obj.word}</span>
+            <span className="truncate">{obj.def}</span>
+            <span className="truncate">{obj.root}</span>
+            <span className="truncate">{obj.lang}</span>
+            <span className="truncate">{obj.diff}</span>
+          </React.Fragment>,
         )
       })
     }
 
     function colSearch() {
       return db.filter((entry) => entry[1][option] == query)
+    }
+
+    function findIncluded(entry) {
+      let key = entry[0]
+      let obj = entry[1]
+      return included.includes(obj.diff) || included.includes(obj.lang)
     }
   }
 
@@ -91,17 +70,9 @@ export default function DbSearch(props) {
           id=""
           onChange={(e) => setQuery(e.target.value)}
         ></textarea>
-        <div className="flex items-center gap-3">
-          <div className="flex flex-col gap-3">
-            <Dropdown title={"Search Option"} items={genSearchOptions()} />
-            <Dropdown
-              title={"include only: diffs"}
-              items={genSearchOptions()}
-            />
-          </div>
-          <button className="h-full flex-grow rounded-md bg-slate-700 px-3">
-            Enter
-          </button>
+        <div className="flex justify-around">
+          <Dropdown title={"Search Option"} items={genSearchOptions()} />
+          <Dropdown title={"Include Any"} items={genIncludes()} />
         </div>
 
         <div className="grid grid-cols-5 overflow-x-scroll">
@@ -132,7 +103,40 @@ export default function DbSearch(props) {
         key: key,
         value: option,
         action: () => {
-          setSearchOption(key)
+          key == "all" ? setSearchOption(undefined) : setSearchOption(key)
+        },
+      }
+
+      items.push(item)
+    })
+
+    return items
+  }
+
+  function genIncludes() {
+    let searchOptions = new Map([
+      ["all", "all"],
+      ["easy", "diff: easy"],
+      ["med", "diff: med"],
+      ["hard", "diff: hard"],
+      ["wk", "diff: wk"],
+      ["en", "lang: en"],
+      ["fr", "lang: fr"],
+    ])
+
+    let items = []
+
+    searchOptions.forEach((option, key) => {
+      let item = {
+        key: key,
+        value: option,
+        action: () => {
+          if (key == "all") setIncluded(undefined)
+          else {
+            included
+              ? setIncluded((prev) => [...prev, key])
+              : setIncluded([key])
+          }
         },
       }
 
