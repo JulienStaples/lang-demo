@@ -43,6 +43,19 @@ export default function Tabs() {
         >
           X
         </button>
+
+        <button
+          className="absolute left-36 top-1 z-50"
+          onClick={() => selectTab("db")}
+        >
+          db
+        </button>
+        <button
+          className="left-18 absolute top-1 z-50"
+          onClick={() => selectTab("translate")}
+        >
+          translate
+        </button>
         {tab}
       </div>
     )
