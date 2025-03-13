@@ -6,17 +6,7 @@ export default function DetailsTab(props) {
   const { entry, activeWordObj } = useContext(AppContext)
 
   return (
-    <div
-      id="details-tab"
-      className="absolute bottom-0 right-0 top-0 z-40 flex w-full flex-col items-start gap-9 overflow-x-hidden overflow-y-scroll p-[2.5rem] pb-0 duration-200 ease-in-out"
-    >
-      <button
-        className="absolute left-2 top-10 z-50"
-        onClick={() => props.selectTab("translate")}
-      >
-        {`<`}
-      </button>
-
+    <div id="details-tab" className="flex flex-col gap-5 overflow-auto">
       <div className="flex gap-2">
         <h1>Word:</h1>
         <p>

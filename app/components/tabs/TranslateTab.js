@@ -68,25 +68,19 @@ export default function TranslateTab(props) {
   }
 
   return (
-    <div
-      id="translate-tab"
-      className="z-40 flex w-full flex-col items-start gap-9 overflow-x-hidden overflow-y-scroll pb-0 duration-200 ease-in-out"
-    >
+    <div id="translate-tab" className="flex flex-col gap-9 overflow-auto">
       <div className="flex w-full flex-col gap-6">
         <div className="flex w-full flex-col gap-3">
           <div>
-            <div className="flex gap-2 px-1">
+            <div className="flex gap-2">
               <h1 className="">Word:</h1>
-              <p
-                data-diff={diff}
-                className={`${diffWordColors} rounded-md px-1`}
-              >
+              <p data-diff={diff} className={`${diffWordColors} rounded-md`}>
                 {activeWord}
               </p>
             </div>
           </div>
           <div>
-            <div className="flex gap-2 px-1">
+            <div className="flex gap-2">
               <h1 className="">Def:</h1>
               <p className="">
                 {entry.def !== undefined && entry.def !== ""
@@ -105,7 +99,7 @@ export default function TranslateTab(props) {
             ></textarea>
           </div>
           <div>
-            <div className="flex gap-2 px-1">
+            <div className="flex gap-2">
               <h1 className="">Root:</h1>
               <p className="">
                 {entry.root !== undefined && entry.root !== ""
@@ -124,7 +118,7 @@ export default function TranslateTab(props) {
             ></textarea>
           </div>
           <div>
-            <div className="flex gap-2 px-1">
+            <div className="flex gap-2">
               <h1 className="">Tags:</h1>
               <p className="">
                 {entry.tags !== undefined && entry.tags !== ""

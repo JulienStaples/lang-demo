@@ -59,10 +59,7 @@ export default function DbSearchTab(props) {
   }
 
   return (
-    <div
-      id="db-tab"
-      className="absolute bottom-0 right-0 top-0 z-40 flex w-full flex-col items-start gap-9 overflow-x-hidden overflow-y-scroll p-[2.5rem] pb-0 duration-200 ease-in-out"
-    >
+    <div id="db-tab" className="">
       <div className="flex w-full flex-col gap-6">
         <textarea
           className="text-black"
