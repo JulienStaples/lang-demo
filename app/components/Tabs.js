@@ -7,7 +7,7 @@ import { AppContext } from "../context/AppContext"
 export default function Tabs() {
   const { showFlyout, handleClick, activeWordObj } = useContext(AppContext)
   const { tab, selectTab } = useContext(TabContext)
-  const activeWord = activeWordObj.normal
+  const activeWord = activeWordObj
 
   if (showFlyout) {
     return (

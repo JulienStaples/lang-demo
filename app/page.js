@@ -15,6 +15,7 @@ export default async function Home() {
         <VirtPage></VirtPage>
       </div>
       <TabProvider>
+        <Nav></Nav>
         <Tabs></Tabs>
       </TabProvider>
     </main>
