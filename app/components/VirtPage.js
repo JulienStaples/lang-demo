@@ -41,9 +41,9 @@ export default function VirtPage() {
   }
 
   return (
-    <div className="virt-page flex grow flex-col gap-3">
+    <div className="flex grow flex-col gap-3 overflow-hidden">
       <div
-        className={`page h-full w-full ${view.key == "readingView" ? "overflow-y-scroll" : ""} px-1`}
+        className={`h-full w-full ${view.key == "readingView" ? "overflow-y-scroll" : ""} pl-1 pr-4`}
       >
         {view}
       </div>
