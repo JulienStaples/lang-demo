@@ -22,5 +22,5 @@ export default function LangSelect() {
     items.push(item)
   })
 
-  return <Dropdown title={"Sample Texts"} items={items} />
+  return <Dropdown title={"Langs"} items={items} />
 }

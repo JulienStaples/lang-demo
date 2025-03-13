@@ -8,7 +8,7 @@ export default function Nav() {
   const { tab, selectTab } = useContext(NavContext)
   const { setShowFlyout, showFlyout } = useContext(AppContext)
 
-  const navItems = genNavItems()
+  const navItems = genNavTabs()
 
   return (
     <nav className="tabs-bar z-50 flex select-none flex-col items-center justify-start bg-rose-900">
@@ -16,8 +16,8 @@ export default function Nav() {
     </nav>
   )
 
-  function genNavItems() {
-    const navItemObjs = [
+  function genNavTabs() {
+    const navTabObjs = [
       {
         icon: "0",
         title: "Translate",
@@ -52,12 +52,14 @@ export default function Nav() {
         icon: "2",
         title: "Texts",
         action: () => {
-          selectTab("details")
-          setShowFlyout(true)
-          //animation issue
-          setTimeout(() => {
-            document.querySelector("#tabs").dataset.active = true
-          }, 0)
+          tab.key == "texts-tab" && showFlyout
+            ? setShowFlyout((prev) => !prev)
+            : (selectTab("texts"),
+              setShowFlyout(true),
+              //animation issue
+              setTimeout(() => {
+                document.querySelector("#tabs").dataset.active = true
+              }, 0))
           //
         },
       },
@@ -65,12 +67,14 @@ export default function Nav() {
         icon: "3",
         title: "Langs",
         action: () => {
-          selectTab("details")
-          setShowFlyout(true)
-          //animation issue
-          setTimeout(() => {
-            document.querySelector("#tabs").dataset.active = true
-          }, 0)
+          tab.key == "langs-tab" && showFlyout
+            ? setShowFlyout((prev) => !prev)
+            : (selectTab("langs"),
+              setShowFlyout(true),
+              //animation issue
+              setTimeout(() => {
+                document.querySelector("#tabs").dataset.active = true
+              }, 0))
           //
         },
       },
@@ -91,10 +95,10 @@ export default function Nav() {
       },
     ]
 
-    let navItems = []
+    let navTabs = []
 
-    navItemObjs.forEach((item) => {
-      navItems.push(
+    navTabObjs.forEach((item) => {
+      navTabs.push(
         <div
           key={`nav-${item.title}`}
           onClick={item.action}
@@ -109,6 +113,6 @@ export default function Nav() {
       )
     })
 
-    return navItems
+    return navTabs
   }
 }
