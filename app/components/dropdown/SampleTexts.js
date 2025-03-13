@@ -1,9 +1,9 @@
 "use client"
 
 import { useContext } from "react"
-import { AppContext } from "../context/AppContext"
-import { dummyText } from "../lib/constants/constants"
-import Dropdown from "./dropdown/Dropdown"
+import { AppContext } from "@/app/context/AppContext"
+import { dummyText } from "@/app/lib/constants/constants"
+import Dropdown from "./Dropdown"
 
 export default function SampleTexts() {
   const { setPresetText, setLangOption, setPage } = useContext(AppContext)

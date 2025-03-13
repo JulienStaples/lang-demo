@@ -1,4 +1,4 @@
-import SampleTexts from "./SampleTexts"
+import SampleTexts from "../dropdown/SampleTexts"
 
 export default function TextsTab() {
   return (

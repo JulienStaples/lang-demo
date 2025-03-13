@@ -1,4 +1,4 @@
-import LangSelect from "./LangSelect"
+import LangSelect from "../dropdown/LangSelect"
 
 export default function LangsTab() {
   return (

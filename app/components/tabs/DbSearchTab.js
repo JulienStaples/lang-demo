@@ -1,10 +1,10 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import Dropdown from "./dropdown/Dropdown"
-import { wordDb } from "../lib/constants/constants"
+import Dropdown from "../dropdown/Dropdown"
+import { wordDb } from "../../lib/constants/constants"
 
-export default function DbSearch(props) {
+export default function DbSearchTab(props) {
   let [response, setResponse] = useState([[]])
   let [searchOption, setSearchOption] = useState(undefined)
   let [included, setIncluded] = useState(undefined)

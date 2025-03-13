@@ -1,6 +1,6 @@
 "use client"
 import { useContext } from "react"
-import { AppContext } from "../context/AppContext"
+import { AppContext } from "@/app/context/AppContext"
 
 export default function DetailsTab(props) {
   const { entry, activeWordObj } = useContext(AppContext)

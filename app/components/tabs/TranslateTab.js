@@ -1,13 +1,13 @@
 "use client"
 
 import { useContext, useEffect, useRef, useState } from "react"
-import { AppContext } from "../context/AppContext"
+import { AppContext } from "../../context/AppContext"
 import {
   diffBtnColors,
   diffWordColors,
   findDiff,
   wordDb,
-} from "../lib/constants/constants"
+} from "../../lib/constants/constants"
 
 export default function TranslateTab(props) {
   const { showFlyout, handleClick, activeWordObj, entry, langOption } =
