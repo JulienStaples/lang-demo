@@ -41,24 +41,24 @@ export default function VirtPage() {
   }
 
   return (
-    <div className="flex h-full w-full items-end justify-center overflow-visible">
-      <div className="flex h-[97%] w-[90%] flex-col items-end gap-3 overflow-visible">
-        <button onClick={toggleView}>=</button>
-        <div
-          className={`h-full w-full ${view.key == "readingView" ? "overflow-y-scroll" : ""} px-[2rem]`}
-        >
-          {view}
-        </div>
-        <div className="flex gap-7">
-          <button onClick={pagePrev}>{`<`}</button>
-          <span>
-            {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
-              presetText.body.length < 10
-                ? `0${presetText.body.length}`
-                : presetText.body.length
-            }`}
-          </span>
-          <button onClick={pageNext}>{`>`}</button>
+    <div className="virt-page flex grow flex-col gap-3">
+      <div
+        className={`page h-full w-full ${view.key == "readingView" ? "overflow-y-scroll" : ""} px-1`}
+      >
+        {view}
+      </div>
+      <div className="controls flex gap-7">
+        <button onClick={pagePrev}>{`<`}</button>
+        <span>
+          {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
+            presetText.body.length < 10
+              ? `0${presetText.body.length}`
+              : presetText.body.length
+          }`}
+        </span>
+        <button onClick={pageNext}>{`>`}</button>
+        <div>
+          <button onClick={toggleView}>=</button>
         </div>
       </div>
     </div>
