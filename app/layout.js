@@ -1,5 +1,6 @@
-import AppProvider from "./context/AppContext"
 import "./globals.css"
+import AppProvider from "./context/AppContext"
+import NavProvider from "./context/NavContext"
 
 export const metadata = {
   title: "lang-demo",
@@ -12,7 +13,9 @@ export default function RootLayout({ children }) {
       <body
         className={`flex h-[100vh] items-center justify-center bg-black antialiased`}
       >
-        <AppProvider>{children}</AppProvider>
+        <AppProvider>
+          <NavProvider>{children}</NavProvider>
+        </AppProvider>
       </body>
     </html>
   )

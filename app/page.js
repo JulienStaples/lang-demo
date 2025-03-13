@@ -1,5 +1,4 @@
 "use server"
-import NavProvider from "./context/NavContext"
 import VirtPage from "./components/VirtPage"
 import Nav from "./components/Nav"
 import FlyoutMenu from "./components/FlyoutMenu"
@@ -11,11 +10,9 @@ export default async function Home() {
       <div className="relative flex grow flex-col gap-4 p-4 pr-0">
         <TitleBar></TitleBar>
         <VirtPage></VirtPage>
-      </div>
-      <NavProvider>
-        <Nav></Nav>
         <FlyoutMenu></FlyoutMenu>
-      </NavProvider>
+      </div>
+      <Nav></Nav>
     </main>
   )
 }
