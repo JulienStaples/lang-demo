@@ -1,8 +1,8 @@
 "use server"
-import TabProvider from "./context/TabContext"
-import Tabs from "./components/Tabs"
+import NavProvider from "./context/NavContext"
 import VirtPage from "./components/VirtPage"
 import Nav from "./components/Nav"
+import FlyoutMenu from "./components/FlyoutMenu"
 
 export default async function Home() {
   return (
@@ -14,10 +14,10 @@ export default async function Home() {
         </div>
         <VirtPage></VirtPage>
       </div>
-      <TabProvider>
+      <NavProvider>
         <Nav></Nav>
-        <Tabs></Tabs>
-      </TabProvider>
+        <FlyoutMenu></FlyoutMenu>
+      </NavProvider>
     </main>
   )
 }

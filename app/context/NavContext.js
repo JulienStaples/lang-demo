@@ -5,9 +5,9 @@ import DetailsTab from "../components/DetailsTab"
 import DbSearch from "../components/DbSearch"
 import { createContext, useEffect, useState } from "react"
 
-export const TabContext = createContext()
+export const NavContext = createContext()
 
-export default function TabProvider({ children }) {
+export default function NavProvider({ children }) {
   const [tab, setTab] = useState()
 
   useEffect(() => {
@@ -22,8 +22,8 @@ export default function TabProvider({ children }) {
     if (curTab == "db") setTab(<DbSearch selectTab={selectTab}></DbSearch>)
   }
   return (
-    <TabContext.Provider value={{ selectTab, tab }}>
+    <NavContext.Provider value={{ selectTab, tab }}>
       {children}
-    </TabContext.Provider>
+    </NavContext.Provider>
   )
 }

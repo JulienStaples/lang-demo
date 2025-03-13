@@ -1,11 +1,11 @@
 "use client"
 
 import { useContext } from "react"
-import { TabContext } from "../context/TabContext"
+import { NavContext } from "../context/NavContext"
 import { AppContext } from "../context/AppContext"
 
 export default function Nav() {
-  const { tab, selectTab } = useContext(TabContext)
+  const { tab, selectTab } = useContext(NavContext)
   const { setShowFlyout } = useContext(AppContext)
 
   const navItems = genNavItems()

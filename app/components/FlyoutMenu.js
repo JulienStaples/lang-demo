@@ -1,12 +1,12 @@
 "use client"
 
 import { useContext } from "react"
-import { TabContext } from "../context/TabContext"
+import { NavContext } from "../context/NavContext"
 import { AppContext } from "../context/AppContext"
 
-export default function Tabs() {
+export default function FlyoutMenu() {
   const { showFlyout, handleClick, activeWordObj } = useContext(AppContext)
-  const { tab, selectTab } = useContext(TabContext)
+  const { tab, selectTab } = useContext(NavContext)
   const activeWord = activeWordObj
 
   if (showFlyout) {
