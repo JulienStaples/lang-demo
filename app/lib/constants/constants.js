@@ -42,7 +42,7 @@ export let dummyText = new Map([
   ],
 ])
 
-export let wordDb = new Map([[]])
+export let wordDb = new Map([["init", {}]])
 
 export let langOptions = new Map([
   ["enfr", "en-fr"],

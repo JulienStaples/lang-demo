@@ -12,7 +12,7 @@ export default function Tabs() {
   const activeWord = activeWordObj.normal
 
   useEffect(() => {
-    selectTab("db")
+    selectTab("translate")
   }, [])
 
   function selectTab(curTab) {
