@@ -16,10 +16,18 @@ export default function NavProvider({ children }) {
 
   function selectTab(curTab) {
     if (curTab == "translate")
-      setTab(<TranslateTab selectTab={selectTab}></TranslateTab>)
+      setTab(
+        <TranslateTab
+          key={"translate-tab"}
+          selectTab={selectTab}
+        ></TranslateTab>,
+      )
     if (curTab == "details")
-      setTab(<DetailsTab selectTab={selectTab}></DetailsTab>)
-    if (curTab == "db") setTab(<DbSearch selectTab={selectTab}></DbSearch>)
+      setTab(
+        <DetailsTab key={"details-tab"} selectTab={selectTab}></DetailsTab>,
+      )
+    if (curTab == "db")
+      setTab(<DbSearch key={"db-tab"} selectTab={selectTab}></DbSearch>)
   }
   return (
     <NavContext.Provider value={{ selectTab, tab }}>

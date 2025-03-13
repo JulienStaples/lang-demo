@@ -6,7 +6,7 @@ import { AppContext } from "../context/AppContext"
 
 export default function Nav() {
   const { tab, selectTab } = useContext(NavContext)
-  const { setShowFlyout } = useContext(AppContext)
+  const { setShowFlyout, showFlyout } = useContext(AppContext)
 
   const navItems = genNavItems()
 
@@ -22,12 +22,14 @@ export default function Nav() {
         icon: "0",
         title: "Translate",
         action: () => {
-          selectTab("translate")
-          setShowFlyout(true)
-          //animation issue
-          setTimeout(() => {
-            document.querySelector("#tabs").dataset.active = true
-          }, 0)
+          tab.key == "translate-tab" && showFlyout
+            ? setShowFlyout((prev) => !prev)
+            : (selectTab("translate"),
+              setShowFlyout(true),
+              //animation issue
+              setTimeout(() => {
+                document.querySelector("#tabs").dataset.active = true
+              }, 0))
           //
         },
       },
@@ -35,12 +37,14 @@ export default function Nav() {
         icon: "1",
         title: "Details",
         action: () => {
-          selectTab("details")
-          setShowFlyout(true)
-          //animation issue
-          setTimeout(() => {
-            document.querySelector("#tabs").dataset.active = true
-          }, 0)
+          tab.key == "details-tab" && showFlyout
+            ? setShowFlyout((prev) => !prev)
+            : (selectTab("details"),
+              setShowFlyout(true),
+              //animation issue
+              setTimeout(() => {
+                document.querySelector("#tabs").dataset.active = true
+              }, 0))
           //
         },
       },
@@ -74,12 +78,14 @@ export default function Nav() {
         icon: "4",
         title: "Database",
         action: () => {
-          selectTab("db")
-          setShowFlyout(true)
-          //animation issue
-          setTimeout(() => {
-            document.querySelector("#tabs").dataset.active = true
-          }, 0)
+          tab.key == "db-tab" && showFlyout
+            ? setShowFlyout((prev) => !prev)
+            : (selectTab("db"),
+              setShowFlyout(true),
+              //animation issue
+              setTimeout(() => {
+                document.querySelector("#tabs").dataset.active = true
+              }, 0))
           //
         },
       },
