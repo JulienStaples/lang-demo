@@ -5,6 +5,7 @@ import { AppContext } from "../context/AppContext"
 import Word from "./Word"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"
+import TitleBar from "./TitleBar"
 
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
@@ -42,6 +43,8 @@ export default function VirtPage() {
 
   return (
     <div className="flex grow flex-col gap-3 overflow-hidden">
+      <TitleBar />
+
       <div
         className={`h-full w-full ${view.key == "readingView" ? "overflow-y-scroll" : ""} pl-1 pr-4`}
       >
