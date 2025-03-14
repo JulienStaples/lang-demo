@@ -62,7 +62,7 @@ export default function DbSearchTab(props) {
     <div id="db-tab" className="">
       <div className="flex w-full flex-col gap-6">
         <textarea
-          className="text-black"
+          className="bg-neutral-700"
           name=""
           id=""
           onChange={(e) => setQuery(e.target.value)}

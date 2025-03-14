@@ -93,7 +93,7 @@ export default function TranslateTab(props) {
               defaultValue={
                 entry.def !== undefined && entry.def !== "" ? entry.def : ""
               }
-              className="w-full bg-slate-800"
+              className="w-full bg-neutral-800"
               name=""
               id=""
             ></textarea>
@@ -112,7 +112,7 @@ export default function TranslateTab(props) {
               defaultValue={
                 entry.root !== undefined && entry.root !== "" ? entry.root : ""
               }
-              className="w-full bg-slate-800"
+              className="w-full bg-neutral-800"
               name=""
               id=""
             ></textarea>
@@ -130,7 +130,7 @@ export default function TranslateTab(props) {
               defaultValue={
                 entry.tags !== undefined && entry.tags !== "" ? entry.tags : ""
               }
-              className="w-full bg-slate-800"
+              className="w-full bg-neutral-800"
               name=""
               id=""
             ></textarea>
@@ -138,7 +138,7 @@ export default function TranslateTab(props) {
         </div>
         <div>
           <p
-            className="cursor-pointer select-none text-gray-400 underline duration-200 ease-in-out hover:text-gray-500"
+            className="cursor-pointer select-none text-rose-300 underline duration-200 ease-in-out hover:text-rose-200"
             onClick={() => props.selectTab("details")}
           >{`See More ---->`}</p>
         </div>

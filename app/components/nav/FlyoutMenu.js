@@ -14,7 +14,7 @@ export default function FlyoutMenu() {
       <div
         id="tabs"
         data-active="false"
-        className="absolute inset-0 z-40 items-start bg-black p-4"
+        className="absolute inset-0 z-40 items-start overflow-y-scroll bg-black/90 p-4"
       >
         <button
           className="absolute right-2 top-1 z-50"

@@ -11,7 +11,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`flex h-[100vh] items-center justify-center bg-black antialiased`}
+        className={`flex h-[100vh] items-center justify-center bg-black text-white antialiased`}
       >
         <AppProvider>
           <NavProvider>{children}</NavProvider>
