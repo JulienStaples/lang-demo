@@ -10,7 +10,7 @@ import LangsTab from "../components/tabs/LangsTab"
 export const NavContext = createContext()
 
 export default function NavProvider({ children }) {
-  const [tab, setTab] = useState()
+  const [tab, setTab] = useState("translate-tab")
 
   useEffect(() => {
     selectTab("translate")
