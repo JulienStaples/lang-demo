@@ -1,8 +1,8 @@
 "use client"
 
 import { useContext, useState } from "react"
-import { NavContext } from "../context/NavContext"
-import { AppContext } from "../context/AppContext"
+import { NavContext } from "../../context/NavContext"
+import { AppContext } from "../../context/AppContext"
 
 export default function Nav() {
   const { tab, selectTab } = useContext(NavContext)

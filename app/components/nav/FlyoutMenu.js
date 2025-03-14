@@ -1,8 +1,8 @@
 "use client"
 
 import { useContext } from "react"
-import { NavContext } from "../context/NavContext"
-import { AppContext } from "../context/AppContext"
+import { NavContext } from "@/app/context/NavContext"
+import { AppContext } from "@/app/context/AppContext"
 
 export default function FlyoutMenu() {
   const { showFlyout, handleClick, activeWordObj } = useContext(AppContext)

@@ -1,11 +1,11 @@
 "use client"
 
 import { createContext, useEffect, useState } from "react"
-import TranslateTab from "../components/tabs/TranslateTab"
-import DetailsTab from "../components/tabs/DetailsTab"
-import DbSearch from "../components/tabs/DbSearchTab"
-import TextsTab from "../components/tabs/TextsTab"
-import LangsTab from "../components/tabs/LangsTab"
+import TranslateTab from "../components/nav/TranslateTab"
+import DetailsTab from "../components/nav/DetailsTab"
+import DbSearch from "../components/nav/DbSearchTab"
+import TextsTab from "../components/nav/TextsTab"
+import LangsTab from "../components/nav/LangsTab"
 
 export const NavContext = createContext()
 

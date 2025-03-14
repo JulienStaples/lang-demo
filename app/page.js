@@ -1,9 +1,7 @@
 "use server"
-import VirtPage from "./components/VirtPage"
-import Nav from "./components/Nav"
-import FlyoutMenu from "./components/FlyoutMenu"
-import TitleBar from "./components/TitleBar"
-
+import VirtPage from "./components/virtPage/VirtPage"
+import Nav from "./components/nav/Nav"
+import FlyoutMenu from "./components/nav/FlyoutMenu"
 export default async function Home() {
   return (
     <main className="relative flex h-[667px] w-[375px] bg-[#171717]">

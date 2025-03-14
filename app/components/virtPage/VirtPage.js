@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState, useContext, useRef } from "react"
-import { AppContext } from "../context/AppContext"
+import { AppContext } from "../../context/AppContext"
 import Word from "./Word"
 import nlpObj from "compromise"
 import fnlpObj from "fr-compromise"

@@ -1,6 +1,6 @@
 import { useContext } from "react"
-import { AppContext } from "../context/AppContext"
-import { diffWordColors, findDiff } from "../lib/constants/constants"
+import { AppContext } from "../../context/AppContext"
+import { diffWordColors, findDiff } from "../../lib/constants/constants"
 
 export default function Word(props) {
   const { handleClick } = useContext(AppContext)
