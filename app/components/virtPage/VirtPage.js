@@ -42,15 +42,11 @@ export default function VirtPage() {
   }
 
   return (
-    <div className="flex grow flex-col gap-3 overflow-hidden">
+    <div className="flex grow flex-col gap-3">
       <TitleBar />
 
-      <div
-        className={`h-full w-full ${view.key == "readingView" ? "overflow-y-scroll" : ""} pl-1 pr-4`}
-      >
-        {view}
-      </div>
-      <div className="controls flex gap-7">
+      <div className={`relative h-full w-full pr-4`}>{view}</div>
+      <div className="controls flex gap-7 pt-2">
         <button onClick={pagePrev}>{`<`}</button>
         <span>
           {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
@@ -71,7 +67,10 @@ export default function VirtPage() {
     let words = genHtmWords()
 
     return (
-      <p key={`readingView`}>
+      <p
+        key={`readingView`}
+        className="absolute -inset-y-3 -left-10 right-0 overflow-x-hidden overflow-y-scroll py-3 pl-10 pr-4"
+      >
         {words.map((word) => {
           return word
         })}

@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import { AppContext } from "../../context/AppContext"
 import { diffWordColors, findDiff } from "../../lib/constants/constants"
+import { motion } from "framer-motion"
 
 export default function Word(props) {
   const { handleClick } = useContext(AppContext)
@@ -8,38 +9,33 @@ export default function Word(props) {
   let wordObj = props.wordObj
   let wordDiff = findDiff(wordObj.normal)
 
-  function handleEnter(e) {
-    e.currentTarget.querySelector(".word-text").dataset.hovered = "true"
-    e.currentTarget.querySelector(".word-bg").dataset.hovered = "true"
-  }
-
-  function handleExit(e) {
-    e.currentTarget.querySelector(".word-text").dataset.hovered = "false"
-    e.currentTarget.querySelector(".word-bg").dataset.hovered = "false"
-  }
-
   return (
     <>
-      <span
+      <motion.span
         id={wordObj.normal}
-        onMouseEnter={(e) => handleEnter(e)}
-        onMouseLeave={(e) => handleExit(e)}
         onClick={() => handleClick(wordObj)}
+        className={`[back] relative z-0 inline-block cursor-pointer select-none hover:z-20`}
+        initial={{
+          scale: 1,
+          y: 0,
+          filter: "invert(0%)",
+        }}
+        whileHover={{
+          scale: 1.4,
+          filter: "invert(100%)",
+          y: -7,
+        }}
+        transition={{
+          duration: 0.12,
+          ease: "easeInOut",
+        }}
       >
-        <span className="relative inline-block cursor-pointer duration-100 ease-in-out">
-          <span
-            data-hovered="false"
-            className="word-text relative z-10 data-[hovered=true]:text-black"
-          >
-            {wordObj.text}
-          </span>
-          <span
-            data-hovered="false"
-            data-diff={wordDiff}
-            className={`word-bg absolute inset-x-[-2px] inset-y-[3px] z-0 rounded-md duration-100 ease-in-out data-[hovered=true]:-inset-x-1 data-[hovered=true]:inset-y-0 data-[hovered=true]:invert ${diffWordColors}`}
-          ></span>
-        </span>
-      </span>
+        <span>{wordObj.text}</span>
+        <span
+          data-diff={wordDiff}
+          className={`${diffWordColors} absolute -inset-x-[.07em] inset-y-[.15em] -z-10 rounded-sm`}
+        />
+      </motion.span>
       <span className="px-[2px]">{wordObj.post}</span>
     </>
   )

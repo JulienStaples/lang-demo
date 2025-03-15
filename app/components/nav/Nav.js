@@ -13,7 +13,7 @@ export default function Nav() {
 
   return (
     <nav
-      className="z-50 flex select-none flex-col items-center justify-start bg-rose-900"
+      className="z-10 flex select-none flex-col items-center justify-start bg-rose-900 hover:z-50"
       id="tabs-bar"
       data-nav-active={toggleNav}
       onClick={(e) => {

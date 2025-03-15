@@ -11,6 +11,7 @@
   "dependencies": {
     "compromise": "^14.14.4",
     "fr-compromise": "^0.2.8",
+    "framer-motion": "^12.5.0",
     "next": "15.1.7",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.11",
