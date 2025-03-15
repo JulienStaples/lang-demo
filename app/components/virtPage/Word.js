@@ -14,7 +14,7 @@ export default function Word(props) {
       <motion.span
         id={wordObj.normal}
         onClick={() => handleClick(wordObj)}
-        className={`[back] relative z-0 inline-block cursor-pointer select-none hover:z-20`}
+        className={`[back] relative z-0 mr-[2px] inline-block cursor-pointer select-none hover:z-20`}
         initial={{
           scale: 1,
           y: 0,
@@ -36,7 +36,7 @@ export default function Word(props) {
           className={`${diffWordColors} absolute -inset-x-[.07em] inset-y-[.15em] -z-10 rounded-sm`}
         />
       </motion.span>
-      <span className="px-[2px]">{wordObj.post}</span>
+      <span>{wordObj.post}</span>
     </>
   )
 }

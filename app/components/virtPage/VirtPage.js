@@ -44,9 +44,8 @@ export default function VirtPage() {
   return (
     <div className="flex grow flex-col gap-3">
       <TitleBar />
-
       <div className={`relative h-full w-full pr-4`}>{view}</div>
-      <div className="controls flex gap-7 pt-2">
+      <div className="controls flex gap-7 border-t-2 pt-2">
         <button onClick={pagePrev}>{`<`}</button>
         <span>
           {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
@@ -83,9 +82,9 @@ export default function VirtPage() {
       <textarea
         key={`editView`}
         ref={editBox}
-        className="h-full w-full bg-black"
+        className="absolute -inset-y-3 -left-10 right-0 resize-none overflow-x-hidden overflow-y-scroll bg-neutral-900 py-3 pl-10 pr-4 [word-spacing:2px]"
         defaultValue={presetText.body[page]}
-      ></textarea>
+      />
     )
   }
 }
