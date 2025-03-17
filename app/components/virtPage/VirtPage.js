@@ -2,10 +2,9 @@
 
 import { useEffect, useState, useContext, useRef } from "react"
 import { AppContext } from "../../context/AppContext"
-import Word from "./Word"
-import nlpObj from "compromise"
-import fnlpObj from "fr-compromise"
+import ReadingView from "./ReadingView"
 import TitleBar from "./TitleBar"
+import { AnimatePresence } from "framer-motion"
 
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
@@ -13,13 +12,14 @@ export default function VirtPage() {
   const editBox = useRef()
 
   useEffect(() => {
-    setView(readingView)
+    setView(<ReadingView />)
   }, [presetText, page])
 
   function toggleView() {
-    view.key == "readingView"
+    view.type.name == "ReadingView"
       ? setView(editView)
-      : ((presetText.body[page] = editBox.current.value), setView(readingView))
+      : ((presetText.body[page] = editBox.current.value),
+        setView(<ReadingView />))
   }
 
   function pageNext() {
@@ -30,22 +30,14 @@ export default function VirtPage() {
     page == 0 ? "" : setPage((prev) => (prev -= 1))
   }
 
-  function genHtmWords() {
-    const nlp = nlpObj(presetText.body[page])
-    let htmWords = []
-
-    nlp.termList().map((wordObj) => {
-      htmWords.push(<Word key={wordObj.id} wordObj={wordObj}></Word>)
-    })
-
-    return htmWords
-  }
-
   return (
     <div className="flex grow flex-col gap-3">
       <TitleBar />
-      <div className={`relative h-full w-full pr-4`}>{view}</div>
-      <div className="controls flex gap-7 border-t-2 pt-2">
+      <div className={`relative h-full w-full pr-4`}>
+        <AnimatePresence mode="wait">{view}</AnimatePresence>
+      </div>
+
+      <div className="controls flex gap-7 border-t-2 border-neutral-600 pt-2">
         <button onClick={pagePrev}>{`<`}</button>
         <span>
           {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
@@ -62,27 +54,12 @@ export default function VirtPage() {
     </div>
   )
 
-  function readingView() {
-    let words = genHtmWords()
-
-    return (
-      <p
-        key={`readingView`}
-        className="absolute -inset-y-3 -left-10 right-0 overflow-x-hidden overflow-y-scroll py-3 pl-10 pr-4"
-      >
-        {words.map((word) => {
-          return word
-        })}
-      </p>
-    )
-  }
-
   function editView() {
     return (
       <textarea
         key={`editView`}
         ref={editBox}
-        className="absolute -inset-y-3 -left-10 right-0 resize-none overflow-x-hidden overflow-y-scroll bg-neutral-900 py-3 pl-10 pr-4 [word-spacing:2px]"
+        className="absolute -inset-y-3 -left-10 right-0 resize-none overflow-x-hidden overflow-y-scroll bg-transparent py-3 pl-10 pr-4 [word-spacing:2px]"
         defaultValue={presetText.body[page]}
       />
     )
