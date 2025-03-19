@@ -22,7 +22,6 @@ export const enterExitVari = {
 export const wordVari = {
   hover: {
     scale: 1.4,
-    filter: "invert(100%)",
     y: -7,
     transition: {
       duration: 0.12,
@@ -36,7 +35,6 @@ export const wordVari = {
   init: {
     scale: 1,
     y: 0,
-    filter: "invert(0%)",
   },
 }
 

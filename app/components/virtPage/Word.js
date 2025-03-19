@@ -17,15 +17,15 @@ export default function Word(props) {
         whileHover="hover"
         variants={wordVari}
         onClick={() => handleClick(wordObj)}
-        className={`relative z-0 mr-[2px] inline-block cursor-pointer select-none hover:z-20`}
+        className={`group relative z-0 mr-[2px] inline-block cursor-pointer select-none rounded-sm after:absolute after:inset-0 after:-inset-x-[.07em] after:inset-y-[.15em] after:rounded-sm after:shadow-md after:shadow-transparent hover:z-20 after:hover:shadow-black`}
       >
-        <span className="word-span">{wordObj.text}</span>
+        <span className="word-span group-hover:invert">{wordObj.text}</span>
         <motion.span
           initial="init"
           animate="enter"
           variants={spanVari}
           data-diff={wordDiff}
-          className={`bg-span ${diffWordColors} absolute -inset-x-[.07em] inset-y-[.15em] -z-10 origin-left rounded-sm`}
+          className={`bg-span ${diffWordColors} absolute -inset-x-[.07em] inset-y-[.15em] -z-10 origin-left rounded-sm group-hover:invert`}
         />
       </motion.span>
       <span>{wordObj.post}</span>
