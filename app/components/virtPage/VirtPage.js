@@ -37,7 +37,10 @@ export default function VirtPage() {
     <div className="flex grow flex-col gap-3">
       <TitleBar />
 
-      <div ref={scope} className={`relative h-full w-full pr-4`}>
+      <div
+        ref={scope}
+        className={`relative h-full w-full pr-4 after:pointer-events-none after:absolute after:inset-0 after:-inset-y-3 after:-left-10 after:right-0 after:shadow-[inset_0_-1px_10px_black]`}
+      >
         {view}
       </div>
 
