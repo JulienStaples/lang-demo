@@ -1,14 +1,21 @@
 export const enterExitVari = {
   init: {
     scaleX: 0,
-    originX: "left",
     height: "100%",
+    originX: "left",
   },
   enter: {
     scaleX: 1,
+    transition: {
+      ease: "easeInOut",
+      duration: 0.1,
+    },
   },
   exit: {
     scaleX: 0,
+    transition: {
+      ease: "easeInOut",
+    },
   },
 }
 
@@ -33,31 +40,25 @@ export const wordVari = {
   },
 }
 
-// exit: {
-//   delay: 0.2,
-//   opacity: 0,
-// },
+export const spanVari = {
+  init: {
+    scaleX: 0,
+  },
 
-// await animate(scope.current, { scale: null }, { duration: 2 })
+  enter: {
+    scaleX: 1,
+    transition: {
+      delay: 0.2,
+      duration: 0.2,
+      ease: "backOut",
+    },
+  },
 
-// remove: {
-//   scale: null,
-// },
-
-export function enterExit(isPresent, safeToRemove, scope, animate) {
-  if (!isPresent) {
-    const exitSeq = [[scope.current, enterExitVari.exit, { duration: 0.1 }]]
-    async function exitAnimation() {
-      await animate(exitSeq)
-      await safeToRemove()
-    }
-
-    exitAnimation()
-  } else {
-    const enterSeq = [[scope.current, enterExitVari.enter, { duration: 0.1 }]]
-    async function enterAnimation() {
-      await animate(enterSeq)
-    }
-    enterAnimation()
-  }
+  exit: {
+    scaleX: 0,
+    filter: "invert(100%)",
+    transition: {
+      ease: "backOut",
+    },
+  },
 }

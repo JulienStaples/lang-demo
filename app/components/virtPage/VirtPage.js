@@ -1,14 +1,17 @@
 "use client"
 
-import { useEffect, useState, useContext, useRef } from "react"
+import { useEffect, useContext, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
-import ReadingView from "./ReadingView"
+import { useAnimate } from "framer-motion"
+import { enterExitVari, spanVari } from "@/app/lib/constants/virtPageAnims"
 import TitleBar from "./TitleBar"
-import { AnimatePresence } from "framer-motion"
+import ReadingView from "./ReadingView"
+import EditView from "./EditView"
 
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
-  const [view, setView] = useState("")
+  const [scope, animate] = useAnimate()
+  const [view, setView] = useState()
   const editBox = useRef()
 
   useEffect(() => {
@@ -17,7 +20,7 @@ export default function VirtPage() {
 
   function toggleView() {
     view.type.name == "ReadingView"
-      ? setView(editView)
+      ? setView(<EditView ref={editBox} />)
       : ((presetText.body[page] = editBox.current.value),
         setView(<ReadingView />))
   }
@@ -33,8 +36,9 @@ export default function VirtPage() {
   return (
     <div className="flex grow flex-col gap-3">
       <TitleBar />
-      <div className={`relative h-full w-full pr-4`}>
-        <AnimatePresence mode="wait">{view}</AnimatePresence>
+
+      <div ref={scope} className={`relative h-full w-full pr-4`}>
+        {view}
       </div>
 
       <div className="controls flex gap-7 border-t-2 border-neutral-600 pt-2">
@@ -48,20 +52,22 @@ export default function VirtPage() {
         </span>
         <button onClick={pageNext}>{`>`}</button>
         <div>
-          <button onClick={toggleView}>=</button>
+          <button onClick={exitAnim}>=</button>
         </div>
       </div>
     </div>
   )
 
-  function editView() {
-    return (
-      <textarea
-        key={`editView`}
-        ref={editBox}
-        className="absolute -inset-y-3 -left-10 right-0 resize-none overflow-x-hidden overflow-y-scroll bg-transparent py-3 pl-10 pr-4 [word-spacing:2px]"
-        defaultValue={presetText.body[page]}
-      />
-    )
+  function exitAnim() {
+    const exitSeq = [
+      [".bg-span", spanVari.exit, { duration: 0.2 }],
+      [".page-view", enterExitVari.exit, { delay: 0.15, duration: 0.1 }],
+    ]
+
+    animate(exitSeq).then(() => {
+      setTimeout(() => {
+        toggleView()
+      }, 200)
+    })
   }
 }
