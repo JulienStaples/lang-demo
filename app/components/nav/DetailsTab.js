@@ -1,19 +1,16 @@
 "use client"
 import { useContext } from "react"
 import { AppContext } from "@/app/context/AppContext"
+import Word from "../virtPage/Word"
 
 export default function DetailsTab(props) {
   const { entry, activeWordObj } = useContext(AppContext)
 
   return (
-    <div id="details-tab" className="flex flex-col gap-5 overflow-auto">
-      <div className="flex gap-2">
+    <div id="details-tab" className="flex flex-col gap-5 overflow-visible">
+      <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        <p>
-          {activeWordObj.normal !== undefined && activeWordObj.normal !== ""
-            ? activeWordObj.normal
-            : "..."}
-        </p>
+        <Word wordObj={activeWordObj ? activeWordObj : { text: "N/A..." }} />
       </div>
       <div className="flex gap-2">
         <h1>Def:</h1>

@@ -2,6 +2,7 @@
 
 import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
+import Word from "../virtPage/Word"
 import {
   diffBtnColors,
   diffWordColors,
@@ -68,15 +69,15 @@ export default function TranslateTab(props) {
   }
 
   return (
-    <div id="translate-tab" className="flex flex-col gap-9 overflow-auto">
-      <div className="flex w-full flex-col gap-6">
-        <div className="flex w-full flex-col gap-3">
-          <div>
-            <div className="flex gap-2">
+    <div id="translate-tab" className="flex flex-col gap-9 overflow-visible">
+      <div className="flex w-full flex-col gap-6 overflow-visible">
+        <div className="flex w-full flex-col gap-3 overflow-visible">
+          <div className="overflow-visible">
+            <div className="flex gap-2 overflow-visible">
               <h1 className="">Word:</h1>
-              <p data-diff={diff} className={`${diffWordColors} rounded-md`}>
-                {activeWord}
-              </p>
+              <Word
+                wordObj={activeWordObj ? activeWordObj : { text: "N/A..." }}
+              />
             </div>
           </div>
           <div>

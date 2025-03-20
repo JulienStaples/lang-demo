@@ -1,8 +1,9 @@
 "use client"
 
 import React, { useEffect, useState } from "react"
-import Dropdown from "../dropdown/Dropdown"
 import { wordDb } from "../../lib/constants/constants"
+import Word from "../virtPage/Word"
+import Dropdown from "../dropdown/Dropdown"
 
 export default function DbSearchTab(props) {
   let [response, setResponse] = useState([[]])
@@ -37,7 +38,9 @@ export default function DbSearchTab(props) {
 
         spans.push(
           <React.Fragment key={`${key}-word`}>
-            <span className="truncate">{obj.word}</span>
+            <span className="truncate">
+              {<Word wordObj={{ normal: obj.word, text: obj.word }} />}
+            </span>
             <span className="truncate">{obj.def}</span>
             <span className="truncate">{obj.root}</span>
             <span className="truncate">{obj.lang}</span>
