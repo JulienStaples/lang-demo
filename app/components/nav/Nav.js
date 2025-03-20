@@ -13,7 +13,7 @@ export default function Nav() {
 
   return (
     <nav
-      className="z-10 flex select-none flex-col items-center justify-start bg-rose-900 hover:z-50"
+      className="z-10 flex select-none flex-col items-center justify-start bg-rose-900 shadow-[0px_0px_10px] shadow-black hover:z-50"
       id="tabs-bar"
       data-nav-active={toggleNav}
       onClick={(e) => {
@@ -148,12 +148,12 @@ export default function Nav() {
         <div
           key={`nav-${item.title}`}
           onClick={item.action}
-          className="tab group relative w-full cursor-pointer p-2 text-center after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-rose-950 hover:bg-rose-950"
+          className="tab group relative w-full cursor-pointer p-2 text-center after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-rose-950 hover:bg-rose-950 hover:shadow-[inset_0_-1px_2px] hover:shadow-black"
         >
           <span
             data-nav-active={toggleNav}
             data-tab-active={tab.key == item.id}
-            className={`tab-icon 2 relative group-hover:invisible data-[nav-active=true]:hidden data-[tab-active='true']:before:absolute data-[tab-active='true']:before:-inset-1 data-[tab-active='true']:before:-z-10 data-[tab-active='true']:before:rounded-md data-[tab-active='true']:before:bg-rose-950`}
+            className={`tab-icon 2 relative group-hover:invisible data-[nav-active=true]:hidden data-[tab-active='true']:before:absolute data-[tab-active='true']:before:-inset-1 data-[tab-active='true']:before:-z-10 data-[tab-active='true']:before:rounded-md data-[tab-active='true']:before:bg-rose-950 data-[tab-active='true']:before:shadow-[inset_0_0_1px] data-[tab-active='true']:before:shadow-black`}
           >
             {item.icon}
           </span>
@@ -161,10 +161,15 @@ export default function Nav() {
           <div
             data-nav-active={toggleNav}
             data-tab-active={tab.key == item.id}
-            className={`relative hidden rounded-r-md bg-rose-900 p-2 after:hover:absolute after:hover:bottom-0 after:hover:left-0 after:hover:right-0 after:hover:h-[2px] after:hover:bg-gradient-to-l after:hover:from-transparent after:hover:to-rose-950 after:hover:to-40% group-hover:bottom-0 group-hover:left-0 group-hover:top-0 data-[tab-active='true']:before:absolute data-[tab-active='true']:before:inset-1 data-[tab-active='true']:before:z-10 data-[tab-active='true']:before:rounded-md data-[tab-active='true']:before:bg-rose-950 data-[nav-active=false]:group-hover:absolute data-[nav-active=false]:group-hover:inline-block`}
+            className={`relative hidden rounded-r-md bg-rose-900 p-2 shadow-[-1px_1px_2px] shadow-black after:absolute after:bottom-0 after:left-0 after:right-0 after:h-[2px] after:bg-gradient-to-l after:from-transparent after:to-rose-950 after:to-40% group-hover:bottom-0 group-hover:left-0 group-hover:top-0 data-[tab-active='true']:before:absolute data-[tab-active='true']:before:inset-1 data-[tab-active='true']:before:z-10 data-[tab-active='true']:before:rounded-md data-[tab-active='true']:before:bg-rose-950 data-[tab-active='true']:before:shadow-[inset_0_0_2px] data-[tab-active='true']:before:shadow-black data-[nav-active=false]:group-hover:absolute data-[nav-active=false]:group-hover:inline-block`}
           >
             <div className="flex gap-3">
-              <span className="relative z-20">{item.icon}</span>
+              <span
+                data-tab-active={tab.key == item.id}
+                className="relative z-20 w-3 after:absolute after:inset-y-0 after:-right-2 after:w-[2px] after:rounded-full after:bg-rose-950 data-[tab-active='true']:after:bg-rose-900"
+              >
+                {item.icon}
+              </span>
               <span className="relative z-20">{item.title}</span>
             </div>
           </div>
@@ -172,9 +177,14 @@ export default function Nav() {
           <div
             data-nav-active={toggleNav}
             data-tab-active={tab.key == item.id}
-            className={`relative flex gap-3 py-1 hover:bg-rose-950 data-[nav-active=false]:hidden data-[tab-active='true']:before:absolute data-[tab-active='true']:before:-left-[.3em] data-[tab-active='true']:before:-right-[.3em] data-[tab-active='true']:before:bottom-0 data-[tab-active='true']:before:top-0 data-[tab-active='true']:before:-z-10 data-[tab-active='true']:before:rounded-md data-[tab-active='true']:before:bg-rose-950`}
+            className={`relative flex gap-4 py-1 pl-1 pr-2 hover:bg-rose-950 data-[nav-active=false]:hidden data-[tab-active='true']:before:absolute data-[tab-active='true']:before:-left-[.3em] data-[tab-active='true']:before:-right-[.3em] data-[tab-active='true']:before:bottom-0 data-[tab-active='true']:before:top-0 data-[tab-active='true']:before:-z-10 data-[tab-active='true']:before:rounded-md data-[tab-active='true']:before:bg-rose-950 data-[tab-active='true']:before:shadow-[inset_0_0_2px] data-[tab-active='true']:before:shadow-black`}
           >
-            <span>{item.icon}</span>
+            <span
+              data-tab-active={tab.key == item.id}
+              className="relative w-3 after:absolute after:inset-y-0 after:-right-2 after:w-[2px] after:rounded-full after:bg-rose-950 after:group-hover:bg-rose-900 data-[tab-active='true']:after:bg-rose-900"
+            >
+              {item.icon}
+            </span>
             <span>{item.title}</span>
           </div>
         </div>,
