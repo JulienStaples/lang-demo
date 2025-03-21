@@ -40,6 +40,19 @@ export let dummyText = new Map([
       ],
     },
   ],
+
+  [
+    "dracula",
+    {
+      lang: "fr",
+      title: "Dracula",
+      body: [
+        "chapitre 1 journal de Jonathan arkerur sténographier B streets 3 mai quitté munique à 8h du soir le 1er mai arrivé à Vienne de bonne heure le lendemain matin nous aurions dû y être à 6h46 mais le train avait 1 heure de retard en juger d'après ce que j'en ai pu apercevoir du wagon et d'après les quelques rues où je me suis promené une fois débarqué Budapest est une très belle ville mais je craignais de trop m'éloigner de la gare malgré ce retard nous devions repartir comme prévu j' l'impression très nette de quitter l'Occident pour rentrer dans le monde oriental après avoir franchi les magnifiques ponts du Danube ces modèle d'architecture occidentale le Danu ici est particulièrement large et profond on pénètre immédiatement dans une région où prévalent les coutumes turques ayant quitté Budapest sans trop de retard nous arrivâmes le soir à closenburg je m'y arrêté pour passer la nuit à l'hôtel Royal on me servit au dîner ou plutôt au souper un poulet au poivre rouge délicieux mais cela vous donne une soif j'en ai demandé la recette à l'inttention de Mina le garçon m'a appris que cela s'appelait du paprika Endel que c'était un plat national et donc que j'en trouverai partout dans les Carpates ma légère connaissance de l'allemand me fut fort en cette occasion sans",
+        "cela vraiment j'ignore comment je m'en serais tiré à Londres quelques moment de loisir m'avait permis d'aller au British museéum et à la bibliothèque j'avais consulté des cartes de géographie et des livres traitants de la Transylvanie il me paraissait intéressant de connaître certaines choses du pays puisque",
+        "j'aurais affaire à un gentilhomme de là-bas je men rendis compte la région dont il parlait dans ses lettres était située à l'est du pays à la frontière des trois états Transylvanie Moldavie Bucovine dans les Carpates une des parties de l'Europe les moins connu et les plus sauvages mais aucun livre aucune",
+      ],
+    },
+  ],
 ])
 
 export let wordDb = new Map([["init", {}]])
@@ -49,7 +62,7 @@ export let langOptions = new Map([
   ["fren", "fr-en"],
 ])
 
-export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-black bg-purple-800`
+export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-neutral-900 bg-purple-800`
 
 export let diffBtnColors = {
   hard: "bg-orange-800 hover:bg-orange-700 active:bg-orange-900",
