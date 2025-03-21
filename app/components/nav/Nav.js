@@ -2,11 +2,10 @@
 
 import { useContext, useState } from "react"
 import { NavContext } from "../../context/NavContext"
-import { AppContext } from "../../context/AppContext"
 
 export default function Nav() {
-  const { tab, selectTab } = useContext(NavContext)
-  const { setShowFlyout, showFlyout } = useContext(AppContext)
+  const { tab, selectTab, exitAnim, setTabsPane, tabsPane } =
+    useContext(NavContext)
   const [toggleNav, setToggleNav] = useState(false)
 
   const navItems = genNavTabs()
@@ -31,15 +30,9 @@ export default function Nav() {
         title: "Home",
         id: "home-tab",
         action: () => {
-          tab.key == "home-tab" && showFlyout
-            ? setShowFlyout((prev) => !prev)
-            : (selectTab("home"),
-              setShowFlyout(true),
-              //animation issue
-              setTimeout(() => {
-                document.querySelector("#tabs").dataset.active = true
-              }, 0))
-          //
+          tab.key == "home-tab" && tabsPane
+            ? exitAnim()
+            : (selectTab("home"), setTabsPane(true))
         },
       },
 
@@ -48,15 +41,9 @@ export default function Nav() {
         title: "Options",
         id: "options-tab",
         action: () => {
-          tab.key == "options-tab" && showFlyout
-            ? setShowFlyout((prev) => !prev)
-            : (selectTab("options"),
-              setShowFlyout(true),
-              //animation issue
-              setTimeout(() => {
-                document.querySelector("#tabs").dataset.active = true
-              }, 0))
-          //
+          tab.key == "options-tab" && tabsPane
+            ? exitAnim()
+            : (selectTab("options"), setTabsPane(true))
         },
       },
       {
@@ -64,15 +51,9 @@ export default function Nav() {
         title: "Translate",
         id: "translate-tab",
         action: () => {
-          tab.key == "translate-tab" && showFlyout
-            ? setShowFlyout((prev) => !prev)
-            : (selectTab("translate"),
-              setShowFlyout(true),
-              //animation issue
-              setTimeout(() => {
-                document.querySelector("#tabs").dataset.active = true
-              }, 0))
-          //
+          tab.key == "translate-tab" && tabsPane
+            ? exitAnim()
+            : (selectTab("translate"), setTabsPane(true))
         },
       },
       {
@@ -80,15 +61,9 @@ export default function Nav() {
         title: "Details",
         id: "details-tab",
         action: () => {
-          tab.key == "details-tab" && showFlyout
-            ? setShowFlyout((prev) => !prev)
-            : (selectTab("details"),
-              setShowFlyout(true),
-              //animation issue
-              setTimeout(() => {
-                document.querySelector("#tabs").dataset.active = true
-              }, 0))
-          //
+          tab.key == "details-tab" && tabsPane
+            ? exitAnim()
+            : (selectTab("details"), setTabsPane(true))
         },
       },
       {
@@ -96,15 +71,9 @@ export default function Nav() {
         title: "Texts",
         id: "texts-tab",
         action: () => {
-          tab.key == "texts-tab" && showFlyout
-            ? setShowFlyout((prev) => !prev)
-            : (selectTab("texts"),
-              setShowFlyout(true),
-              //animation issue
-              setTimeout(() => {
-                document.querySelector("#tabs").dataset.active = true
-              }, 0))
-          //
+          tab.key == "texts-tab" && tabsPane
+            ? exitAnim()
+            : (selectTab("texts"), setTabsPane(true))
         },
       },
       {
@@ -112,15 +81,9 @@ export default function Nav() {
         title: "Langs",
         id: "langs-tab",
         action: () => {
-          tab.key == "langs-tab" && showFlyout
-            ? setShowFlyout((prev) => !prev)
-            : (selectTab("langs"),
-              setShowFlyout(true),
-              //animation issue
-              setTimeout(() => {
-                document.querySelector("#tabs").dataset.active = true
-              }, 0))
-          //
+          tab.key == "langs-tab" && tabsPane
+            ? exitAnim()
+            : (selectTab("langs"), setTabsPane(true))
         },
       },
       {
@@ -128,15 +91,9 @@ export default function Nav() {
         title: "Database",
         id: "db-tab",
         action: () => {
-          tab.key == "db-tab" && showFlyout
-            ? setShowFlyout((prev) => !prev)
-            : (selectTab("db"),
-              setShowFlyout(true),
-              //animation issue
-              setTimeout(() => {
-                document.querySelector("#tabs").dataset.active = true
-              }, 0))
-          //
+          tab.key == "db-tab" && tabsPane
+            ? exitAnim()
+            : (selectTab("db"), setTabsPane(true))
         },
       },
     ]

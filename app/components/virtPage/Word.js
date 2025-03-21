@@ -1,13 +1,32 @@
 import React, { useContext } from "react"
 import { AppContext } from "@/app/context/AppContext"
-import { findDiff, diffWordColors } from "@/app/lib/constants/constants"
+import {
+  findDiff,
+  diffWordColors,
+  findEntry,
+} from "@/app/lib/constants/constants"
 import { motion } from "framer-motion"
 import { spanVari, wordVari } from "../../lib/constants/virtPageAnims"
+import { NavContext } from "@/app/context/NavContext"
 
 export default function Word(props) {
   const wordObj = props.wordObj
   const wordDiff = findDiff(wordObj.normal)
-  const { handleClick } = useContext(AppContext)
+  const { setActiveWordObj, setEntry } = useContext(AppContext)
+  const { setTabsPane, exitAnim, tab, tabsPane, selectTab } =
+    useContext(NavContext)
+
+  function handleClick(wordObj) {
+    setActiveWordObj(wordObj)
+    setEntry(findEntry(wordObj.normal))
+
+    if (tab.key == "translate-tab") {
+      tabsPane ? exitAnim() : setTabsPane(true)
+    } else {
+      selectTab("translate")
+      setTabsPane(true)
+    }
+  }
 
   return (
     <>

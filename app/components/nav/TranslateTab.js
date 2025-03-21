@@ -2,17 +2,13 @@
 
 import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
+import { NavContext } from "@/app/context/NavContext"
 import Word from "../virtPage/Word"
-import {
-  diffBtnColors,
-  diffWordColors,
-  findDiff,
-  wordDb,
-} from "../../lib/constants/constants"
+import { diffBtnColors, findDiff, wordDb } from "../../lib/constants/constants"
 
 export default function TranslateTab(props) {
-  const { showFlyout, handleClick, activeWordObj, entry, langOption } =
-    useContext(AppContext)
+  const { activeWordObj, entry, langOption } = useContext(AppContext)
+  const { tabsPane, exitAnim } = useContext(NavContext)
   const defBox = useRef()
   const rootBox = useRef()
   const activeWord = activeWordObj.normal
@@ -21,16 +17,7 @@ export default function TranslateTab(props) {
   useEffect(() => {
     setDiff(findDiff(activeWord))
     sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
-  }, [showFlyout])
-
-  function animationIssue(e) {
-    //animation issue
-    e.target.parentNode.dataset.active = "false"
-    setTimeout(() => {
-      handleClick(activeWord)
-    }, 200)
-    //
-  }
+  }, [tabsPane])
 
   function addEntry(e, diff) {
     let newDiff = diff
@@ -50,13 +37,13 @@ export default function TranslateTab(props) {
     wordDb.set(activeWord, newEntryObj)
     setDiff(newDiff)
 
-    animationIssue(e)
+    exitAnim()
   }
 
   function delEntry(e) {
     wordDb.delete(activeWord)
 
-    animationIssue(e)
+    exitAnim()
   }
 
   function changeDiff(diff) {

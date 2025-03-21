@@ -6,15 +6,24 @@ import DetailsTab from "../components/nav/DetailsTab"
 import DbSearch from "../components/nav/DbSearchTab"
 import TextsTab from "../components/nav/TextsTab"
 import LangsTab from "../components/nav/LangsTab"
+import { useAnimate } from "framer-motion"
 
 export const NavContext = createContext()
 
 export default function NavProvider({ children }) {
   const [tab, setTab] = useState("translate-tab")
+  const [scope, animate] = useAnimate()
+  const [tabsPane, setTabsPane] = useState(false)
 
-  useEffect(() => {
-    selectTab("translate")
-  }, [])
+  function exitAnim() {
+    const exitSeq = [[scope.current, { scaleX: 0 }, { duration: 0.07 }]]
+
+    animate(exitSeq).then(() => {
+      setTimeout(() => {
+        setTabsPane(false)
+      }, 0)
+    })
+  }
 
   function selectTab(curTab) {
     if (curTab == "translate")
@@ -29,7 +38,16 @@ export default function NavProvider({ children }) {
       setTab(<LangsTab key={"langs-tab"} selectTab={selectTab} />)
   }
   return (
-    <NavContext.Provider value={{ selectTab, tab }}>
+    <NavContext.Provider
+      value={{
+        selectTab,
+        tab,
+        scope,
+        exitAnim,
+        tabsPane,
+        setTabsPane,
+      }}
+    >
       {children}
     </NavContext.Provider>
   )
