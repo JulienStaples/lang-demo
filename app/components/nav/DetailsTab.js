@@ -2,12 +2,18 @@
 import { useContext } from "react"
 import { AppContext } from "@/app/context/AppContext"
 import Word from "../virtPage/Word"
+import { motion } from "framer-motion"
 
 export default function DetailsTab(props) {
   const { entry, activeWordObj } = useContext(AppContext)
 
   return (
-    <div id="details-tab" className="flex flex-col gap-5 overflow-visible">
+    <motion.div
+      id="details-tab"
+      className="flex flex-col gap-5 overflow-visible"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
         <Word wordObj={activeWordObj ? activeWordObj : { text: "N/A..." }} />
@@ -56,6 +62,6 @@ export default function DetailsTab(props) {
           {entry.freq !== undefined && entry.freq !== "" ? entry.freq : "..."}
         </p>
       </div>
-    </div>
+    </motion.div>
   )
 }

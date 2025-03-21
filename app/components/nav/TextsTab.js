@@ -1,9 +1,15 @@
 import SampleTexts from "../dropdown/SampleTexts"
+import { motion } from "framer-motion"
 
 export default function TextsTab() {
   return (
-    <div id="texts-tab" className="w-1/2">
+    <motion.div
+      id="texts-tab"
+      className="w-1/2"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <SampleTexts />
-    </div>
+    </motion.div>
   )
 }

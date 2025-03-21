@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react"
 import { wordDb } from "../../lib/constants/constants"
 import Word from "../virtPage/Word"
 import Dropdown from "../dropdown/Dropdown"
+import { motion } from "framer-motion"
 
 export default function DbSearchTab(props) {
   let [response, setResponse] = useState([[]])
@@ -62,7 +63,12 @@ export default function DbSearchTab(props) {
   }
 
   return (
-    <div id="db-tab" className="">
+    <motion.div
+      id="db-tab"
+      className=""
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className="flex w-full flex-col gap-6">
         <textarea
           className="bg-neutral-700"
@@ -84,7 +90,7 @@ export default function DbSearchTab(props) {
           {response}
         </div>
       </div>
-    </div>
+    </motion.div>
   )
 
   function genSearchOptions() {

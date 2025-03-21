@@ -5,6 +5,7 @@ import { AppContext } from "../../context/AppContext"
 import { NavContext } from "@/app/context/NavContext"
 import Word from "../virtPage/Word"
 import { diffBtnColors, findDiff, wordDb } from "../../lib/constants/constants"
+import { motion } from "framer-motion"
 
 export default function TranslateTab(props) {
   const { activeWordObj, entry, langOption } = useContext(AppContext)
@@ -56,7 +57,12 @@ export default function TranslateTab(props) {
   }
 
   return (
-    <div id="translate-tab" className="flex flex-col gap-9 overflow-visible">
+    <motion.div
+      id="translate-tab"
+      className="flex flex-col gap-9 overflow-visible"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
       <div className="flex w-full flex-col gap-6 overflow-visible">
         <div className="flex w-full flex-col gap-3 overflow-visible">
           <div className="overflow-visible">
@@ -182,6 +188,6 @@ export default function TranslateTab(props) {
           Translate
         </a>
       </div>
-    </div>
+    </motion.div>
   )
 }
