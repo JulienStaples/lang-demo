@@ -2,6 +2,7 @@
 
 import { useContext, useState } from "react"
 import { NavContext } from "../../context/NavContext"
+import { ModeToggle } from "@/components/mode-toggle"
 
 export default function Nav() {
   const { tab, selectTab, exitAnim, setTabsPane, tabsPane } =
@@ -20,6 +21,7 @@ export default function Nav() {
       }}
     >
       {navItems}
+      {toggleNav && <ModeToggle />}
     </nav>
   )
 
