@@ -3,42 +3,84 @@ import {
   SidebarContent,
   SidebarGroup,
   SidebarGroupContent,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   SidebarTrigger,
-  SidebarProvider,
+  useSidebar,
+  SidebarHeader,
+  SidebarFooter,
 } from "@/components/ui/sidebar"
+import { Button } from "./ui/button"
+import { Separator } from "./ui/separator"
+import { Home } from "lucide-react"
 
 export function AppSidebar(props) {
   const items = props.items
+  const homeitem = {
+    icon: Home,
+    title: "Home",
+    id: "home-tab",
+    action: () => {},
+  }
+
+  const { open } = useSidebar()
+
   return (
-    <div>
-      <SidebarProvider defaultOpen={false}>
-        <Sidebar collapsible="icon">
-          <SidebarContent>
-            <SidebarGroup>
-              <SidebarGroupLabel>Application</SidebarGroupLabel>
-              <SidebarGroupContent>
-                <SidebarMenu>
-                  {items.map((item) => (
-                    <SidebarMenuItem key={item.id}>
-                      <SidebarMenuButton asChild>
-                        <a onClick={item.action}>
-                          <item.icon />
-                          <span>{item.title}</span>
-                        </a>
-                      </SidebarMenuButton>
-                    </SidebarMenuItem>
-                  ))}
-                </SidebarMenu>
-              </SidebarGroupContent>
-            </SidebarGroup>
-            <SidebarTrigger className="self-center" />
-          </SidebarContent>
-        </Sidebar>
-      </SidebarProvider>
-    </div>
+    <Sidebar collapsible="icon">
+      <SidebarHeader className="h-[3rem] p-0">
+        <SidebarMenu className="h-full">
+          <SidebarMenuItem className="h-full">
+            <Button
+              onClick={homeitem.action}
+              variant="ghost"
+              className={`h-full w-full rounded-none text-xs`}
+              key={homeitem.id}
+            >
+              <homeitem.icon />
+              {open && <span className="truncate">{homeitem.title}</span>}
+            </Button>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarHeader>
+
+      <Separator />
+
+      <SidebarContent>
+        <SidebarGroup className={`${open ? "px-1" : "px-0"}`}>
+          <SidebarGroupContent>
+            <SidebarMenu className={`${open ? "items-start" : ""}`}>
+              {items.map((item) => {
+                return (
+                  <SidebarMenuItem
+                    key={item.id}
+                    className={`${open ? "w-full" : "self-center"}`}
+                  >
+                    <SidebarMenuButton
+                      onClick={item.action}
+                      variant="ghost"
+                      className="text-xs"
+                    >
+                      <item.icon />
+                      {open && <span className="truncate">{item.title}</span>}
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                )
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
+        </SidebarGroup>
+      </SidebarContent>
+
+      <Separator />
+
+      <SidebarFooter className="h-[3rem] p-0">
+        <SidebarMenu className="h-full">
+          <SidebarMenuItem className="h-full">
+            <SidebarTrigger className="h-full w-full rounded-none" />
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
+    </Sidebar>
   )
 }
