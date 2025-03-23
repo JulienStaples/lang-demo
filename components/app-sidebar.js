@@ -26,6 +26,12 @@ export function AppSidebar(props) {
 
   const { open } = useSidebar()
 
+  function clearActiveStates() {
+    Array.from(document.querySelectorAll(".sidebar-btn")).forEach(
+      (e) => (e.dataset.active = false),
+    )
+  }
+
   return (
     <Sidebar collapsible="icon">
       <SidebarHeader className="h-[3rem] p-0">
@@ -57,9 +63,13 @@ export function AppSidebar(props) {
                     className={`${open ? "w-full" : "self-center"}`}
                   >
                     <SidebarMenuButton
-                      onClick={item.action}
+                      onClick={(e) => {
+                        item.action()
+                        clearActiveStates()
+                        e.currentTarget.dataset.active = true
+                      }}
                       variant="ghost"
-                      className="text-xs"
+                      className="sidebar-btn text-xs"
                     >
                       <item.icon />
                       {open && <span className="truncate">{item.title}</span>}
