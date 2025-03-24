@@ -65,11 +65,11 @@ export let langOptions = new Map([
 export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-neutral-900 bg-purple-800`
 
 export let diffBtnColors = {
-  hard: "bg-orange-800 hover:bg-orange-700 active:bg-orange-900",
-  med: "bg-yellow-800 hover:bg-yellow-700 active:bg-yellow-900",
-  easy: "bg-green-800 hover:bg-green-700 active:bg-green-900",
-  wk: "bg-gray-500 hover:bg-gray-400 active:bg-gray-600",
-  null: "bg-purple-800 hover:bg-purple-700 active:bg-purple-900",
+  hard: "data-[state=on]:bg-orange-800 hover:bg-orange-800",
+  med: "data-[state=on]:bg-yellow-800 hover:bg-yellow-800",
+  easy: "data-[state=on]:bg-green-800 hover:bg-green-800",
+  wk: "",
+  null: "data-[state=on]:bg-purple-800 hover:bg-purple-800",
 }
 
 export function findDiff(word) {

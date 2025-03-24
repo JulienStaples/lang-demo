@@ -7,6 +7,8 @@ import Word from "../virtPage/Word"
 import { diffBtnColors, findDiff, wordDb } from "../../lib/constants/constants"
 import { motion } from "framer-motion"
 import AppTextarea from "@/components/app-textarea"
+import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 export default function TranslateTab(props) {
   const { activeWordObj, entry, langOption } = useContext(AppContext)
@@ -60,113 +62,106 @@ export default function TranslateTab(props) {
   return (
     <motion.div
       id="translate-tab"
-      className="flex flex-col gap-9 overflow-visible"
+      className="flex flex-col gap-7 overflow-visible"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <div className="flex w-full flex-col gap-6 overflow-visible">
-        <div className="flex w-full flex-col gap-5 overflow-visible">
-          <div className="overflow-visible">
-            <div className="flex gap-2 overflow-visible">
-              <h1 className="">Word:</h1>
-              <Word
-                wordObj={activeWordObj ? activeWordObj : { text: "N/A..." }}
-              />
-            </div>
-          </div>
-          <div className="flex flex-col gap-3">
-            <AppTextarea
-              ref={defBox}
-              id={"defBox"}
-              label={`Definition: ${
-                entry.def !== undefined && entry.def !== "" ? entry.def : "..."
-              }`}
-              defaultValue={
-                entry.def !== undefined && entry.def !== "" ? entry.def : ""
-              }
-            />
-            <AppTextarea
-              ref={rootBox}
-              id={"rootBox"}
-              label={`Root: ${
-                entry.root !== undefined && entry.root !== ""
-                  ? entry.root
-                  : "..."
-              }`}
-              defaultValue={
-                entry.root !== undefined && entry.root !== "" ? entry.root : ""
-              }
-            />
-            <AppTextarea
-              ref={undefined}
-              id={undefined}
-              label={`Tags: ${
-                entry.tags !== undefined && entry.tags !== ""
-                  ? entry.tags
-                  : "..."
-              }`}
-              defaultValue={
-                entry.tags !== undefined && entry.tags !== "" ? entry.tags : ""
-              }
-            />
-          </div>
-        </div>
-        <div>
-          <p
-            className="cursor-pointer select-none text-rose-300 underline duration-200 ease-in-out hover:text-rose-200"
-            onClick={() => props.selectTab("details")}
-          >{`See More ---->`}</p>
-        </div>
-        <div className="flex w-full flex-col gap-5">
-          <div className="flex w-full justify-between">
-            <button
-              className={`${diffBtnColors.easy} rounded-md px-3 py-1`}
-              onClick={() => changeDiff("easy")}
-            >
-              easy
-            </button>
-            <button
-              className={`${diffBtnColors.med} rounded-md px-3 py-1`}
-              onClick={() => changeDiff("med")}
-            >
-              med
-            </button>
-            <button
-              className={`${diffBtnColors.hard} rounded-md px-3 py-1`}
-              onClick={() => changeDiff("hard")}
-            >
-              hard
-            </button>
-            <button
-              className={`${diffBtnColors.wk} rounded-md px-3 py-1`}
-              onClick={() => changeDiff("wk")}
-            >
-              wk
-            </button>
-          </div>
-          <div className="flex w-full gap-3">
-            <button
-              className="w-full rounded-md bg-red-700 p-1 hover:bg-red-600 active:bg-red-800"
-              onClick={(e) => delEntry(e)}
-            >
-              del
-            </button>
-            <button
-              className="w-full rounded-md bg-green-700 p-1 hover:bg-green-600 active:bg-green-800"
-              onClick={(e) => addEntry(e)}
-            >
-              save
-            </button>
-          </div>
-        </div>
+      <div className="flex gap-2 overflow-visible">
+        <h1>Word:</h1>
+        <Word wordObj={activeWordObj ? activeWordObj : { text: "N/A..." }} />
       </div>
-      <div className="flex w-full justify-center">
+
+      <div className="flex flex-col gap-4">
+        <AppTextarea
+          ref={defBox}
+          id={"defBox"}
+          label={`Definition: ${
+            entry.def !== undefined && entry.def !== "" ? entry.def : "..."
+          }`}
+          defaultValue={
+            entry.def !== undefined && entry.def !== "" ? entry.def : ""
+          }
+        />
+        <AppTextarea
+          ref={rootBox}
+          id={"rootBox"}
+          label={`Root: ${
+            entry.root !== undefined && entry.root !== "" ? entry.root : "..."
+          }`}
+          defaultValue={
+            entry.root !== undefined && entry.root !== "" ? entry.root : ""
+          }
+        />
+        <AppTextarea
+          ref={undefined}
+          id={undefined}
+          label={`Tags: ${
+            entry.tags !== undefined && entry.tags !== "" ? entry.tags : "..."
+          }`}
+          defaultValue={
+            entry.tags !== undefined && entry.tags !== "" ? entry.tags : ""
+          }
+        />
+        <ToggleGroup
+          className="gap-0 self-start rounded-sm border"
+          type="single"
+          value={diff}
+          onValueChange={(value) => (value ? changeDiff(value) : "")}
+        >
+          <ToggleGroupItem
+            value="wk"
+            className={`rounded-l-sm rounded-r-none border-foreground bg-transparent`}
+            aria-label="Toggle wk"
+          >
+            wk
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="easy"
+            className={`${diffBtnColors.easy} rounded-none`}
+            aria-label="Toggle easy"
+          >
+            easy
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="med"
+            className={`${diffBtnColors.med} rounded-none`}
+            aria-label="Toggle med"
+          >
+            med
+          </ToggleGroupItem>
+          <ToggleGroupItem
+            value="hard"
+            className={`${diffBtnColors.hard} rounded-l-none rounded-r-sm`}
+            aria-label="Toggle hard"
+          >
+            hard
+          </ToggleGroupItem>
+        </ToggleGroup>
+      </div>
+
+      <div className="flex flex-col gap-4">
+        <div className="flex w-full gap-3">
+          <Button
+            className="grow bg-green-800 text-white hover:bg-green-600 active:bg-green-800"
+            onClick={(e) => addEntry(e)}
+          >
+            save
+          </Button>
+          <Button
+            variant="destructive"
+            className="grow bg-red-800 hover:bg-red-600 active:bg-red-900"
+            onClick={(e) => delEntry(e)}
+          >
+            del
+          </Button>
+        </div>
         <a
           target="_blank"
-          className="w-full rounded-md bg-blue-800 p-3 text-center hover:bg-blue-700 active:bg-blue-900"
           href={`https://www.wordreference.com/${langOption}/${activeWord}`}
         >
-          Translate
+          <Button className="w-full rounded-md bg-blue-800 text-white hover:bg-blue-600 active:bg-blue-900">
+            translate
+          </Button>
         </a>
       </div>
     </motion.div>
