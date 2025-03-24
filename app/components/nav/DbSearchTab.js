@@ -5,6 +5,8 @@ import { wordDb } from "../../lib/constants/constants"
 import Word from "../virtPage/Word"
 import { motion } from "framer-motion"
 import AppSelect from "@/components/app-select"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
 
 export default function DbSearchTab(props) {
   let [response, setResponse] = useState([[]])
@@ -83,12 +85,15 @@ export default function DbSearchTab(props) {
       animate={{ opacity: 1 }}
     >
       <div className="flex w-full flex-col gap-6">
-        <textarea
-          className="bg-neutral-700"
-          name=""
-          id=""
-          onChange={(e) => setQuery(e.target.value)}
-        ></textarea>
+        <div className="grid w-full gap-1.5">
+          <Label className="mb-1 h-fit" htmlFor={"searchBox"}>
+            {"Search"}
+          </Label>
+          <Textarea
+            id={"searchBox"}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </div>
         <div className="flex justify-around">
           <AppSelect
             placeholder={"Search Option"}
