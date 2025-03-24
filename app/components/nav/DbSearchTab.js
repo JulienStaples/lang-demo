@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from "react"
 import { wordDb } from "../../lib/constants/constants"
 import Word from "../virtPage/Word"
-import Dropdown from "../dropdown/Dropdown"
 import { motion } from "framer-motion"
+import AppSelect from "@/components/app-select"
 
 export default function DbSearchTab(props) {
   let [response, setResponse] = useState([[]])
@@ -62,6 +62,19 @@ export default function DbSearchTab(props) {
     }
   }
 
+  function searchOptionsAction(item) {
+    item.key == "all" ? setSearchOption(undefined) : setSearchOption(item.key)
+  }
+
+  function includesAction(item) {
+    if (item.key == "all") setIncluded(undefined)
+    else {
+      included
+        ? setIncluded((prev) => [...prev, item.key])
+        : setIncluded([item.key])
+    }
+  }
+
   return (
     <motion.div
       id="db-tab"
@@ -77,8 +90,16 @@ export default function DbSearchTab(props) {
           onChange={(e) => setQuery(e.target.value)}
         ></textarea>
         <div className="flex justify-around">
-          <Dropdown title={"Search Option"} items={genSearchOptions()} />
-          <Dropdown title={"Include Any"} items={genIncludes()} />
+          <AppSelect
+            placeholder={"Search Option"}
+            action={searchOptionsAction}
+            items={genSearchOptions()}
+          />
+          <AppSelect
+            placeholder={"Include Any"}
+            action={includesAction}
+            items={genIncludes()}
+          />
         </div>
 
         <div className="grid grid-cols-5 overflow-x-scroll">
@@ -107,10 +128,7 @@ export default function DbSearchTab(props) {
     searchOptions.forEach((option, key) => {
       let item = {
         key: key,
-        value: option,
-        action: () => {
-          key == "all" ? setSearchOption(undefined) : setSearchOption(key)
-        },
+        text: option,
       }
 
       items.push(item)
@@ -135,15 +153,7 @@ export default function DbSearchTab(props) {
     searchOptions.forEach((option, key) => {
       let item = {
         key: key,
-        value: option,
-        action: () => {
-          if (key == "all") setIncluded(undefined)
-          else {
-            included
-              ? setIncluded((prev) => [...prev, key])
-              : setIncluded([key])
-          }
-        },
+        text: option,
       }
 
       items.push(item)
