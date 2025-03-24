@@ -6,6 +6,7 @@ import { NavContext } from "@/app/context/NavContext"
 import Word from "../virtPage/Word"
 import { diffBtnColors, findDiff, wordDb } from "../../lib/constants/constants"
 import { motion } from "framer-motion"
+import AppTextarea from "@/components/app-textarea"
 
 export default function TranslateTab(props) {
   const { activeWordObj, entry, langOption } = useContext(AppContext)
@@ -64,7 +65,7 @@ export default function TranslateTab(props) {
       animate={{ opacity: 1 }}
     >
       <div className="flex w-full flex-col gap-6 overflow-visible">
-        <div className="flex w-full flex-col gap-3 overflow-visible">
+        <div className="flex w-full flex-col gap-5 overflow-visible">
           <div className="overflow-visible">
             <div className="flex gap-2 overflow-visible">
               <h1 className="">Word:</h1>
@@ -73,61 +74,41 @@ export default function TranslateTab(props) {
               />
             </div>
           </div>
-          <div>
-            <div className="flex gap-2">
-              <h1 className="">Def:</h1>
-              <p className="">
-                {entry.def !== undefined && entry.def !== ""
-                  ? entry.def
-                  : "..."}
-              </p>
-            </div>
-            <textarea
+          <div className="flex flex-col gap-3">
+            <AppTextarea
               ref={defBox}
+              id={"defBox"}
+              label={`Definition: ${
+                entry.def !== undefined && entry.def !== "" ? entry.def : "..."
+              }`}
               defaultValue={
                 entry.def !== undefined && entry.def !== "" ? entry.def : ""
               }
-              className="w-full bg-neutral-800"
-              name=""
-              id=""
-            ></textarea>
-          </div>
-          <div>
-            <div className="flex gap-2">
-              <h1 className="">Root:</h1>
-              <p className="">
-                {entry.root !== undefined && entry.root !== ""
-                  ? entry.root
-                  : "..."}
-              </p>
-            </div>
-            <textarea
+            />
+            <AppTextarea
               ref={rootBox}
+              id={"rootBox"}
+              label={`Root: ${
+                entry.root !== undefined && entry.root !== ""
+                  ? entry.root
+                  : "..."
+              }`}
               defaultValue={
                 entry.root !== undefined && entry.root !== "" ? entry.root : ""
               }
-              className="w-full bg-neutral-800"
-              name=""
-              id=""
-            ></textarea>
-          </div>
-          <div>
-            <div className="flex gap-2">
-              <h1 className="">Tags:</h1>
-              <p className="">
-                {entry.tags !== undefined && entry.tags !== ""
+            />
+            <AppTextarea
+              ref={undefined}
+              id={undefined}
+              label={`Tags: ${
+                entry.tags !== undefined && entry.tags !== ""
                   ? entry.tags
-                  : "..."}
-              </p>
-            </div>
-            <textarea
+                  : "..."
+              }`}
               defaultValue={
                 entry.tags !== undefined && entry.tags !== "" ? entry.tags : ""
               }
-              className="w-full bg-neutral-800"
-              name=""
-              id=""
-            ></textarea>
+            />
           </div>
         </div>
         <div>
