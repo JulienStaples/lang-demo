@@ -10,7 +10,9 @@ export default function AppProvider({ children }) {
   const [activeWordObj, setActiveWordObj] = useState("")
   const [entry, setEntry] = useState("")
   const [presetText, setPresetText] = useState(dummyText.get("dracula"))
-  const [langOption, setLangOption] = useState("enfr")
+  const [langOption, setLangOption] = useState(
+    presetText.lang == "en" ? "enfr" : `${presetText.lang}en`,
+  )
   const [page, setPage] = useState(0)
 
   useEffect(() => {

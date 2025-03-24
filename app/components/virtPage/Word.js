@@ -36,7 +36,7 @@ export default function Word(props) {
         whileHover="hover"
         variants={wordVari}
         onClick={() => handleClick(wordObj)}
-        className={`group relative z-0 mr-[2px] inline-block cursor-pointer select-none rounded-sm after:absolute after:inset-0 after:-inset-x-[.07em] after:inset-y-[.15em] after:rounded-sm after:shadow-md after:shadow-transparent hover:z-20 after:hover:shadow-black`}
+        className={`group relative z-0 mr-[2px] inline-block cursor-pointer rounded-sm after:absolute after:inset-0 after:-inset-x-[.07em] after:inset-y-[.15em] after:rounded-sm after:shadow-md after:shadow-transparent hover:z-20 after:hover:shadow-black`}
       >
         <span className="word-span group-hover:invert">{wordObj.text}</span>
         <motion.span
