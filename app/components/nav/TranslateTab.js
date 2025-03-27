@@ -103,7 +103,7 @@ export default function TranslateTab(props) {
           }
         />
         <ToggleGroup
-          className="gap-0 self-start rounded-sm border"
+          className="w-fit gap-0 self-start rounded-sm border"
           type="single"
           value={diff}
           onValueChange={(value) => (value ? changeDiff(value) : "")}

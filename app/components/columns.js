@@ -65,7 +65,7 @@ export const columns = [
     cell: ({ row }) => {
       return (
         <ToggleGroup
-          className="gap-0 self-start rounded-sm border"
+          className="w-fit gap-0 self-start rounded-sm border"
           type="single"
           value={row.getValue("diff")}
           // onValueChange={(value) => (value ? changeDiff(value) : "")}
