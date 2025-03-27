@@ -7,6 +7,7 @@ import { enterExitVari, spanVari } from "@/app/lib/constants/virtPageAnims"
 import TitleBar from "./TitleBar"
 import ReadingView from "./ReadingView"
 import EditView from "./EditView"
+import { ChevronLeft, ChevronRight, FilePenLine } from "lucide-react"
 
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
@@ -44,18 +45,24 @@ export default function VirtPage() {
         {view}
       </div>
 
-      <div className="controls flex gap-7 border-t-2 border-neutral-600 pt-2">
-        <button onClick={pagePrev}>{`<`}</button>
-        <span>
-          {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
-            presetText.body.length < 10
-              ? `0${presetText.body.length}`
-              : presetText.body.length
-          }`}
-        </span>
-        <button onClick={pageNext}>{`>`}</button>
-        <div>
-          <button onClick={exitAnim}>=</button>
+      <div className="controls flex justify-between border-t-2 border-neutral-600 pr-3 pt-2">
+        <button onClick={exitAnim}>
+          <FilePenLine className="size-5 hover:stroke-rose-600 active:stroke-accent" />
+        </button>
+        <div className="flex items-center gap-3">
+          <button onClick={pagePrev}>
+            <ChevronLeft className="size-6 hover:stroke-rose-600 active:stroke-accent" />
+          </button>
+          <span>
+            {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
+              presetText.body.length < 10
+                ? `0${presetText.body.length}`
+                : presetText.body.length
+            }`}
+          </span>
+          <button onClick={pageNext}>
+            <ChevronRight className="size-6 hover:stroke-rose-600 active:stroke-accent" />
+          </button>
         </div>
       </div>
     </div>
