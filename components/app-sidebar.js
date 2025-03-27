@@ -13,10 +13,17 @@ import {
 } from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
 import { Separator } from "./ui/separator"
-import { Home } from "lucide-react"
+import { Home, Settings } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "./ui/dropdown-menu"
+import AppSelect from "./app-select"
 
 export function AppSidebar(props) {
-  const items = props.items
+  const { items, options } = props
+
   const homeitem = {
     icon: Home,
     title: "Home",
@@ -77,6 +84,42 @@ export function AppSidebar(props) {
                   </SidebarMenuItem>
                 )
               })}
+              <SidebarMenuItem
+                key={"options-menu"}
+                className={`${open ? "w-full" : "self-center"}`}
+              >
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <SidebarMenuButton
+                      onClick={(e) => {
+                        clearActiveStates()
+                        e.currentTarget.dataset.active = true
+                      }}
+                      variant="ghost"
+                      className="sidebar-btn text-xs"
+                    >
+                      <Settings />
+                      {open && <span className="truncate">Options</span>}
+                    </SidebarMenuButton>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent
+                    className="flex flex-col gap-2 p-2"
+                    align="start"
+                    side="right"
+                  >
+                    <AppSelect
+                      placeholder="Languages"
+                      action={options.setLang}
+                      items={options.langItems}
+                    />
+                    <AppSelect
+                      placeholder="Texts"
+                      action={options.setText}
+                      items={options.textItems}
+                    />
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </SidebarMenuItem>
             </SidebarMenu>
           </SidebarGroupContent>
         </SidebarGroup>

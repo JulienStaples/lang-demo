@@ -1,19 +1,17 @@
 "use client"
 
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 import TranslateTab from "../components/nav/TranslateTab"
 import DetailsTab from "../components/nav/DetailsTab"
 import DbSearch from "../components/nav/DbSearchTab"
-import TextsTab from "../components/nav/TextsTab"
-import LangsTab from "../components/nav/LangsTab"
 import { useAnimate } from "framer-motion"
 
 export const NavContext = createContext()
 
 export default function NavProvider({ children }) {
-  const [tab, setTab] = useState("translate-tab")
-  const [scope, animate] = useAnimate()
+  const [tab, setTab] = useState("")
   const [tabsPane, setTabsPane] = useState(false)
+  const [scope, animate] = useAnimate()
 
   function exitAnim() {
     const exitSeq = [[scope.current, { scaleX: 0 }, { duration: 0.07 }]]
@@ -32,10 +30,6 @@ export default function NavProvider({ children }) {
       setTab(<DetailsTab key={"details-tab"} selectTab={selectTab} />)
     if (curTab == "db")
       setTab(<DbSearch key={"db-tab"} selectTab={selectTab} />)
-    if (curTab == "texts")
-      setTab(<TextsTab key={"texts-tab"} selectTab={selectTab} />)
-    if (curTab == "langs")
-      setTab(<LangsTab key={"langs-tab"} selectTab={selectTab} />)
   }
   return (
     <NavContext.Provider
