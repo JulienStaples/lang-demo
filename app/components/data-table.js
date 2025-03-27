@@ -36,7 +36,8 @@ import {
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { MoreVertical } from "lucide-react"
+import { ChevronLeft, ChevronRight, MoreVertical } from "lucide-react"
+import { Label } from "@/components/ui/label"
 
 export function DataTable({ columns, data }) {
   const [sorting, setSorting] = React.useState([])
@@ -179,41 +180,50 @@ export function DataTable({ columns, data }) {
           </TableBody>
         </Table>
       </div>
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <p className="text-sm font-medium">Rows per page</p>
-        <Select
-          value={`${table.getState().pagination.pageSize}`}
-          onValueChange={(value) => {
-            table.setPageSize(Number(value))
-          }}
-        >
-          <SelectTrigger className="h-8 w-[70px]">
-            <SelectValue placeholder={table.getState().pagination.pageSize} />
-          </SelectTrigger>
-          <SelectContent side="top">
-            {[10, 20, 30, 40, 50].map((pageSize) => (
-              <SelectItem key={pageSize} value={`${pageSize}`}>
-                {pageSize}
-              </SelectItem>
-            ))}
-          </SelectContent>
-        </Select>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
+      <div className="flex items-start justify-between space-x-2 py-4">
+        <div className="flex flex-col items-start gap-2">
+          <Select
+            id="rows-select"
+            value={`${table.getState().pagination.pageSize}`}
+            onValueChange={(value) => {
+              table.setPageSize(Number(value))
+            }}
+          >
+            <SelectTrigger className="h-8 w-[70px]">
+              <SelectValue placeholder={table.getState().pagination.pageSize} />
+            </SelectTrigger>
+            <SelectContent side="top">
+              {[10, 20, 30, 40, 50].map((pageSize) => (
+                <SelectItem key={pageSize} value={`${pageSize}`}>
+                  {pageSize}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+          <Label htmlFor="rows-select" className="text-xs font-medium">
+            Rows per page
+          </Label>
+        </div>
+        <div className="flex items-center gap-3">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            <ChevronLeft />
+          </Button>
+          <span>{`${table.getState().pagination.pageIndex + 1} / ${table.getPageCount()}`}</span>
+
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            <ChevronRight />
+          </Button>
+        </div>
       </div>
     </>
   )
