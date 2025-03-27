@@ -13,7 +13,7 @@ export default function Nav() {
     useContext(NavContext)
   const { setPresetText, setLangOption, setPage } = useContext(AppContext)
 
-  const navTabObjs = [
+  const navTabItems = [
     {
       icon: Languages,
       title: "Translate",
@@ -46,46 +46,36 @@ export default function Nav() {
     },
   ]
 
-  const langItems = []
-  const textItems = []
-  genItems()
+  const langItems = [...langOptions].map((langEntry) => {
+    return {
+      key: langEntry[0],
+      text: langEntry[1],
+    }
+  })
+
+  const textItems = [...dummyText].map((textEntry) => {
+    return {
+      key: textEntry[0],
+      text: `${textEntry[1].lang} - ${textEntry[1].title}`,
+      lang: textEntry[1].lang,
+    }
+  })
 
   function setLang(item) {
     setLangOption(item.key)
   }
 
   function setText(item) {
-    console.log(item.lang)
     setPresetText(dummyText.get(item.key))
     setLangOption(item.lang == "en" ? "enfr" : `${item.lang}en`)
     setPage(0)
-  }
-  function genItems() {
-    langOptions.forEach((langs, key) => {
-      let item = {
-        key: key,
-        text: langs,
-      }
-
-      langItems.push(item)
-    })
-
-    dummyText.forEach((text, key) => {
-      let textItem = {
-        key: key,
-        text: `${text.lang} - ${text.title}`,
-        lang: text.lang,
-      }
-
-      textItems.push(textItem)
-    })
   }
 
   return (
     <nav>
       <SidebarProvider defaultOpen={false}>
         <AppSidebar
-          items={navTabObjs}
+          items={navTabItems}
           options={{
             langItems: langItems,
             setLang: setLang,
