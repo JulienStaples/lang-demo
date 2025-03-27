@@ -20,6 +20,7 @@ import {
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu"
 import AppSelect from "./app-select"
+import { ModeToggle } from "./mode-toggle"
 
 export function AppSidebar(props) {
   const { items, options } = props
@@ -117,6 +118,7 @@ export function AppSidebar(props) {
                       action={options.setText}
                       items={options.textItems}
                     />
+                    <ModeToggle />
                   </DropdownMenuContent>
                 </DropdownMenu>
               </SidebarMenuItem>
