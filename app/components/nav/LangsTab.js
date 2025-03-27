@@ -24,7 +24,7 @@ export default function LangsTab() {
 
   return (
     <motion.div
-      id="texts-tab"
+      id="langs-tab"
       className="flex flex-col items-start gap-3"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}

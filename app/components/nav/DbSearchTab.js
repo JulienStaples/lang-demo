@@ -7,11 +7,7 @@ import { columns } from "../columns"
 
 export default function DbSearchTab() {
   return (
-    <motion.div
-      id="texts-tab"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-    >
+    <motion.div id="db-tab" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
       <DataTable columns={columns} data={[...wordDb].map((e) => e[1])} />
     </motion.div>
   )
