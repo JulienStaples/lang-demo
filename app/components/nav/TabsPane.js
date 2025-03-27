@@ -5,11 +5,12 @@ import { NavContext } from "@/app/context/NavContext"
 import { motion } from "framer-motion"
 
 export default function TabPane() {
-  const { tab, scope, tabsPane } = useContext(NavContext)
+  const { tab, scope, tabsPane, exitAnim } = useContext(NavContext)
 
   if (tabsPane) {
     return (
       <motion.div
+        onClick={(e) => (e.target.id == "tabs-pane" ? exitAnim() : "")}
         ref={scope}
         initial={{ originX: "left", scaleX: 0 }}
         animate={{ scaleX: 1, transition: { duration: 0.1 } }}
