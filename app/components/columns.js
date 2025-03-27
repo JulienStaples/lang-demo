@@ -3,11 +3,24 @@
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import Word from "./virtPage/Word"
 import { diffBtnColors } from "../lib/constants/constants"
+import { ArrowUpDown } from "lucide-react"
+import { Button } from "@/components/ui/button"
 
 export const columns = [
   {
     accessorKey: "word",
-    header: "word",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="px-0 hover:bg-transparent"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Word
+          <ArrowUpDown className="ml-1" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       return (
         <Word
@@ -22,11 +35,33 @@ export const columns = [
   },
   {
     accessorKey: "root",
-    header: "root",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="px-0 hover:bg-transparent"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Root
+          <ArrowUpDown className="ml-1" />
+        </Button>
+      )
+    },
   },
   {
     accessorKey: "diff",
-    header: "diff",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="px-0 hover:bg-transparent"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Difficulty
+          <ArrowUpDown className="ml-1" />
+        </Button>
+      )
+    },
     cell: ({ row }) => {
       return (
         <ToggleGroup
@@ -69,6 +104,17 @@ export const columns = [
   },
   {
     accessorKey: "lang",
-    header: "lang",
+    header: ({ column }) => {
+      return (
+        <Button
+          variant="ghost"
+          className="px-0 hover:bg-transparent"
+          onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
+        >
+          Lang
+          <ArrowUpDown className="ml-1" />
+        </Button>
+      )
+    },
   },
 ]
