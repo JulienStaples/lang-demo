@@ -16,7 +16,7 @@ export default function DetailsTab(props) {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        <Word wordObj={activeWordObj ? activeWordObj : { text: "N/A..." }} />
+        <Word wordObj={activeWordObj ? activeWordObj : { text: "" }} />
       </div>
       <div className="flex gap-2">
         <h1>Def:</h1>

@@ -68,7 +68,7 @@ export default function TranslateTab(props) {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        <Word wordObj={activeWordObj ? activeWordObj : { text: "N/A..." }} />
+        <Word wordObj={activeWordObj ? activeWordObj : { text: "" }} />
       </div>
 
       <div className="flex flex-col gap-4">
@@ -142,12 +142,14 @@ export default function TranslateTab(props) {
       <div className="flex flex-col gap-4">
         <div className="flex w-full gap-3">
           <Button
+            disabled={!activeWord}
             className="grow bg-green-800 text-white hover:bg-green-600 active:bg-green-800"
             onClick={(e) => addEntry(e)}
           >
             save
           </Button>
           <Button
+            disabled={!activeWord}
             variant="destructive"
             className="grow bg-red-800 hover:bg-red-600 active:bg-red-900"
             onClick={(e) => delEntry(e)}
@@ -159,7 +161,10 @@ export default function TranslateTab(props) {
           target="_blank"
           href={`https://www.wordreference.com/${langOption}/${activeWord}`}
         >
-          <Button className="w-full rounded-md bg-blue-800 text-white hover:bg-blue-600 active:bg-blue-900">
+          <Button
+            disabled={!activeWord}
+            className="w-full rounded-md bg-blue-800 text-white hover:bg-blue-600 active:bg-blue-900"
+          >
             translate
           </Button>
         </a>
