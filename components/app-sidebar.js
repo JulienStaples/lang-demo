@@ -24,21 +24,7 @@ import { ModeToggle } from "./mode-toggle"
 
 export function AppSidebar(props) {
   const { items, options } = props
-
-  const homeitem = {
-    icon: Home,
-    title: "Home",
-    id: "home-tab",
-    action: () => {},
-  }
-
   const { open } = useSidebar()
-
-  function clearActiveStates() {
-    Array.from(document.querySelectorAll(".sidebar-btn")).forEach(
-      (e) => (e.dataset.active = false),
-    )
-  }
 
   return (
     <Sidebar collapsible="icon">
@@ -46,13 +32,12 @@ export function AppSidebar(props) {
         <SidebarMenu className="h-full">
           <SidebarMenuItem className="h-full">
             <Button
-              onClick={homeitem.action}
               variant="ghost"
               className={`h-full w-full rounded-none text-xs`}
-              key={homeitem.id}
+              key={"home-tab"}
             >
-              <homeitem.icon />
-              {open && <span className="truncate">{homeitem.title}</span>}
+              <Home />
+              {open && <span className="truncate">Home</span>}
             </Button>
           </SidebarMenuItem>
         </SidebarMenu>
@@ -71,11 +56,8 @@ export function AppSidebar(props) {
                     className={`${open ? "w-full" : "self-center"}`}
                   >
                     <SidebarMenuButton
-                      onClick={(e) => {
-                        item.action()
-                        clearActiveStates()
-                        e.currentTarget.dataset.active = true
-                      }}
+                      id={item.id}
+                      onClick={item.action}
                       variant="ghost"
                       className="sidebar-btn text-xs"
                     >
@@ -91,14 +73,7 @@ export function AppSidebar(props) {
               >
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
-                    <SidebarMenuButton
-                      onClick={(e) => {
-                        clearActiveStates()
-                        e.currentTarget.dataset.active = true
-                      }}
-                      variant="ghost"
-                      className="sidebar-btn text-xs"
-                    >
+                    <SidebarMenuButton variant="ghost" className="text-xs">
                       <Settings />
                       {open && <span className="truncate">Options</span>}
                     </SidebarMenuButton>

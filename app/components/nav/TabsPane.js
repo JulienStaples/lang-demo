@@ -1,11 +1,21 @@
 "use client"
 
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { NavContext } from "@/app/context/NavContext"
 import { motion } from "framer-motion"
 
 export default function TabPane() {
   const { tab, scope, tabsPane, exitAnim } = useContext(NavContext)
+
+  useEffect(() => {
+    Array.from(document.querySelectorAll(".sidebar-btn")).forEach((e) => {
+      tabsPane
+        ? tab.key === e.id
+          ? (e.dataset.active = true)
+          : (e.dataset.active = false)
+        : (e.dataset.active = false)
+    })
+  })
 
   if (tabsPane) {
     return (
