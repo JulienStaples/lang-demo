@@ -9,6 +9,7 @@ import ReadingView from "./ReadingView"
 import EditView from "./EditView"
 import { ChevronLeft, ChevronRight, FilePenLine } from "lucide-react"
 import { Progress } from "@/components/ui/progress"
+import { Button } from "@/components/ui/button"
 
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
@@ -58,9 +59,9 @@ export default function VirtPage() {
           <FilePenLine className="size-5 hover:stroke-rose-600 active:stroke-accent" />
         </button>
         <div className="flex items-center gap-3">
-          <button onClick={pagePrev}>
-            <ChevronLeft className="size-6 hover:stroke-rose-600 active:stroke-accent" />
-          </button>
+          <Button variant="outline" onClick={pagePrev}>
+            <ChevronLeft className="hover:stroke-rose-600 active:stroke-accent" />
+          </Button>
           <span>
             {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
               presetText.body.length < 10
@@ -68,9 +69,9 @@ export default function VirtPage() {
                 : presetText.body.length
             }`}
           </span>
-          <button onClick={pageNext}>
-            <ChevronRight className="size-6 hover:stroke-rose-600 active:stroke-accent" />
-          </button>
+          <Button variant="outline" onClick={pageNext}>
+            <ChevronRight className="hover:stroke-rose-600 active:stroke-accent" />
+          </Button>
         </div>
       </div>
     </div>
