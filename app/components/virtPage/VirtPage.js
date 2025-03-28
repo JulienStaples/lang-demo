@@ -13,7 +13,7 @@ import { Progress } from "@/components/ui/progress"
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
   const [scope, animate] = useAnimate()
-  const [view, setView] = useState()
+  const [view, setView] = useState("")
   const editBox = useRef()
 
   useEffect(() => {
@@ -41,7 +41,7 @@ export default function VirtPage() {
 
       <div
         ref={scope}
-        className={`relative h-full w-full pr-4 after:pointer-events-none after:absolute after:inset-0 after:-inset-y-3 after:-left-10 after:right-0 after:shadow-[inset_0_-1px_10px_black]`}
+        className={`relative h-full w-full pr-4 before:pointer-events-none before:absolute before:-inset-y-3 before:-left-10 before:right-0 before:z-0 before:border-8 before:border-accent before:transition-all before:duration-700 ${view.type?.name == "EditView" ? "before:opacity-100" : "before:opacity-0"} after:pointer-events-none after:absolute after:inset-0 after:-inset-y-3 after:-left-10 after:right-0 after:shadow-[inset_0_-1px_10px_black] focus-within:before:animate-pulse`}
       >
         {view}
       </div>

@@ -12,7 +12,8 @@ export default function EditView(props) {
       <textarea
         ref={editBox}
         key={`editView`}
-        className="page-view absolute -inset-y-3 -left-10 right-0 origin-left resize-none overflow-x-hidden overflow-y-scroll bg-transparent py-3 pl-10 pr-4 [word-spacing:2px]"
+        autoFocus
+        className="page-view absolute -inset-y-3 -left-10 right-0 origin-left resize-none overflow-x-hidden overflow-y-scroll bg-transparent py-3 pl-10 pr-4 font-serif outline-none [word-spacing:2px]"
         defaultValue={presetText.body[page]}
       />
     </motion.div>
