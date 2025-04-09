@@ -1,10 +1,10 @@
 "use client"
 
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
-import Word from "./virtPage/Word"
-import { diffBtnColors } from "../lib/constants/constants"
+import Word from "../../virtPage/Word"
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { diffBtnColors } from "@/app/lib/constants/constants"
 
 export const columns = [
   {

@@ -3,7 +3,7 @@
 import { createContext, useState } from "react"
 import TranslateTab from "../components/nav/TranslateTab"
 import DetailsTab from "../components/nav/DetailsTab"
-import DbSearchTab from "../components/nav/DbSearchTab"
+import DbSearchTab from "../components/nav/dbTab/DbTab"
 import { useAnimate } from "framer-motion"
 
 export const NavContext = createContext()
