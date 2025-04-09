@@ -33,18 +33,18 @@ export default function Nav() {
     },
   ]
 
-  const langItems = [...langOptions].map((langEntry) => {
+  const langItems = [...langOptions].map(([key, text]) => {
     return {
-      key: langEntry[0],
-      text: langEntry[1],
+      key,
+      text,
     }
   })
 
-  const textItems = [...dummyText].map((textEntry) => {
+  const textItems = [...dummyText].map(([key, { lang, title }]) => {
     return {
-      key: textEntry[0],
-      text: `${textEntry[1].lang} - ${textEntry[1].title}`,
-      lang: textEntry[1].lang,
+      key,
+      text: `${lang} - ${title}`,
+      lang: lang,
     }
   })
 
