@@ -10,12 +10,11 @@ export default function TabPane() {
   if (tabsPane) {
     return (
       <motion.div
-        onClick={(e) => (e.target.id == "tabs-pane" ? exitAnim() : "")}
+        onClick={(e) => e.target.id === "tabs-pane" && exitAnim()}
         ref={scope}
         initial={{ originX: "left", scaleX: 0 }}
         animate={{ scaleX: 1, transition: { duration: 0.1 } }}
         id="tabs-pane"
-        data-active="false"
         className="absolute inset-0 z-40 items-start overflow-y-scroll bg-neutral-950/95 p-4"
       >
         <div>{tab}</div>
