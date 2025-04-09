@@ -9,42 +9,33 @@ import { Database, Languages, SearchIcon } from "lucide-react"
 import { dummyText, langOptions } from "@/app/lib/constants/constants"
 
 export default function Nav() {
-  const { tab, selectTab, exitAnim, setTabsPane, tabsPane } =
-    useContext(NavContext)
+  const { tab, selectTab, exitAnim, tabsPane } = useContext(NavContext)
   const { setPresetText, setLangOption, setPage } = useContext(AppContext)
 
-  const navTabItems = [
+  const tabItems = [
     {
       icon: Languages,
       title: "Translate",
       id: "translate-tab",
-      action: () => {
-        tab.key == "translate-tab" && tabsPane
-          ? exitAnim()
-          : (selectTab("translate"), setTabsPane(true))
-      },
+      action: (e) => switchTab(e.currentTarget.id),
     },
     {
       icon: SearchIcon,
       title: "Details",
       id: "details-tab",
-      action: () => {
-        tab.key == "details-tab" && tabsPane
-          ? exitAnim()
-          : (selectTab("details"), setTabsPane(true))
-      },
+      action: (e) => switchTab(e.currentTarget.id),
     },
     {
       icon: Database,
       title: "Database",
       id: "db-tab",
-      action: () => {
-        tab.key == "db-tab" && tabsPane
-          ? exitAnim()
-          : (selectTab("db"), setTabsPane(true))
-      },
+      action: (e) => switchTab(e.currentTarget.id),
     },
   ]
+
+  function switchTab(tabItem) {
+    tabsPane && tab.key === tabItem ? exitAnim() : selectTab(tabItem)
+  }
 
   const langItems = [...langOptions].map((langEntry) => {
     return {
@@ -75,7 +66,7 @@ export default function Nav() {
     <nav>
       <SidebarProvider defaultOpen={false}>
         <AppSidebar
-          items={navTabItems}
+          items={tabItems}
           options={{
             langItems: langItems,
             setLang: setLang,

@@ -31,7 +31,7 @@ export default function Word(props) {
     if (tab.key == "translate-tab") {
       tabsPane ? exitAnim() : setTabsPane(true)
     } else {
-      selectTab("translate")
+      selectTab("translate-tab")
       setTabsPane(true)
     }
   }
