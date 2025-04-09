@@ -10,7 +10,7 @@ import AppTextarea from "@/components/app-textarea"
 import { Button } from "@/components/ui/button"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
-export default function TranslateTab(props) {
+export default function TranslateTab() {
   const { activeWordObj, entry, langOption } = useContext(AppContext)
   const { tabsPane, exitAnim } = useContext(NavContext)
   const defBox = useRef()
@@ -157,17 +157,17 @@ export default function TranslateTab(props) {
             del
           </Button>
         </div>
-        <a
-          target="_blank"
-          href={`https://www.wordreference.com/${langOption}/${activeWord}`}
+        <Button
+          disabled={!activeWord}
+          className="relative w-full rounded-md bg-blue-800 text-white hover:bg-blue-600 active:bg-blue-900"
         >
-          <Button
-            disabled={!activeWord}
-            className="w-full rounded-md bg-blue-800 text-white hover:bg-blue-600 active:bg-blue-900"
-          >
-            translate
-          </Button>
-        </a>
+          <a
+            target="_blank"
+            href={`https://www.wordreference.com/${langOption}/${activeWord}`}
+            className="absolute inset-0"
+          />
+          translate
+        </Button>
       </div>
     </motion.div>
   )
