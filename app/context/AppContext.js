@@ -23,6 +23,16 @@ export default function AppProvider({ children }) {
     } catch {}
   }, [])
 
+  function setText({ lang, key }) {
+    setPresetText(dummyText.get(key))
+    setLangOption(lang == "en" ? "enfr" : `${lang}en`)
+    setPage(0)
+  }
+
+  function setLang({ key }) {
+    setLangOption(key)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -31,11 +41,11 @@ export default function AppProvider({ children }) {
         entry,
         setEntry,
         presetText,
-        setPresetText,
         langOption,
-        setLangOption,
         page,
         setPage,
+        setText,
+        setLang,
       }}
     >
       {children}
