@@ -9,7 +9,7 @@ import { Database, Languages, SearchIcon } from "lucide-react"
 import { dummyText, langOptions } from "@/app/lib/constants/constants"
 
 export default function Nav() {
-  const { selectTab } = useContext(NavContext)
+  const { selectTab, tab, tabsPane } = useContext(NavContext)
   const { setText, setLang } = useContext(AppContext)
 
   const tabItems = [
@@ -52,6 +52,8 @@ export default function Nav() {
     <nav>
       <SidebarProvider defaultOpen={false}>
         <AppSidebar
+          tabKey={tab.key}
+          tabsPane={tabsPane}
           items={tabItems}
           langItems={langItems}
           langsAction={setLang}

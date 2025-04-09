@@ -23,7 +23,15 @@ import AppSelect from "./app-select"
 import { ModeToggle } from "./mode-toggle"
 
 export function AppSidebar(props) {
-  const { items, langsAction, langItems, textsAction, textItems } = props
+  const {
+    tabKey,
+    tabsPane,
+    items,
+    langsAction,
+    langItems,
+    textsAction,
+    textItems,
+  } = props
   const { open } = useSidebar()
 
   return (
@@ -59,7 +67,8 @@ export function AppSidebar(props) {
                       id={item.id}
                       onClick={item.action}
                       variant="ghost"
-                      className="sidebar-btn text-xs"
+                      isActive={tabsPane && tabKey === item.id}
+                      className="text-xs"
                     >
                       <item.icon />
                       {open && <span className="truncate">{item.title}</span>}

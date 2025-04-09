@@ -9,7 +9,7 @@ import { useAnimate } from "framer-motion"
 export const NavContext = createContext()
 
 export default function NavProvider({ children }) {
-  const [tab, setTab] = useState()
+  const [tab, setTab] = useState("")
   const [tabsPane, setTabsPane] = useState(false)
   const [scope, animate] = useAnimate()
 
