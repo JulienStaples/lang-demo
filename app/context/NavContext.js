@@ -20,6 +20,8 @@ export default function NavProvider({ children }) {
   }
 
   function selectTab(curTab) {
+    if (tabsPane && curTab === tab.key) return exitAnim()
+
     if (!tabsPane) setTabsPane(true)
 
     const TabComponent = tabs[curTab]

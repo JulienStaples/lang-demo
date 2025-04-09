@@ -9,7 +9,7 @@ import { Database, Languages, SearchIcon } from "lucide-react"
 import { dummyText, langOptions } from "@/app/lib/constants/constants"
 
 export default function Nav() {
-  const { tab, selectTab, exitAnim, tabsPane } = useContext(NavContext)
+  const { selectTab } = useContext(NavContext)
   const { setPresetText, setLangOption, setPage } = useContext(AppContext)
 
   const tabItems = [
@@ -17,25 +17,21 @@ export default function Nav() {
       icon: Languages,
       title: "Translate",
       id: "translate-tab",
-      action: (e) => switchTab(e.currentTarget.id),
+      action: (e) => selectTab(e.currentTarget.id),
     },
     {
       icon: SearchIcon,
       title: "Details",
       id: "details-tab",
-      action: (e) => switchTab(e.currentTarget.id),
+      action: (e) => selectTab(e.currentTarget.id),
     },
     {
       icon: Database,
       title: "Database",
       id: "db-tab",
-      action: (e) => switchTab(e.currentTarget.id),
+      action: (e) => selectTab(e.currentTarget.id),
     },
   ]
-
-  function switchTab(tabItem) {
-    tabsPane && tab.key === tabItem ? exitAnim() : selectTab(tabItem)
-  }
 
   const langItems = [...langOptions].map((langEntry) => {
     return {
