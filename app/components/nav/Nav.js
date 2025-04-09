@@ -63,12 +63,10 @@ export default function Nav() {
       <SidebarProvider defaultOpen={false}>
         <AppSidebar
           items={tabItems}
-          options={{
-            langItems: langItems,
-            setLang: setLang,
-            textItems: textItems,
-            setText: setText,
-          }}
+          langItems={langItems}
+          setLang={setLang}
+          textItems={textItems}
+          setText={setText}
         />
       </SidebarProvider>
     </nav>

@@ -23,7 +23,7 @@ import AppSelect from "./app-select"
 import { ModeToggle } from "./mode-toggle"
 
 export function AppSidebar(props) {
-  const { items, options } = props
+  const { items, setLang, langItems, setText, textItems } = props
   const { open } = useSidebar()
 
   return (
@@ -85,13 +85,13 @@ export function AppSidebar(props) {
                   >
                     <AppSelect
                       placeholder="Languages"
-                      action={options.setLang}
-                      items={options.langItems}
+                      action={setLang}
+                      items={langItems}
                     />
                     <AppSelect
                       placeholder="Texts"
-                      action={options.setText}
-                      items={options.textItems}
+                      action={setText}
+                      items={textItems}
                     />
                     <ModeToggle />
                   </DropdownMenuContent>
