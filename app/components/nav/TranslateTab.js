@@ -24,11 +24,7 @@ export default function TranslateTab() {
   }, [tabsPane])
 
   function addEntry(diff) {
-    let newDiff = diff
-      ? diff
-      : wordDb.has(activeWord)
-        ? wordDb.get(activeWord).diff
-        : "hard"
+    let newDiff = diff || (wordDb.get(activeWord)?.diff ?? "hard")
 
     const newEntryObj = {
       word: activeWord,
@@ -51,10 +47,10 @@ export default function TranslateTab() {
   }
 
   function changeDiff(diff) {
-    try {
+    if (wordDb.has(activeWord)) {
       wordDb.get(activeWord).diff = diff
       setDiff(diff)
-    } catch {
+    } else {
       addEntry(diff)
     }
   }
