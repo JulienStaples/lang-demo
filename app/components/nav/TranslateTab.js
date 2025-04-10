@@ -1,35 +1,34 @@
 "use client"
 
-import { useContext, useEffect, useRef, useState } from "react"
+import { useContext, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
 import { NavContext } from "@/app/context/NavContext"
 import Word from "../virtPage/Word"
-import { diffBtnColors, findDiff, wordDb } from "../../lib/constants/constants"
+import { diffBtnColors, wordDb } from "../../lib/constants/constants"
 import { motion } from "framer-motion"
 import AppTextarea from "@/components/app-textarea"
 import { Button } from "@/components/ui/button"
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 
 export default function TranslateTab() {
-  const { activeWordObj, entry, langOption } = useContext(AppContext)
-  const { tabsPane, exitAnim } = useContext(NavContext)
+  const { activeWordObj, langOption } = useContext(AppContext)
+  const { exitAnim } = useContext(NavContext)
   const defBox = useRef()
   const rootBox = useRef()
+
   const activeWord = activeWordObj.normal
-  const [uiDiff, setUiDiff] = useState()
+  const activeEntry = wordDb.get(activeWord)
+  const [uiDiff, setUiDiff] = useState(activeEntry?.diff ?? undefined)
 
-  useEffect(() => {
-    setUiDiff(findDiff(activeWord))
-    sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
-  }, [tabsPane])
+  sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
 
-  function addEntry(diff) {
-    let newDiff = diff || (wordDb.get(activeWord)?.diff ?? "hard")
+  function saveEntry(diff) {
+    let newDiff = diff || (activeEntry?.diff ?? "hard")
 
     const newEntryObj = {
       word: activeWord,
-      def: defBox.current.value,
-      root: rootBox.current.value,
+      def: defBox.current.value || undefined,
+      root: rootBox.current.value || undefined,
       diff: newDiff,
       lang: "lang",
     }
@@ -46,13 +45,12 @@ export default function TranslateTab() {
     exitAnim()
   }
 
-  function changeDiff(diff) {
-    if (wordDb.has(activeWord)) {
-      wordDb.get(activeWord).diff = diff
-      setUiDiff(diff)
-    } else {
-      addEntry(diff)
-    }
+  function handleDiffChange(diff) {
+    if (!activeWord) return
+    if (!activeEntry) return saveEntry(diff)
+
+    activeEntry.diff = diff
+    setUiDiff(diff)
   }
 
   return (
@@ -64,45 +62,33 @@ export default function TranslateTab() {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        <Word wordObj={activeWordObj ? activeWordObj : { text: "" }} />
+        {activeWord && <Word wordObj={activeWordObj} />}
       </div>
 
       <div className="flex flex-col gap-4">
         <AppTextarea
           ref={defBox}
           id={"defBox"}
-          label={`Definition: ${
-            entry.def !== undefined && entry.def !== "" ? entry.def : "..."
-          }`}
-          defaultValue={
-            entry.def !== undefined && entry.def !== "" ? entry.def : ""
-          }
+          label={`Definition: ${activeEntry?.def ?? "..."}`}
+          defaultValue={activeEntry?.def ?? ""}
         />
         <AppTextarea
           ref={rootBox}
           id={"rootBox"}
-          label={`Root: ${
-            entry.root !== undefined && entry.root !== "" ? entry.root : "..."
-          }`}
-          defaultValue={
-            entry.root !== undefined && entry.root !== "" ? entry.root : ""
-          }
+          label={`Root: ${activeEntry?.root ?? "..."}`}
+          defaultValue={activeEntry?.root ?? ""}
         />
         <AppTextarea
           ref={undefined}
           id={undefined}
-          label={`Tags: ${
-            entry.tags !== undefined && entry.tags !== "" ? entry.tags : "..."
-          }`}
-          defaultValue={
-            entry.tags !== undefined && entry.tags !== "" ? entry.tags : ""
-          }
+          label={`Tags: ${activeEntry?.tags ?? "..."}`}
+          defaultValue={activeEntry?.tags ?? ""}
         />
         <ToggleGroup
           className="w-fit gap-0 self-start rounded-sm border"
           type="single"
           value={uiDiff}
-          onValueChange={(value) => (value ? changeDiff(value) : "")}
+          onValueChange={(value) => handleDiffChange(value)}
         >
           <ToggleGroupItem
             value="wk"
@@ -140,7 +126,7 @@ export default function TranslateTab() {
           <Button
             disabled={!activeWord}
             className="grow bg-green-800 text-white hover:bg-green-600 active:bg-green-800"
-            onClick={() => addEntry(null)}
+            onClick={() => saveEntry(null)}
           >
             save
           </Button>
