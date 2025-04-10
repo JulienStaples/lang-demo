@@ -3,9 +3,12 @@ import { useContext } from "react"
 import { AppContext } from "@/app/context/AppContext"
 import Word from "../virtPage/Word"
 import { motion } from "framer-motion"
+import { wordDb } from "@/app/lib/constants/constants"
 
-export default function DetailsTab(props) {
-  const { entry, activeWordObj } = useContext(AppContext)
+export default function DetailsTab() {
+  const { activeWordObj } = useContext(AppContext)
+
+  const activeEntry = wordDb.get(activeWordObj.normal)
 
   return (
     <motion.div
@@ -16,51 +19,45 @@ export default function DetailsTab(props) {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        <Word wordObj={activeWordObj ? activeWordObj : { text: "" }} />
+        {activeWordObj && (
+          <Word
+            wordObj={{ normal: activeWordObj.normal, text: activeWordObj.text }}
+          />
+        )}
       </div>
       <div className="flex gap-2">
-        <h1>Def:</h1>
-        <p>{entry.def !== undefined && entry.def !== "" ? entry.def : "..."}</p>
+        <h1>Definition:</h1>
+        <p>{activeEntry?.def ?? "..."}</p>
       </div>
       <div className="flex gap-2">
-        <h1>Root:</h1>
-        <p>
-          {entry.root !== undefined && entry.root !== "" ? entry.root : "..."}
-        </p>
+        <h1>Parent:</h1>
+        <p>{activeEntry?.parent ?? "..."}</p>
+      </div>
+      <div className="flex gap-2">
+        <h1>Language:</h1>
+        <p>{activeEntry?.lang ?? "..."}</p>
       </div>
       <div className="flex gap-2">
         <h1>Tags:</h1>
         <p>
-          {activeWordObj.tags !== undefined && activeWordObj.tags !== ""
-            ? [...activeWordObj.tags].join(", ")
-            : "..."}
+          {activeWordObj?.tags ? [...activeWordObj.tags].join(", ") : "..."}
         </p>
       </div>
       <div className="flex gap-2">
         <h1>Part of speech:</h1>
-        <p>
-          {activeWordObj.chunk !== undefined && activeWordObj.chunk !== ""
-            ? activeWordObj.chunk
-            : "..."}
-        </p>
+        <p>{activeWordObj?.chunk ?? "..."}</p>
       </div>
       <div className="flex gap-2">
         <h1>Synonyms:</h1>
-        <p>{entry.syn !== undefined && entry.syn !== "" ? entry.syn : "..."}</p>
+        <p>{activeEntry?.syn ?? "..."}</p>
       </div>
       <div className="flex gap-2">
         <h1>Origin:</h1>
-        <p>
-          {entry.origin !== undefined && entry.origin !== ""
-            ? entry.origin
-            : "..."}
-        </p>
+        <p>{activeEntry?.origin ?? "..."}</p>
       </div>
       <div className="flex gap-2">
         <h1>Frequency:</h1>
-        <p>
-          {entry.freq !== undefined && entry.freq !== "" ? entry.freq : "..."}
-        </p>
+        <p>{activeEntry?.freq ?? "..."}</p>
       </div>
     </motion.div>
   )
