@@ -23,7 +23,7 @@ export default function TranslateTab() {
     sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
   }, [tabsPane])
 
-  function addEntry(e, diff) {
+  function addEntry(diff) {
     let newDiff = diff
       ? diff
       : wordDb.has(activeWord)
@@ -44,7 +44,7 @@ export default function TranslateTab() {
     exitAnim()
   }
 
-  function delEntry(e) {
+  function delEntry() {
     wordDb.delete(activeWord)
 
     exitAnim()
@@ -55,7 +55,7 @@ export default function TranslateTab() {
       wordDb.get(activeWord).diff = diff
       setDiff(diff)
     } catch {
-      addEntry("", diff)
+      addEntry(diff)
     }
   }
 
@@ -144,7 +144,7 @@ export default function TranslateTab() {
           <Button
             disabled={!activeWord}
             className="grow bg-green-800 text-white hover:bg-green-600 active:bg-green-800"
-            onClick={(e) => addEntry(e)}
+            onClick={() => addEntry(null)}
           >
             save
           </Button>
@@ -152,7 +152,7 @@ export default function TranslateTab() {
             disabled={!activeWord}
             variant="destructive"
             className="grow bg-red-800 hover:bg-red-600 active:bg-red-900"
-            onClick={(e) => delEntry(e)}
+            onClick={delEntry}
           >
             del
           </Button>
