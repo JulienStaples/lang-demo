@@ -9,7 +9,11 @@ export default function TitleBar() {
     <div className="flex justify-between border-b-2 border-neutral-600 pb-2 pr-5">
       <span>{presetText.title}</span>
       <span>
-        <Word wordObj={activeWordObj ? activeWordObj : ""} />
+        {activeWordObj && (
+          <Word
+            wordObj={{ normal: activeWordObj.normal, text: activeWordObj.text }}
+          />
+        )}
       </span>
     </div>
   )

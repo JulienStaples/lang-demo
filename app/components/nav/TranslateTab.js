@@ -62,7 +62,11 @@ export default function TranslateTab() {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        {activeWordObj && <Word wordObj={activeWordObj} />}
+        {activeWordObj && (
+          <Word
+            wordObj={{ normal: activeWordObj.normal, text: activeWordObj.text }}
+          />
+        )}
       </div>
 
       <div className="flex flex-col gap-4">
