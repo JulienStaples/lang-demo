@@ -47,7 +47,7 @@ export default function DetailsTab() {
         <h1>Part of speech:</h1>
         <p>{activeWordObj?.chunk ?? "..."}</p>
       </div>
-      <div className="flex gap-2">
+      {/* <div className="flex gap-2">
         <h1>Synonyms:</h1>
         <p>{activeEntry?.syn ?? "..."}</p>
       </div>
@@ -58,7 +58,7 @@ export default function DetailsTab() {
       <div className="flex gap-2">
         <h1>Frequency:</h1>
         <p>{activeEntry?.freq ?? "..."}</p>
-      </div>
+      </div> */}
     </motion.div>
   )
 }
