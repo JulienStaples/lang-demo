@@ -34,7 +34,7 @@ export const columns = [
     header: "def",
   },
   {
-    accessorKey: "root",
+    accessorKey: "parent",
     header: ({ column }) => {
       return (
         <Button
@@ -42,7 +42,7 @@ export const columns = [
           className="px-0 hover:bg-transparent"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Root
+          Parent
           <ArrowUpDown className="ml-1" />
         </Button>
       )

@@ -14,7 +14,7 @@ export default function TranslateTab() {
   const { activeWordObj, langOption } = useContext(AppContext)
   const { exitAnim } = useContext(NavContext)
   const defBox = useRef()
-  const rootBox = useRef()
+  const parentBox = useRef()
 
   const activeWord = activeWordObj.normal
   const activeEntry = wordDb.get(activeWord)
@@ -28,7 +28,7 @@ export default function TranslateTab() {
     const newEntryObj = {
       word: activeWord,
       def: defBox.current.value || undefined,
-      root: rootBox.current.value || undefined,
+      parent: parentBox.current.value || undefined,
       diff: newDiff,
       lang: "lang",
     }
@@ -62,7 +62,7 @@ export default function TranslateTab() {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        {activeWord && <Word wordObj={activeWordObj} />}
+        {activeWordObj && <Word wordObj={activeWordObj} />}
       </div>
 
       <div className="flex flex-col gap-4">
@@ -73,10 +73,10 @@ export default function TranslateTab() {
           defaultValue={activeEntry?.def ?? ""}
         />
         <AppTextarea
-          ref={rootBox}
-          id={"rootBox"}
-          label={`Root: ${activeEntry?.root ?? "..."}`}
-          defaultValue={activeEntry?.root ?? ""}
+          ref={parentBox}
+          id={"parentBox"}
+          label={`Parent: ${activeEntry?.parent ?? "..."}`}
+          defaultValue={activeEntry?.parent ?? ""}
         />
         <AppTextarea
           ref={undefined}
