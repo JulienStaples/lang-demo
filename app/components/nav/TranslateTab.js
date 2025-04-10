@@ -78,12 +78,12 @@ export default function TranslateTab() {
           label={`Parent: ${activeEntry?.parent ?? "..."}`}
           defaultValue={activeEntry?.parent ?? ""}
         />
-        <AppTextarea
+        {/* <AppTextarea
           ref={undefined}
           id={undefined}
           label={`Tags: ${activeEntry?.tags ?? "..."}`}
           defaultValue={activeEntry?.tags ?? ""}
-        />
+        /> */}
         <ToggleGroup
           className="w-fit gap-0 self-start rounded-sm border"
           type="single"
