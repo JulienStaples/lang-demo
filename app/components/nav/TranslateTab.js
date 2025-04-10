@@ -16,10 +16,10 @@ export default function TranslateTab() {
   const defBox = useRef()
   const rootBox = useRef()
   const activeWord = activeWordObj.normal
-  const [diff, setDiff] = useState()
+  const [uiDiff, setUiDiff] = useState()
 
   useEffect(() => {
-    setDiff(findDiff(activeWord))
+    setUiDiff(findDiff(activeWord))
     sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
   }, [tabsPane])
 
@@ -35,7 +35,7 @@ export default function TranslateTab() {
     }
 
     wordDb.set(activeWord, newEntryObj)
-    setDiff(newDiff)
+    setUiDiff(newDiff)
 
     exitAnim()
   }
@@ -49,7 +49,7 @@ export default function TranslateTab() {
   function changeDiff(diff) {
     if (wordDb.has(activeWord)) {
       wordDb.get(activeWord).diff = diff
-      setDiff(diff)
+      setUiDiff(diff)
     } else {
       addEntry(diff)
     }
@@ -101,7 +101,7 @@ export default function TranslateTab() {
         <ToggleGroup
           className="w-fit gap-0 self-start rounded-sm border"
           type="single"
-          value={diff}
+          value={uiDiff}
           onValueChange={(value) => (value ? changeDiff(value) : "")}
         >
           <ToggleGroupItem
