@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useMemo } from "react"
 import { AppContext } from "../../context/AppContext"
 import { motion } from "framer-motion"
 import { enterExitVari } from "../../lib/constants/virtPageAnims"
@@ -8,7 +8,7 @@ import fnlpObj from "fr-compromise"
 
 export default function ReadingView() {
   const { presetText, page } = useContext(AppContext)
-  const nlp = nlpObj(presetText.body[page])
+  const nlp = useMemo(() => nlpObj(presetText.body[page]), [presetText, page])
 
   return (
     <motion.div initial="init" animate="enter" variants={enterExitVari}>
