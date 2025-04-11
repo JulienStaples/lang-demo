@@ -1,10 +1,9 @@
 "use client"
 
-import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import Word from "../../virtPage/Word"
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { diffBtnColors } from "@/app/lib/constants/constants"
+import { diffWordColors } from "@/app/lib/constants/constants"
 
 export const columns = [
   {
@@ -63,42 +62,14 @@ export const columns = [
       )
     },
     cell: ({ row }) => {
+      const diff = row.getValue("diff")
       return (
-        <ToggleGroup
-          className="w-fit gap-0 self-start rounded-sm border"
-          type="single"
-          value={row.getValue("diff")}
-          // onValueChange={(value) => (value ? changeDiff(value) : "")}
+        <div
+          data-diff={diff}
+          className={`${diffWordColors} rounded-sm text-center`}
         >
-          <ToggleGroupItem
-            value="wk"
-            className={`rounded-l-sm rounded-r-none border-foreground bg-transparent`}
-            aria-label="Toggle wk"
-          >
-            wk
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="easy"
-            className={`${diffBtnColors.easy} rounded-none`}
-            aria-label="Toggle easy"
-          >
-            easy
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="med"
-            className={`${diffBtnColors.med} rounded-none`}
-            aria-label="Toggle med"
-          >
-            med
-          </ToggleGroupItem>
-          <ToggleGroupItem
-            value="hard"
-            className={`${diffBtnColors.hard} rounded-l-none rounded-r-sm`}
-            aria-label="Toggle hard"
-          >
-            hard
-          </ToggleGroupItem>
-        </ToggleGroup>
+          {diff}
+        </div>
       )
     },
   },
