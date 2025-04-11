@@ -12,18 +12,24 @@ import Footer from "./Footer"
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
   const [scope, animate] = useAnimate()
-  const [view, setView] = useState("")
   const editBox = useRef()
 
+  const [view, setView] = useState("")
+
   useEffect(() => {
-    setView(<ReadingView />)
+    setView("reading")
   }, [])
 
+  const views = {
+    reading: <ReadingView />,
+    edit: <EditView ref={editBox} />,
+  }
+
   function toggleView() {
-    view.type.name == "ReadingView"
-      ? setView(<EditView ref={editBox} />)
-      : ((presetText.body[page] = editBox.current.value),
-        setView(<ReadingView />))
+    if (view === "reading") return setView("edit")
+
+    presetText.body[page] = editBox.current.value
+    setView("reading")
   }
 
   function exitAnim() {
@@ -47,7 +53,7 @@ export default function VirtPage() {
         ref={scope}
         className={`relative h-full w-full pr-4 before:pointer-events-none before:absolute before:-inset-y-3 before:-left-10 before:right-0 before:z-0 before:border-8 before:border-accent before:transition-all before:duration-700 ${view.type?.name == "EditView" ? "before:opacity-100" : "before:opacity-0"} after:pointer-events-none after:absolute after:inset-0 after:-inset-y-3 after:-left-10 after:right-0 after:shadow-[inset_0_-1px_10px_black] focus-within:before:animate-pulse`}
       >
-        {view}
+        {views[view]}
       </div>
 
       <Footer
