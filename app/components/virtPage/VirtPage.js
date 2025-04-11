@@ -7,9 +7,7 @@ import { enterExitVari, spanVari } from "@/app/lib/constants/virtPageAnims"
 import TitleBar from "./TitleBar"
 import ReadingView from "./ReadingView"
 import EditView from "./EditView"
-import { ChevronLeft, ChevronRight, FilePenLine } from "lucide-react"
-import { Progress } from "@/components/ui/progress"
-import { Button } from "@/components/ui/button"
+import Footer from "./Footer"
 
 export default function VirtPage() {
   const { presetText, page, setPage } = useContext(AppContext)
@@ -19,7 +17,7 @@ export default function VirtPage() {
 
   useEffect(() => {
     setView(<ReadingView />)
-  }, [presetText, page])
+  }, [])
 
   function toggleView() {
     view.type.name == "ReadingView"
@@ -27,55 +25,6 @@ export default function VirtPage() {
       : ((presetText.body[page] = editBox.current.value),
         setView(<ReadingView />))
   }
-
-  function pageNext() {
-    page == presetText.body.length - 1 ? "" : setPage((prev) => (prev += 1))
-  }
-
-  function pagePrev() {
-    page == 0 ? "" : setPage((prev) => (prev -= 1))
-  }
-
-  return (
-    <div className="flex grow flex-col gap-3">
-      <TitleBar />
-
-      <div
-        ref={scope}
-        className={`relative h-full w-full pr-4 before:pointer-events-none before:absolute before:-inset-y-3 before:-left-10 before:right-0 before:z-0 before:border-8 before:border-accent before:transition-all before:duration-700 ${view.type?.name == "EditView" ? "before:opacity-100" : "before:opacity-0"} after:pointer-events-none after:absolute after:inset-0 after:-inset-y-3 after:-left-10 after:right-0 after:shadow-[inset_0_-1px_10px_black] focus-within:before:animate-pulse`}
-      >
-        {view}
-      </div>
-
-      <div className="controls relative flex justify-between border-t-2 border-neutral-600 pr-3 pt-2">
-        <Progress
-          className="absolute top-0 h-1"
-          value={
-            (page + 1 == 1 ? 0 : (page + 1) / presetText.body.length) * 100
-          }
-        />
-
-        <button onClick={exitAnim}>
-          <FilePenLine className="size-5 hover:stroke-rose-600 active:stroke-accent" />
-        </button>
-        <div className="flex items-center gap-3">
-          <Button variant="outline" onClick={pagePrev}>
-            <ChevronLeft className="hover:stroke-rose-600 active:stroke-accent" />
-          </Button>
-          <span>
-            {`${page + 1 < 10 ? `0${page + 1}` : page + 1} / ${
-              presetText.body.length < 10
-                ? `0${presetText.body.length}`
-                : presetText.body.length
-            }`}
-          </span>
-          <Button variant="outline" onClick={pageNext}>
-            <ChevronRight className="hover:stroke-rose-600 active:stroke-accent" />
-          </Button>
-        </div>
-      </div>
-    </div>
-  )
 
   function exitAnim() {
     const exitSeq = [
@@ -89,4 +38,24 @@ export default function VirtPage() {
       }, 200)
     })
   }
+
+  return (
+    <div className="flex grow flex-col gap-3">
+      <TitleBar />
+
+      <div
+        ref={scope}
+        className={`relative h-full w-full pr-4 before:pointer-events-none before:absolute before:-inset-y-3 before:-left-10 before:right-0 before:z-0 before:border-8 before:border-accent before:transition-all before:duration-700 ${view.type?.name == "EditView" ? "before:opacity-100" : "before:opacity-0"} after:pointer-events-none after:absolute after:inset-0 after:-inset-y-3 after:-left-10 after:right-0 after:shadow-[inset_0_-1px_10px_black] focus-within:before:animate-pulse`}
+      >
+        {view}
+      </div>
+
+      <Footer
+        presetText={presetText}
+        page={page}
+        setPage={setPage}
+        exitAnim={exitAnim}
+      />
+    </div>
+  )
 }

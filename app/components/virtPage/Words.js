@@ -1,10 +1,6 @@
 import React, { useContext, useMemo } from "react"
 import { AppContext } from "@/app/context/AppContext"
-import {
-  diffWordColors,
-  findEntry,
-  wordDb,
-} from "@/app/lib/constants/constants"
+import { diffWordColors, wordDb } from "@/app/lib/constants/constants"
 import { motion } from "framer-motion"
 import { spanVari, wordVari } from "../../lib/constants/virtPageAnims"
 import { NavContext } from "@/app/context/NavContext"
