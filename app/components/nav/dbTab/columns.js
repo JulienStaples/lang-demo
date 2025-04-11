@@ -1,6 +1,6 @@
 "use client"
 
-import Word from "../../virtPage/Words"
+import Words from "../../virtPage/Words"
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { diffWordColors } from "@/app/lib/constants/constants"
@@ -21,7 +21,7 @@ export const columns = [
       )
     },
     cell: ({ row }) => {
-      return <Word words={row.getValue("word")} single={true} />
+      return <Words words={row.getValue("word")} single={true} />
     },
   },
   {

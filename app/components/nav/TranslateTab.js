@@ -3,7 +3,7 @@
 import { useContext, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
 import { NavContext } from "@/app/context/NavContext"
-import Word from "../virtPage/Words"
+import Words from "../virtPage/Words"
 import { diffBtnColors, wordDb } from "../../lib/constants/constants"
 import { motion } from "framer-motion"
 import AppTextarea from "@/components/app-textarea"
@@ -62,7 +62,7 @@ export default function TranslateTab() {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        {activeWordObj && <Word words={activeWordObj.text} single={true} />}
+        {activeWordObj && <Words words={activeWordObj.text} single={true} />}
       </div>
 
       <div className="flex flex-col gap-4">

@@ -1,7 +1,7 @@
 "use client"
 import { useContext } from "react"
 import { AppContext } from "@/app/context/AppContext"
-import Word from "../virtPage/Words"
+import Words from "../virtPage/Words"
 import { motion } from "framer-motion"
 import { wordDb } from "@/app/lib/constants/constants"
 
@@ -19,7 +19,7 @@ export default function DetailsTab() {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        {activeWordObj && <Word words={activeWordObj.text} single={true} />}
+        {activeWordObj && <Words words={activeWordObj.text} single={true} />}
       </div>
       <div className="flex gap-2">
         <h1>Definition:</h1>
