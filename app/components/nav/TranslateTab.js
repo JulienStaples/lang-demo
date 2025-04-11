@@ -26,7 +26,7 @@ export default function TranslateTab() {
     let newDiff = diff || (activeEntry?.diff ?? "hard")
 
     const newEntryObj = {
-      word: activeWord,
+      word: activeWordObj.text,
       def: defBox.current.value || undefined,
       parent: parentBox.current.value || undefined,
       diff: newDiff,
@@ -62,11 +62,7 @@ export default function TranslateTab() {
     >
       <div className="flex gap-2 overflow-visible">
         <h1>Word:</h1>
-        {activeWordObj && (
-          <Word
-            wordObj={{ normal: activeWordObj.normal, text: activeWordObj.text }}
-          />
-        )}
+        {activeWordObj && <Word words={activeWordObj.text} single={true} />}
       </div>
 
       <div className="flex flex-col gap-4">

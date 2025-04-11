@@ -21,11 +21,7 @@ export const columns = [
       )
     },
     cell: ({ row }) => {
-      return (
-        <Word
-          wordObj={{ normal: row.getValue("word"), text: row.getValue("word") }}
-        />
-      )
+      return <Word words={row.getValue("word")} single={true} />
     },
   },
   {
