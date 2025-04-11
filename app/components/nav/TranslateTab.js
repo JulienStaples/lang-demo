@@ -3,7 +3,7 @@
 import { useContext, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
 import { NavContext } from "@/app/context/NavContext"
-import Word from "../virtPage/Word"
+import Word from "../virtPage/Words"
 import { diffBtnColors, wordDb } from "../../lib/constants/constants"
 import { motion } from "framer-motion"
 import AppTextarea from "@/components/app-textarea"

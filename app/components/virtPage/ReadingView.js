@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { AppContext } from "../../context/AppContext"
 import { motion } from "framer-motion"
 import { enterExitVari } from "../../lib/constants/virtPageAnims"
-import Word from "./Word"
+import Word from "./Words"
 
 export default function ReadingView() {
   const { presetText, page } = useContext(AppContext)

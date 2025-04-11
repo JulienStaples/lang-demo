@@ -1,7 +1,7 @@
 "use client"
 import { useContext } from "react"
 import { AppContext } from "@/app/context/AppContext"
-import Word from "../virtPage/Word"
+import Word from "../virtPage/Words"
 import { motion } from "framer-motion"
 import { wordDb } from "@/app/lib/constants/constants"
 

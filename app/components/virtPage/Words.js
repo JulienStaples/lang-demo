@@ -12,7 +12,7 @@ import { NavContext } from "@/app/context/NavContext"
 import nlp from "compromise"
 import fnlpObj from "fr-compromise"
 
-export default function Word(props) {
+export default function Words(props) {
   const { words, single = false } = props
   const { setActiveWordObj, setEntry } = useContext(AppContext)
   const { setTabsPane, exitAnim, tab, tabsPane, selectTab } =

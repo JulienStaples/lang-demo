@@ -1,6 +1,6 @@
 import { useContext } from "react"
 import { AppContext } from "../../context/AppContext"
-import Word from "./Word"
+import Word from "./Words"
 
 export default function TitleBar() {
   const { presetText, activeWordObj } = useContext(AppContext)

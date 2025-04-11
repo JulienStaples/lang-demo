@@ -1,6 +1,6 @@
 "use client"
 
-import Word from "../../virtPage/Word"
+import Word from "../../virtPage/Words"
 import { ArrowUpDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { diffWordColors } from "@/app/lib/constants/constants"
