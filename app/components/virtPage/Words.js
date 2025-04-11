@@ -1,9 +1,9 @@
 import React, { useContext, useMemo } from "react"
 import { AppContext } from "@/app/context/AppContext"
 import {
-  findDiff,
   diffWordColors,
   findEntry,
+  wordDb,
 } from "@/app/lib/constants/constants"
 import { motion } from "framer-motion"
 import { spanVari, wordVari } from "../../lib/constants/virtPageAnims"
@@ -15,10 +15,9 @@ import fnlpObj from "fr-compromise"
 export default function Words(props) {
   const { words, single = false } = props
   const { setActiveWordObj, setEntry } = useContext(AppContext)
-  const { setTabsPane, exitAnim, tab, tabsPane, selectTab } =
-    useContext(NavContext)
+  const { selectTab } = useContext(NavContext)
 
-  const wordObjs = useMemo(() => parser(words, single), [words])
+  const wordObjs = useMemo(() => parser(), [words])
 
   function parser() {
     if (single) return [nlp(words).termList()[0]]
@@ -27,18 +26,14 @@ export default function Words(props) {
 
   function handleClick(wordObj) {
     setActiveWordObj(wordObj)
-    setEntry(findEntry(wordObj.normal))
+    setEntry(wordDb.get(wordObj.normal)?.entry || undefined)
 
-    if (tab.key == "translate-tab") {
-      tabsPane ? exitAnim() : setTabsPane(true)
-    } else {
-      selectTab("translate-tab")
-      setTabsPane(true)
-    }
+    selectTab("translate-tab")
   }
 
   return wordObjs.map((wordObj) => {
-    const wordDiff = findDiff(wordObj.normal)
+    const wordDiff = wordDb.get(wordObj.normal)?.diff || undefined
+
     return (
       <React.Fragment key={wordObj.id}>
         <motion.span
