@@ -10,7 +10,7 @@ import EditView from "./EditView"
 import Footer from "./Footer"
 
 export default function VirtPage() {
-  const { presetText, page, setPage } = useContext(AppContext)
+  const { presetText, page, setPage, activeWordObj } = useContext(AppContext)
   const [scope, animate] = useAnimate()
   const editBox = useRef()
 
@@ -47,7 +47,7 @@ export default function VirtPage() {
 
   return (
     <div className="flex grow flex-col gap-3">
-      <TitleBar />
+      <TitleBar presetText={presetText} activeWordObj={activeWordObj} />
 
       <div
         ref={scope}
