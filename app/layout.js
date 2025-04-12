@@ -10,9 +10,9 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={"h-full"}>
       <body
-        className={`flex h-[100vh] items-center justify-center bg-black text-white antialiased`}
+        className={`flex h-full items-center justify-center bg-black text-white antialiased`}
       >
         <AppProvider>
           <NavProvider>
