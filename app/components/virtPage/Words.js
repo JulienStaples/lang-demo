@@ -11,7 +11,7 @@ import fnlpObj from "fr-compromise"
 export default function Words(props) {
   const { words, single = false } = props
   const { setActiveWordObj, setEntry } = useContext(AppContext)
-  const { selectTab } = useContext(NavContext)
+  const { updateTab } = useContext(NavContext)
 
   const wordObjs = useMemo(() => parser(), [words])
 
@@ -24,7 +24,7 @@ export default function Words(props) {
     setActiveWordObj(wordObj)
     setEntry(wordDb.get(wordObj.normal)?.entry || undefined)
 
-    selectTab("translate-tab")
+    updateTab("translate-tab")
   }
 
   return wordObjs.map((wordObj) => {

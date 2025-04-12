@@ -9,7 +9,7 @@ import { Database, Languages, SearchIcon } from "lucide-react"
 import { dummyText, langOptions } from "@/app/lib/constants/constants"
 
 export default function Nav() {
-  const { selectTab, tab, tabsPane } = useContext(NavContext)
+  const { updateTab, tab, tabsPane } = useContext(NavContext)
   const { changeText, setLang } = useContext(AppContext)
 
   const tabItems = [
@@ -17,19 +17,19 @@ export default function Nav() {
       icon: Languages,
       title: "Translate",
       id: "translate-tab",
-      action: (e) => selectTab(e.currentTarget.id),
+      action: (e) => updateTab(e.currentTarget.id),
     },
     {
       icon: SearchIcon,
       title: "Details",
       id: "details-tab",
-      action: (e) => selectTab(e.currentTarget.id),
+      action: (e) => updateTab(e.currentTarget.id),
     },
     {
       icon: Database,
       title: "Database",
       id: "db-tab",
-      action: (e) => selectTab(e.currentTarget.id),
+      action: (e) => updateTab(e.currentTarget.id),
     },
   ]
 

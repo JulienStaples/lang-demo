@@ -19,7 +19,7 @@ export default function NavProvider({ children }) {
     "db-tab": DbSearchTab,
   }
 
-  function selectTab(curTab) {
+  function updateTab(curTab) {
     if (tabsPane && curTab === tab.key) return exitAnim()
 
     if (!tabsPane) setTabsPane(true)
@@ -41,7 +41,7 @@ export default function NavProvider({ children }) {
   return (
     <NavContext.Provider
       value={{
-        selectTab,
+        updateTab,
         tab,
         scope,
         exitAnim,
