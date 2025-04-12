@@ -33,16 +33,6 @@ export default function DetailsTab() {
         <h1>Language:</h1>
         <p>{activeEntry?.lang ?? "..."}</p>
       </div>
-      <div className="flex gap-2">
-        <h1>Tags:</h1>
-        <p>
-          {activeWordObj?.tags ? [...activeWordObj.tags].join(", ") : "..."}
-        </p>
-      </div>
-      <div className="flex gap-2">
-        <h1>Part of speech:</h1>
-        <p>{activeWordObj?.chunk ?? "..."}</p>
-      </div>
     </motion.div>
   )
 }
