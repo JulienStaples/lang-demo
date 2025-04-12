@@ -7,7 +7,7 @@ export default function ReadingView(props) {
 
   return (
     <motion.div initial="init" animate="enter" variants={enterExitVari}>
-      <div className="page-view absolute -inset-y-3 -left-10 right-0 origin-left overflow-x-hidden overflow-y-scroll py-3 pl-10 pr-4">
+      <div className="page-view absolute -inset-y-3 -left-10 right-0 origin-left overflow-x-hidden overflow-y-scroll py-3 pl-[3.5rem] pr-4">
         <Words words={presetText.body[page]} />
       </div>
     </motion.div>

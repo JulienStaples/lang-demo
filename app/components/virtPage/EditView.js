@@ -9,7 +9,7 @@ export default function EditView(props) {
       <textarea
         ref={editBox}
         autoFocus
-        className="page-view absolute -inset-y-3 -left-10 right-0 origin-left resize-none overflow-x-hidden overflow-y-scroll bg-transparent py-3 pl-10 pr-4 font-serif outline-none [word-spacing:2px]"
+        className="page-view absolute -inset-y-3 -left-10 right-0 origin-left resize-none overflow-x-hidden overflow-y-scroll bg-transparent py-3 pl-[3.5rem] pr-4 font-serif outline-none [word-spacing:2px]"
         defaultValue={presetText.body[page]}
       />
     </motion.div>

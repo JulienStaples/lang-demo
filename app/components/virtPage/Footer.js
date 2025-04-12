@@ -18,8 +18,11 @@ export default function Footer(props) {
   }
 
   return (
-    <div className="controls relative flex justify-between border-t-2 border-neutral-600 pr-3 pt-2">
-      <Progress className="absolute top-0 h-1" value={progress * 100} />
+    <div className="controls relative flex justify-between px-4 py-3">
+      <Progress
+        className="absolute -top-1 left-0 right-0 h-1 rounded-none"
+        value={progress * 100}
+      />
 
       <button onClick={exitAnim}>
         <FilePenLine className="size-5 hover:stroke-rose-600 active:stroke-accent" />
