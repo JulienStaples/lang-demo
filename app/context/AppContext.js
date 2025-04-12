@@ -17,7 +17,7 @@ export default function AppProvider({ children }) {
 
   usePullStorage()
 
-  function setText({ lang, key }) {
+  function changeText({ lang, key }) {
     setPresetText(dummyText.get(key))
     setLangOption(lang == "en" ? "enfr" : `${lang}en`)
     setPage(0)
@@ -38,7 +38,7 @@ export default function AppProvider({ children }) {
         langOption,
         page,
         setPage,
-        setText,
+        changeText,
         setLang,
       }}
     >

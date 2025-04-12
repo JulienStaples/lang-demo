@@ -10,7 +10,7 @@ import { dummyText, langOptions } from "@/app/lib/constants/constants"
 
 export default function Nav() {
   const { selectTab, tab, tabsPane } = useContext(NavContext)
-  const { setText, setLang } = useContext(AppContext)
+  const { changeText, setLang } = useContext(AppContext)
 
   const tabItems = [
     {
@@ -58,7 +58,7 @@ export default function Nav() {
           langItems={langItems}
           langsAction={setLang}
           textItems={textItems}
-          textsAction={setText}
+          textsAction={changeText}
         />
       </SidebarProvider>
     </nav>
