@@ -21,8 +21,8 @@ export default function VirtPage() {
   }, [])
 
   const views = {
-    reading: <ReadingView />,
-    edit: <EditView ref={editBox} />,
+    reading: <ReadingView presetText={presetText} page={page} />,
+    edit: <EditView ref={editBox} presetText={presetText} page={page} />,
   }
 
   function toggleView() {

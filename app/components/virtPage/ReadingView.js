@@ -1,11 +1,9 @@
-import { useContext } from "react"
-import { AppContext } from "../../context/AppContext"
 import { motion } from "framer-motion"
 import { enterExitVari } from "../../lib/constants/virtPageAnims"
 import Words from "./Words"
 
-export default function ReadingView() {
-  const { presetText, page } = useContext(AppContext)
+export default function ReadingView(props) {
+  const { presetText, page } = props
 
   return (
     <motion.div initial="init" animate="enter" variants={enterExitVari}>
