@@ -29,7 +29,7 @@ export default function Footer(props) {
         <Button variant="outline" onClick={pagePrev}>
           <ChevronLeft className="hover:stroke-rose-600 active:stroke-accent" />
         </Button>
-        <span>{`${page} / ${presetText.body.length}`}</span>
+        <span>{`${page + 1} / ${presetText.body.length}`}</span>
         <Button variant="outline" onClick={pageNext}>
           <ChevronRight className="hover:stroke-rose-600 active:stroke-accent" />
         </Button>
