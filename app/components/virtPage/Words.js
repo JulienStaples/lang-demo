@@ -6,7 +6,6 @@ import { spanVari, wordVari } from "../../lib/constants/virtPageAnims"
 import { NavContext } from "@/app/context/NavContext"
 
 import nlp from "compromise"
-import fnlpObj from "fr-compromise"
 
 export default function Words(props) {
   const { words, single = false } = props
