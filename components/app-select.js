@@ -8,9 +8,7 @@ import {
 import { useState } from "react"
 
 export default function AppSelect(props) {
-  const placeholder = props.placeholder
-  const action = props.action
-  const items = props.items
+  const { placeholder, action, items } = props
 
   const [value, setValue] = useState("")
 

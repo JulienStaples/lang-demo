@@ -3,10 +3,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 
 export default function AppTextarea(props) {
-  const ref = props.ref
-  const id = props.id
-  const label = props.label
-  const defaultValue = props.defaultValue
+  const { ref, id, label, defaultValue } = props
 
   return (
     <div className="grid w-full gap-1.5">
