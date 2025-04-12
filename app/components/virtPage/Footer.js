@@ -29,11 +29,11 @@ export default function Footer(props) {
       </button>
 
       <div className="flex items-center gap-3">
-        <Button variant="outline" onClick={pagePrev}>
+        <Button variant="outline" onClick={pagePrev} className="size-7">
           <ChevronLeft className="hover:stroke-rose-600 active:stroke-accent" />
         </Button>
         <span>{`${page + 1} / ${presetText.body.length}`}</span>
-        <Button variant="outline" onClick={pageNext}>
+        <Button variant="outline" onClick={pageNext} className="size-7">
           <ChevronRight className="hover:stroke-rose-600 active:stroke-accent" />
         </Button>
       </div>
