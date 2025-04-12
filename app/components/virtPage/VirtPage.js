@@ -18,7 +18,7 @@ export default function VirtPage() {
 
   useEffect(() => {
     setView("reading")
-  }, [])
+  }, [presetText, page])
 
   const views = {
     reading: <ReadingView presetText={presetText} page={page} />,
