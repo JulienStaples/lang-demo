@@ -1,8 +1,8 @@
 "use client"
 
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 import { dummyText } from "../lib/constants/constants"
-import { wordDb } from "../lib/constants/constants"
+import usePullStorage from "../components/hooks/usePullStorage"
 
 export const AppContext = createContext()
 
@@ -15,13 +15,7 @@ export default function AppProvider({ children }) {
   )
   const [page, setPage] = useState(0)
 
-  useEffect(() => {
-    try {
-      JSON.parse(sessionStorage.wordDb).forEach((entry) => {
-        wordDb.set(entry[0], entry[1])
-      })
-    } catch {}
-  }, [])
+  usePullStorage()
 
   function setText({ lang, key }) {
     setPresetText(dummyText.get(key))
