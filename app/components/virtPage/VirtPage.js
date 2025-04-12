@@ -36,13 +36,10 @@ export default function VirtPage() {
     const exitSeq = [
       [".bg-span", spanVari.exit, { duration: 0.2 }],
       [".page-view", enterExitVari.exit, { delay: 0.15, duration: 0.1 }],
+      [".page-view", { delay: 0.2 }],
     ]
 
-    animate(exitSeq).then(() => {
-      setTimeout(() => {
-        toggleView()
-      }, 200)
-    })
+    animate(exitSeq).then(() => toggleView())
   }
 
   return (

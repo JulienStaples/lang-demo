@@ -29,13 +29,12 @@ export default function NavProvider({ children }) {
   }
 
   function exitAnim() {
-    const exitSeq = [[scope.current, { scaleX: 0 }, { duration: 0.07 }]]
+    const exitSeq = [
+      [scope.current, { scaleX: 0 }, { duration: 0.07 }],
+      [scope.current, { delay: 0 }],
+    ]
 
-    animate(exitSeq).then(() => {
-      setTimeout(() => {
-        setTabsPane(false)
-      }, 0)
-    })
+    animate(exitSeq).then(() => setTabsPane(false))
   }
 
   return (
