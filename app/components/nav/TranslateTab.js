@@ -22,8 +22,6 @@ export default function TranslateTab() {
   const [uiDiff, setUiDiff] = useState(activeEntry?.diff ?? undefined)
   const [wordLang, setWordLang] = useState(activeEntry?.lang ?? presetText.lang)
 
-  sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
-
   function saveEntry(diff) {
     const newDiff = diff || (activeEntry?.diff ?? "hard")
 
