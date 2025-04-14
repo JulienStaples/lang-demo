@@ -1,11 +1,10 @@
 "use client"
 
-import { createContext, useEffect, useState } from "react"
+import { createContext, useState } from "react"
 import TranslateTab from "../components/nav/TranslateTab"
 import DetailsTab from "../components/nav/DetailsTab"
 import DbSearchTab from "../components/nav/dbTab/DbTab"
 import { useAnimate } from "framer-motion"
-import { wordDb } from "@/src/lib/wordDb"
 
 export const NavContext = createContext()
 
@@ -13,10 +12,6 @@ export default function NavProvider({ children }) {
   const [tab, setTab] = useState("")
   const [tabsPane, setTabsPane] = useState(false)
   const [scope, animate] = useAnimate()
-
-  useEffect(() => {
-    sessionStorage.setItem("wordDb", JSON.stringify([...wordDb]))
-  }, [tabsPane])
 
   const tabs = {
     "translate-tab": TranslateTab,

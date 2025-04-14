@@ -11,12 +11,14 @@ import { Button } from "@/src/components/ui/button"
 import { ToggleGroup, ToggleGroupItem } from "@/src/components/ui/toggle-group"
 import AppSelect from "@/src/components/app-select"
 import { wordDb } from "@/src/lib/wordDb"
+import useStorage from "@/src/hooks/useStorage"
 
 export default function TranslateTab() {
   const { activeWordObj, langOption, presetText } = useContext(AppContext)
   const { exitAnim } = useContext(NavContext)
   const defBox = useRef()
   const parentBox = useRef()
+  const { syncStorage } = useStorage()
 
   const activeWord = activeWordObj.normal
   const activeEntry = wordDb.get(activeWord)
@@ -37,12 +39,14 @@ export default function TranslateTab() {
     wordDb.set(activeWord, newEntryObj)
     setUiDiff(newDiff)
 
+    syncStorage()
     exitAnim()
   }
 
   function delEntry() {
     wordDb.delete(activeWord)
 
+    syncStorage()
     exitAnim()
   }
 
@@ -51,6 +55,7 @@ export default function TranslateTab() {
     if (!activeEntry) return saveEntry(diff)
 
     activeEntry.diff = diff
+    syncStorage()
     setUiDiff(diff)
   }
 

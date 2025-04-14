@@ -1,7 +1,8 @@
 "use client"
 
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { dummyText } from "../../constants/constants"
+import useStorage from "@/src/hooks/useStorage"
 
 export const AppContext = createContext()
 
@@ -13,6 +14,11 @@ export default function AppProvider({ children }) {
     presetText.lang == "en" ? "enfr" : `${presetText.lang}en`,
   )
   const [page, setPage] = useState(0)
+  const { initStorage } = useStorage()
+
+  useEffect(() => {
+    initStorage()
+  }, [])
 
   function changeText({ lang, key }) {
     setPresetText(dummyText.get(key))
