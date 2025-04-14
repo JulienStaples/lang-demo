@@ -3,7 +3,7 @@ import { useContext } from "react"
 import { AppContext } from "@/src/app/context/AppContext"
 import Words from "../virtPage/Words"
 import { motion } from "framer-motion"
-import { wordDb } from "@/src/constants/constants"
+import { wordDb } from "@/src/lib/wordDb"
 
 export default function DetailsTab() {
   const { activeWordObj } = useContext(AppContext)

@@ -5,7 +5,7 @@ import TranslateTab from "../components/nav/TranslateTab"
 import DetailsTab from "../components/nav/DetailsTab"
 import DbSearchTab from "../components/nav/dbTab/DbTab"
 import { useAnimate } from "framer-motion"
-import { wordDb } from "../../constants/constants"
+import { wordDb } from "@/src/lib/wordDb"
 
 export const NavContext = createContext()
 

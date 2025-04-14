@@ -2,7 +2,6 @@
 
 import { createContext, useState } from "react"
 import { dummyText } from "../../constants/constants"
-import usePullStorage from "@/src/hooks/usePullStorage"
 
 export const AppContext = createContext()
 
@@ -14,8 +13,6 @@ export default function AppProvider({ children }) {
     presetText.lang == "en" ? "enfr" : `${presetText.lang}en`,
   )
   const [page, setPage] = useState(0)
-
-  usePullStorage()
 
   function changeText({ lang, key }) {
     setPresetText(dummyText.get(key))

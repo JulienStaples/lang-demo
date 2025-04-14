@@ -1,9 +1,10 @@
 import React, { useContext, useMemo } from "react"
 import { AppContext } from "@/src/app/context/AppContext"
-import { diffWordColors, wordDb } from "@/src/constants/constants"
+import { diffWordColors } from "@/src/constants/constants"
 import { motion } from "framer-motion"
 import { spanVari, wordVari } from "../../../constants/virtPageAnims"
 import { NavContext } from "@/src/app/context/NavContext"
+import { wordDb } from "@/src/lib/wordDb"
 
 import nlp from "compromise"
 

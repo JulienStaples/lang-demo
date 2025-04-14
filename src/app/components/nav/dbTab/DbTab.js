@@ -1,9 +1,9 @@
 "use client"
 
-import { wordDb } from "../../../../constants/constants"
 import { motion } from "framer-motion"
 import { DataTable } from "./data-table"
 import { columns } from "./columns"
+import { wordDb } from "@/src/lib/wordDb"
 
 export default function DbSearchTab() {
   return (

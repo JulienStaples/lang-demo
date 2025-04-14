@@ -4,12 +4,13 @@ import { useContext, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
 import { NavContext } from "@/src/app/context/NavContext"
 import Words from "../virtPage/Words"
-import { diffBtnColors, wordDb } from "@/src/constants/constants"
+import { diffBtnColors } from "@/src/constants/constants"
 import { motion } from "framer-motion"
 import AppTextarea from "@/src/components/app-textarea"
 import { Button } from "@/src/components/ui/button"
 import { ToggleGroup, ToggleGroupItem } from "@/src/components/ui/toggle-group"
 import AppSelect from "@/src/components/app-select"
+import { wordDb } from "@/src/lib/wordDb"
 
 export default function TranslateTab() {
   const { activeWordObj, langOption, presetText } = useContext(AppContext)
