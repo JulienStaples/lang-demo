@@ -3,11 +3,24 @@
 import { useContext } from "react"
 import { NavContext } from "@/src/app/context/NavContext"
 import { motion } from "framer-motion"
+import { useIsMobile } from "@/src/hooks/use-mobile"
 
-export default function TabPane() {
+export default function TabsPane() {
   const { tab, scope, tabsPane, exitAnim } = useContext(NavContext)
+  const isMobile = useIsMobile()
 
-  if (tabsPane) {
+  if (!isMobile) {
+    return (
+      <motion.div
+        id="tabs-pane"
+        className="z-40 h-full w-1/2 items-start overflow-y-scroll bg-neutral-950/95 p-4"
+      >
+        <div>{tab}</div>
+      </motion.div>
+    )
+  }
+
+  if (isMobile && tabsPane) {
     return (
       <motion.div
         onClick={(e) => e.target.id === "tabs-pane" && exitAnim()}

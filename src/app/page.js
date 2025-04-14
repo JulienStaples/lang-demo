@@ -8,7 +8,7 @@ export default async function Home() {
   return (
     <main className="relative flex h-full w-full bg-neutral-900">
       <Nav></Nav>
-      <div className="relative flex grow flex-col gap-4">
+      <div className="relative flex grow">
         <VirtPage></VirtPage>
         <TabsPane></TabsPane>
       </div>

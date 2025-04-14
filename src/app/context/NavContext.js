@@ -1,10 +1,11 @@
 "use client"
 
-import { createContext, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import TranslateTab from "../components/nav/TranslateTab"
 import DetailsTab from "../components/nav/DetailsTab"
 import DbSearchTab from "../components/nav/dbTab/DbTab"
 import { useAnimate } from "framer-motion"
+import { useIsMobile } from "@/src/hooks/use-mobile"
 
 export const NavContext = createContext()
 
@@ -12,6 +13,11 @@ export default function NavProvider({ children }) {
   const [tab, setTab] = useState("")
   const [tabsPane, setTabsPane] = useState(false)
   const [scope, animate] = useAnimate()
+  const isMobile = useIsMobile()
+
+  useEffect(() => {
+    if (isMobile) updateTab("translate-tab")
+  }, [])
 
   const tabs = {
     "translate-tab": TranslateTab,
@@ -20,7 +26,7 @@ export default function NavProvider({ children }) {
   }
 
   function updateTab(curTab) {
-    if (tabsPane && curTab === tab.key) return exitAnim()
+    if (isMobile && tabsPane && curTab === tab.key) return exitAnim()
 
     if (!tabsPane) setTabsPane(true)
 

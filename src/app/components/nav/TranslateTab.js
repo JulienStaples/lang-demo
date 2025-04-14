@@ -1,6 +1,6 @@
 "use client"
 
-import { useContext, useRef, useState } from "react"
+import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
 import { NavContext } from "@/src/app/context/NavContext"
 import Words from "../virtPage/Words"
@@ -12,18 +12,28 @@ import { ToggleGroup, ToggleGroupItem } from "@/src/components/ui/toggle-group"
 import AppSelect from "@/src/components/app-select"
 import { wordDb } from "@/src/lib/wordDb"
 import useStorage from "@/src/hooks/useStorage"
+import { useIsMobile } from "@/src/hooks/use-mobile"
 
 export default function TranslateTab() {
   const { activeWordObj, langOption, presetText } = useContext(AppContext)
+  const { updateTab } = useContext(NavContext)
   const { exitAnim } = useContext(NavContext)
   const defBox = useRef()
   const parentBox = useRef()
   const { syncStorage } = useStorage()
+  const isMobile = useIsMobile()
 
   const activeWord = activeWordObj.normal
   const activeEntry = wordDb.get(activeWord)
+
+  const [wordLang, setWordLang] = useState()
+
+  //this is only to force ui update on mobile
   const [uiDiff, setUiDiff] = useState(activeEntry?.diff ?? undefined)
-  const [wordLang, setWordLang] = useState(activeEntry?.lang ?? presetText.lang)
+
+  useEffect(() => {
+    setWordLang(activeEntry?.lang ?? presetText.lang)
+  }, [activeWordObj])
 
   function saveEntry(diff) {
     const newDiff = diff || (activeEntry?.diff ?? "hard")
@@ -37,9 +47,11 @@ export default function TranslateTab() {
     }
 
     wordDb.set(activeWord, newEntryObj)
-    setUiDiff(newDiff)
+
+    if (isMobile) setUiDiff(newDiff)
 
     syncStorage()
+    if (!isMobile) return updateTab("translate-tab")
     exitAnim()
   }
 
@@ -47,6 +59,8 @@ export default function TranslateTab() {
     wordDb.delete(activeWord)
 
     syncStorage()
+
+    if (!isMobile) return updateTab("translate-tab")
     exitAnim()
   }
 
@@ -56,7 +70,9 @@ export default function TranslateTab() {
 
     activeEntry.diff = diff
     syncStorage()
-    setUiDiff(diff)
+    if (isMobile) setUiDiff(diff)
+
+    if (!isMobile) updateTab("translate-tab")
   }
 
   const langItems = [
@@ -87,18 +103,20 @@ export default function TranslateTab() {
           id={"defBox"}
           label={`Definition: ${activeEntry?.def ?? "..."}`}
           defaultValue={activeEntry?.def ?? ""}
+          word={activeWordObj}
         />
         <AppTextarea
           ref={parentBox}
           id={"parentBox"}
           label={`Parent: ${activeEntry?.parent ?? "..."}`}
           defaultValue={activeEntry?.parent ?? ""}
+          word={activeWordObj}
         />
         <div className="flex gap-4">
           <ToggleGroup
             className="w-fit gap-0 self-start rounded-sm border"
             type="single"
-            value={uiDiff}
+            value={activeEntry?.diff ?? undefined}
             onValueChange={(value) => handleDiffChange(value)}
           >
             <ToggleGroupItem
