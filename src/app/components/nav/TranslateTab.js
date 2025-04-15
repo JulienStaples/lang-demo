@@ -51,7 +51,7 @@ export default function TranslateTab() {
     if (isMobile) setUiDiff(newDiff)
 
     syncStorage()
-    if (!isMobile) return updateTab("translate-tab")
+    if (!isMobile) return updateTab("translate-tab", diff)
     exitAnim()
   }
 
@@ -72,7 +72,7 @@ export default function TranslateTab() {
     syncStorage()
     if (isMobile) setUiDiff(diff)
 
-    if (!isMobile) updateTab("translate-tab")
+    if (!isMobile) updateTab("translate-tab", diff)
   }
 
   const langItems = [

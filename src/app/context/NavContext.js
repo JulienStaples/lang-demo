@@ -16,8 +16,9 @@ export default function NavProvider({ children }) {
   const isMobile = useIsMobile()
 
   useEffect(() => {
-    if (isMobile) updateTab("translate-tab")
-  }, [])
+    if (isMobile) setTabsPane(false)
+    if (!isMobile) updateTab("translate-tab")
+  }, [isMobile])
 
   const tabs = {
     "translate-tab": TranslateTab,
@@ -25,13 +26,15 @@ export default function NavProvider({ children }) {
     "db-tab": DbSearchTab,
   }
 
-  function updateTab(curTab) {
+  // refresh is just used to update ui
+  function updateTab(curTab, refresh = "") {
+    console.log(tab.key)
     if (isMobile && tabsPane && curTab === tab.key) return exitAnim()
 
     if (!tabsPane) setTabsPane(true)
 
     const TabComponent = tabs[curTab]
-    setTab(<TabComponent key={curTab} />)
+    setTab(<TabComponent key={curTab + refresh} />)
   }
 
   function exitAnim() {
