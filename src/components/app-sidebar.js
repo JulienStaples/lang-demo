@@ -102,7 +102,7 @@ export function AppSidebar(props) {
                       action={textsAction}
                       items={textItems}
                     />
-                    <ModeToggle />
+                    {/* <ModeToggle /> */}
                   </DropdownMenuContent>
                 </DropdownMenu>
               </SidebarMenuItem>

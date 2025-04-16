@@ -3,6 +3,7 @@
 import { createContext, useEffect, useState } from "react"
 import { dummyText } from "../../constants/constants"
 import useStorage from "@/src/hooks/useStorage"
+import { useTheme } from "next-themes"
 
 export const AppContext = createContext()
 
@@ -15,9 +16,11 @@ export default function AppProvider({ children }) {
   )
   const [page, setPage] = useState(0)
   const { initStorage } = useStorage()
+  const { setTheme } = useTheme()
 
   useEffect(() => {
     initStorage()
+    setTheme("dark")
   }, [])
 
   function changeText({ lang, key }) {
