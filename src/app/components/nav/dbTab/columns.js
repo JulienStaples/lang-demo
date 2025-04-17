@@ -25,8 +25,8 @@ export const columns = [
     },
   },
   {
-    accessorKey: "def",
-    header: "def",
+    accessorKey: "definition",
+    header: "Definition",
   },
   {
     accessorKey: "parent",
@@ -44,7 +44,7 @@ export const columns = [
     },
   },
   {
-    accessorKey: "diff",
+    accessorKey: "difficulty",
     header: ({ column }) => {
       return (
         <Button
@@ -58,7 +58,7 @@ export const columns = [
       )
     },
     cell: ({ row }) => {
-      const diff = row.getValue("diff")
+      const diff = row.getValue("difficulty")
       return (
         <div
           data-diff={diff}
