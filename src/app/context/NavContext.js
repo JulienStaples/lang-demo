@@ -28,7 +28,6 @@ export default function NavProvider({ children }) {
 
   // refresh is just used to update ui
   function updateTab(curTab, refresh = "") {
-    console.log(tab.key)
     if (isMobile && tabsPane && curTab === tab.key) return exitAnim()
 
     if (!tabsPane) setTabsPane(true)

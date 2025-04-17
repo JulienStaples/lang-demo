@@ -1,7 +1,12 @@
+import { exampleData } from "../constants/constants"
 import { wordDb } from "../lib/wordDb"
 
 export default function useStorage() {
   function initStorage() {
+    exampleData.forEach(([key, value]) => {
+      wordDb.set(key, value)
+    })
+
     const storedData = sessionStorage.getItem("wordDb")
 
     if (storedData) {
