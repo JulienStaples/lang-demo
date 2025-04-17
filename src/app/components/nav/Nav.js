@@ -6,7 +6,7 @@ import { AppContext } from "@/src/app/context/AppContext"
 import { AppSidebar } from "@/src/components/app-sidebar"
 import { SidebarProvider } from "@/src/components/ui/sidebar"
 import { Database, Languages, SearchIcon } from "lucide-react"
-import { dummyText, langOptions } from "@/src/constants/constants"
+import { exampleTexts, langOptions } from "@/src/constants/constants"
 
 export default function Nav() {
   const { updateTab, tab, tabsPane } = useContext(NavContext)
@@ -40,7 +40,7 @@ export default function Nav() {
     }
   })
 
-  const textItems = [...dummyText].map(([key, { lang, title }]) => {
+  const textItems = [...exampleTexts].map(([key, { lang, title }]) => {
     return {
       key,
       text: `${lang} - ${title}`,

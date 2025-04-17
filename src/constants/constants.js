@@ -1,11 +1,15 @@
-export let dummyText = new Map([
+export let exampleTexts = new Map([
   [
-    "frère-jacques",
+    "hunchback",
     {
       lang: "fr",
-      title: "Frère Jacques",
+      title: "The Hunchback of Notre-Dame",
       body: [
-        "Frère Jacques, Frère Jacques Dormez-vous? Dormez-vous? Sonnes les matines! Sonnez les matines!",
+        "Il y a aujourd’hui trois cent quarante-huit ans six mois et dix-neuf jours que les Parisiens s’éveillèrent au bruit de toutes les cloches sonnant à grande volée dans la triple enceinte de la Cité, de l’Université et de la Ville. Ce n’est cependant pas un jour dont l’histoire ait gardé souvenir que le 6 janvier 1482. Rien de notable dans l’événement qui mettait ainsi en branle, dès le matin, les cloches et les bourgeois de Paris. Ce n’était ni un assaut de Picards ou de Bourguignons, ni une châsse menée en procession, ni une révolte d’écoliers dans la vigne de",
+        "Laas, ni une entrée de notredit très redouté seigneur monsieur le roi, ni même une belle pendaison de larrons et de larronnesses à la Justice de Paris. Ce n’était pas non plus la survenue, si fréquente au quinzième siècle, de quelque ambassade chamarrée et empanachée. Il y avait à peine deux jours que la dernière cavalcade de ce genre, celle des ambassadeurs flamands chargés de conclure le mariage entre le dauphin et Marguerite de Flandre, avait fait son entrée à Paris, au grand ennui de M. e cardinal de Bourbon, qui, pour plaire au roi, avait dû faire bonne mine à toute cette rustique cohue de bourgmestres flamands,",
+        "l et les régaler, en son hôtel de Bourbon, d’une moult belle moralité, sotie et farce, tandis qu’une pluie battante inondait à sa porte ses magnifiques tapisseries. Le 6 janvier, ce qui mettoit en émotion tout le populaire de Paris, comme dit Jehan de Troyes, c’était la double solennité, réunie depuis un temps immémorial, du jour des Rois et de la Fête des Fous. Ce jour-là, il devait y avoir feu de joie à la Grève, plantation de mai à la chapelle de Braque et mystère au Palais de Justice.",
+        "  Le cri en avait été fait la veille à son de trompe dans les carrefours, par les gens de M. le prévôt, en beaux hoquetons de camelot violet, avec de grandes croix blanches sur la poitrine. La foule des bourgeois et des bourgeoises s’acheminait donc de toutes parts dès le matin, maisons et boutiques fermées, vers l’un des trois endroits désignés. Chacun avait pris parti, qui pour le feu de joie, qui pour le mai, qui pour le mystère. Il faut dire, à l’éloge de l’antique bon sens des badauds de Paris, que la plus grande partie de cette",
+        "foule se dirigeait vers le feu de joie, l equel était tout à fait de saison, ou vers le mystère, qui devait être représenté dans la grand-salle du Palais bien couverte et bien close, et que les curieux s’accordaient à laisser le pauvre mai mal fleuri grelotter tout seul sous le ciel de janvier dans le cimetière de la chapelle de Braque. Le peuple affluait surtout dans les avenues du Palais de Justice, parce qu’on savait que les ambassadeurs flamands, arrivés de la surveille, se proposaient d’assister à la représentation du mystère et à l’élection du pape des fous, laquelle devait se faire également dans la grand-salle.",
       ],
     },
   ],
@@ -22,34 +26,46 @@ export let dummyText = new Map([
   ],
 
   [
-    "lorem-ipsum",
+    "don-quijote",
+    {
+      lang: "sp",
+      title: "Don Quijote",
+      body: [
+        "En un lugar de la Mancha, de cuyo nombre no quiero acordarme, no ha mucho tiempo que vivía un hidalgo de los de lanza en astillero, adarga antigua, rocín flaco y galgo corredor. Una olla de algo más vaca que carnero, salpicón las más noches, duelos y quebrantos los sábados, lantejas los viernes, algún palomino de añadidura los domingos, consumían las tres partes de su hacienda. El resto della concluían sayo de velarte, calzas de velludo para las fiestas, con sus pantuflos de lo mesmo, y los días de entresemana se honraba con su vellorí de lo más fino.",
+        "Tenía en su casa una ama que pasaba de los cuarenta, y una sobrina que no llegaba a los veinte, y un mozo de campo y plaza, que así ensillaba el rocín como tomaba la podadera. Frisaba la edad de nuestro hidalgo con los cincuenta años; era de complexión recia, seco de carnes, enjuto de rostro, gran madrugador y amigo de la caza. Quieren decir que tenía el sobrenombre de Quijada, o Quesada, que en esto hay alguna diferencia en los autores que deste caso escriben; aunque, por conjeturas verosímiles, se deja entender que se llamaba Quejana. Pero esto importa poco a nuestro cuento; basta que en la narración dél no se salga un punto de la verdad.",
+        "Es, pues, de saber que este sobredicho hidalgo, los ratos que estaba ocioso, que eran los más del año, se daba a leer libros de caballerías, con tanta afición y gusto, que olvidó casi de todo punto el ejercicio de la caza, y aun la administración de su hacienda. Y llegó a tanto su curiosidad y desatino en esto, que vendió muchas hanegas de tierra de sembradura para comprar libros de caballerías en que leer, y así, llevó a su casa todos cuantos pudo haber dellos; y de todos, ningunos le parecían tan bien como los que compuso el famoso ",
+        "Feliciano de Silva, porque la claridad de su prosa y aquellas entricadas razones suyas le parecían de perlas, y más cuando llegaba a leer aquellos requiebros y cartas de desafíos, donde en muchas partes hallaba escrito: La razón de la sinrazón que a mi razón se hace, de tal manera mi razón enflaquece, que con razón me quejo de la vuestra fermosura. Y también cuando leía: ...los altos cielos que de vuestra divinidad divinamente con las estrellas os fortifican, y os hacen merecedora del merecimiento que merece la vuestra grandeza.",
+        "Con estas razones perdía el pobre caballero el juicio, y desvelábase por entenderlas y desentrañarles el sentido, que no se lo sacara ni las entendiera el mesmo Aristóteles, si resucitara para sólo ello. No estaba muy bien con las heridas que don Belianís daba y recebía, porque se imaginaba que, por grandes maestros que le hubiesen curado, no dejaría de tener el rostro y todo el cuerpo lleno de cicatrices y señales. Pero, con todo, alababa en su autor aquel acabar su libro con la promesa de aquella inacabable aventura, y muchas veces le vino deseo de tomar la pluma y dalle fin al pie de la letra, como allí se promete; ",
+      ],
+    },
+  ],
+  [
+    "lorem-ipusm",
     {
       lang: "la",
       title: "Lorem ipsum",
       body: [
-        "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente consequuntur rerum ipsa dolor deleniti fugiat id repudiandae! Commodi, aperiam dolores! Modi molestiae ea ex fugit saepe maxime vel repudiandae at, officiis repellendus fuga ducimus nesciunt deleniti debitis quos nemo voluptatum pariatur. Voluptas sunt, maiores exercitationem saepe, officiis facilis molestias, consectetur eligendi vitae omnis sequi ipsa deleniti error odio nisi aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente consequuntur rerum ipsa dolor deleniti fugiat id repudiandae! Commodi, aperiam dolores! Modi molestiae ea ex fugit saepe maxime vel repudiandae at, officiis repellendus fuga ducimus nesciunt deleniti debitis quos nemo voluptatum pariatur. Voluptas sunt, maiores exercitationem saepe, officiis facilis molestias, consectetur eligendi vitae omnis sequi ipsa deleniti error odio nisi aspernatur. Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente consequuntur rerum ipsa dolor deleniti fugiat id repudiandae! Commodi, aperiam dolores! Modi molestiae ea ex fugit saepe maxime vel repudiandae at, officiis repellendus fuga ducimus nesciunt deleniti debitis quos nemo voluptatum pariatur. Voluptas sunt, maiores exercitationem saepe, officiis facilis molestias, consectetur eligendi vitae omnis sequi ipsa deleniti error odio nisi aspernatur.",
-        "Ullam culpa dolorem porro, quaerat, numquam fugit tenetur dolores vel amet optio odio dolor illo aut accusamus, quisquam sed inventore beatae animi illum quas aliquam fugiat. Illum inventore modi temporibus, velit error adipisci, dicta accusamus odio, iusto molestiae quis amet similique quasi nulla sint sit ea obcaecati aut. Provident, maxime dolore quos ipsam earum magnam maiores enim ipsum qui totam deserunt, neque expedita asperiores accusantium voluptas mollitia dignissimos?",
-        "Pariatur, officia quasi autem facilis rerum ex illum, sequi aliquid tempore non ad facere? Maxime cupiditate neque sequi consectetur ipsam, repudiandae veritatis assumenda nemo quae laudantium, alias beatae exercitationem voluptatem doloribus recusandae repellat eos voluptatum adipisci dignissimos nesciunt suscipit? ",
-        "Magni, quae! Ex rerum assumenda alias illo, obcaecati asperiores enim atque beatae, eaque accusamus error, voluptatum commodi eum. Error quisquam at esse delectus doloribus minus recusandae reprehenderit soluta rem cum et corporis porro temporibus saepe eveniet quam, nesciunt autem sunt. Consectetur nobis sit et obcaecati, sapiente assumenda, sequi rem beatae excepturi accusamus tempora aspernatur omnis dignissimos?",
-        "At illo quae quia. Cupiditate magnam quis iste quibusdam voluptatibus vitae eaque velit explicabo quisquam tenetur facere nisi non fugit delectus minima adipisci, animi sapiente doloremque quo ea. Repellat aspernatur vitae quia corporis exercitationem, provident ad distinctio adipisci id impedit consequuntur reprehenderit?",
-        "Ad sed est rem dolorem, quo sunt ab culpa cupiditate deleniti deserunt atque perferendis molestiae magnam tempora a rerum ipsum porro labore at distinctio? Natus reprehenderit explicabo cum dolores repudiandae odio nemo quisquam eaque exercitationem consequatur. Illum sed, iusto qui iste beatae aut corrupti officia rerum ducimus delectus maxime cum pariatur, illo repudiandae atque laboriosam nemo earum molestiae tempore omnis vel?",
-        "Temporibus veritatis corporis aliquid dolorum earum asperiores odio accusantium impedit aspernatur modi assumenda, voluptates fuga explicabo amet. Unde numquam quia totam iure perferendis, quam vero! Reiciendis quae, modi aspernatur autem magnam voluptatem. Expedita, animi? Beatae fuga mollitia temporibus quae doloribus earum, facere ut maxime impedit architecto dolorum, eum reprehenderit consequatur iusto incidunt deserunt omnis expedita, commodi quidem!",
-        "Aut ex iste illum! Laborum, enim inventore, molestias ratione consectetur omnis aut totam reiciendis vero veniam provident minus ipsa aspernatur numquam ipsam accusamus facere fuga reprehenderit, vel voluptas. Accusamus aliquam ad magnam sapiente saepe aliquid similique expedita tempora, optio quasi dolorum cumque laudantium.",
-        "Dicta quis placeat incidunt consequatur voluptatibus. Molestias labore amet dolore asperiores incidunt fugiat harum nisi, quia quis quam consequatur maiores! Ipsam facilis aut consequatur aliquam ad nulla maiores id optio reiciendis tenetur asperiores, voluptatem beatae eligendi quo ut fugit nostrum numquam sunt soluta nesciunt?",
-        "Tenetur, pariatur excepturi reprehenderit blanditiis, omnis optio sed provident expedita earum, animi molestiae vitae illo. Modi veniam alias aspernatur ratione repellendus facilis! Corrupti expedita vero quae autem ullam fugiat provident?",
+        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa molestiae deserunt neque autem odio fugiat minus architecto sit ratione error totam cumque, obcaecati adipisci possimus iste voluptas cupiditate doloremque eveniet mollitia sint aperiam, aspernatur velit! Magni veniam doloremque nihil est consectetur accusantium numquam? Minima dolorum harum accusamus ut reprehenderit inventore in consectetur hic optio eum officiis voluptates repellat deleniti, ipsa non porro tempore? Quidem ipsam quas sed ducimus totam minus quae tenetur officiis possimus! Autem delectus minus maxime quae saepe accusamus iure, nisi iste a iusto? Sunt quibusdam consectetur doloremque minus quos voluptates quae cum eius, unde reiciendis quam recusandae reprehenderit commodi sequi ex consequuntur modi distinctio.",
+        "Quas id modi veniam, dolores assumenda suscipit quos error unde distinctio quam facere repellendus obcaecati, eligendi aliquam architecto ullam sequi provident minima nostrum accusamus earum officia! Officia velit quasi veniam a totam, autem, ullam expedita quae eligendi nihil atque beatae fugiat qui in tenetur sequi debitis deleniti magnam cupiditate sapiente quam unde? Dolor, est! Temporibus, incidunt illum nesciunt voluptas vel odit molestias, consectetur velit cum consequatur placeat aliquid optio, harum recusandae soluta est distinctio. Aperiam, error. Quam non at harum. Quae, magnam? Eius iste aperiam mollitia esse officia sequi id! Reiciendis culpa dolor iste cumque harum adipisci maxime!",
+        "Possimus, architecto neque doloremque pariatur delectus recusandae sed at autem quo vero sint officiis, enim, aliquid beatae! Vitae dolorem praesentium asperiores harum quas, corrupti ipsa deleniti tenetur amet odio ipsam, quasi quis quae. Inventore velit optio porro provident, doloremque nesciunt? Nam numquam porro aspernatur optio ea facilis eum expedita, distinctio fugit eligendi deleniti illum voluptatum reiciendis pariatur, atque nemo minima velit dolores veritatis incidunt suscipit, dolore ullam libero reprehenderit. Nihil illum cumque vel ex quod distinctio corporis, pariatur iusto modi quisquam quo itaque consequuntur voluptas esse laudantium voluptatibus commodi voluptatum temporibus voluptates.",
+        "Consequuntur cupiditate dolorem blanditiis porro sapiente sequi tempore praesentium. Dicta laborum similique magni labore, distinctio reprehenderit pariatur magnam! Nisi, eos porro! Natus, exercitationem tenetur praesentium sapiente incidunt quis architecto recusandae debitis dolore eligendi quae, non corporis, quisquam fugit voluptatem quam vel. Quisquam facere nihil, sit esse perferendis omnis consectetur amet soluta natus, velit, culpa placeat nam laborum totam eos. Deleniti sapiente laborum ratione, quo a tempora ipsa optio, iusto, saepe eligendi voluptatibus vero in vel repudiandae fugiat facilis inventore provident vitae veritatis pariatur non totam explicabo tempore? Sed facilis est suscipit voluptatum dolorem itaque?",
+        "Amet commodi dolorem similique officia illo a itaque recusandae iure aliquam impedit nesciunt iusto, perspiciatis totam perferendis et autem ipsa, repellendus aut rerum dolores vero. Voluptate incidunt dolore accusamus laborum placeat fugit omnis, vitae mollitia reiciendis, ipsum quas, molestias assumenda commodi veritatis consequuntur. Cum quasi consequatur praesentium corrupti eius error laudantium, ipsum eligendi doloremque. Veritatis modi magni totam eum nobis repudiandae accusamus ratione sed sapiente rem qui eaque aliquid quasi a similique nihil, ipsum amet earum praesentium. Mollitia facilis iusto atque, ab cum ducimus repellat a veritatis accusamus iure nihil sint consequatur in pariatur repellendus earum, esse natus? Voluptates sit tenetur voluptatem voluptate praesentium veniam autem ipsum amet unde!",
       ],
     },
   ],
 
   [
-    "dracula",
+    "hänsel-und-grethel",
     {
-      lang: "fr",
-      title: "Dracula",
+      lang: "de",
+      title: "Hänsel und Grethel",
       body: [
-        "chapitre 1 journal de Jonathan arkerur sténographier B streets 3 mai quitté munique à 8h du soir le 1er mai arrivé à Vienne de bonne heure le lendemain matin nous aurions dû y être à 6h46 mais le train avait 1 heure de retard en juger d'après ce que j'en ai pu apercevoir du wagon et d'après les quelques rues où je me suis promené une fois débarqué Budapest est une très belle ville mais je craignais de trop m'éloigner de la gare malgré ce retard nous devions repartir comme prévu j' l'impression très nette de quitter l'Occident pour rentrer dans le monde oriental après avoir franchi les magnifiques ponts du Danube ces modèle d'architecture occidentale le Danu ici est particulièrement large et profond on pénètre immédiatement dans une région où prévalent les coutumes turques ayant quitté Budapest sans trop de retard nous arrivâmes le soir à closenburg je m'y arrêté pour passer la nuit à l'hôtel Royal on me servit au dîner ou plutôt au souper un poulet au poivre rouge délicieux mais cela vous donne une soif j'en ai demandé la recette à l'inttention de Mina le garçon m'a appris que cela s'appelait du paprika Endel que c'était un plat national et donc que j'en trouverai partout dans les Carpates ma légère connaissance de l'allemand me fut fort en cette occasion sans",
-        "cela vraiment j'ignore comment je m'en serais tiré à Londres quelques moment de loisir m'avait permis d'aller au British museéum et à la bibliothèque j'avais consulté des cartes de géographie et des livres traitants de la Transylvanie il me paraissait intéressant de connaître certaines choses du pays puisque",
-        "j'aurais affaire à un gentilhomme de là-bas je men rendis compte la région dont il parlait dans ses lettres était située à l'est du pays à la frontière des trois états Transylvanie Moldavie Bucovine dans les Carpates une des parties de l'Europe les moins connu et les plus sauvages mais aucun livre aucune",
+        "Vor einem großen Walde wohnte ein armer Holzhacker mit seiner Frau und seinen zwei Kindern; das Bübchen hieß Hänsel und das Mädchen Grethel. Er hatte wenig zu beißen und zu brechen, und einmal, als große Theuerung ins Land kam, konnte er auch das täglich Brot nicht mehr schaffen. Wie er sich nun Abends im Bette Gedanken machte und sich vor Sorgen herum wälzte, seufzte er und sprach zu seiner Frau „was soll aus uns werden? wie können wir unsere armen Kinder ernähren, da wir für uns selbst nichts mehr haben?“ „Weißt du was, Mann,“ antwortete die ",
+        "Frau, „wir wollen Morgen in aller Frühe die Kinder hinaus in den Wald führen, wo er am dicksten ist: da machen wir ihnen ein Feuer an und geben jedem noch ein Stückchen Brot, dann gehen wir an unsere Arbeit und lassen sie allein. Sie finden den Weg nicht wieder nach Haus und wir sind sie los.“ „Nein, Frau,“ sagte der Mann, „das thue ich nicht; wie sollt ichs übers Herz bringen meine Kinder im Walde allein zu lassen, die wilden Thiere würden bald kommen und sie zerreißen.“ „O du Narr,“ sagte sie, „dann müssen wir alle viere Hungers sterben, du kannst nur die Bretter für die Särge hobelen,“ und ließ ihm keine Ruhe bis er einwilligte. „Aber die armen Kinder dauern mich doch“ sagte der Mann.",
+        "Die zwei Kinder hatten vor Hunger auch nicht einschlafen können und hatten gehört was die Stiefmutter zum Vater gesagt hatte. Grethel weinte bittere Thränen und sprach zu Hänsel „nun ists um uns geschehen.“ „Still, Grethel,“ sprach Hänsel, „gräme dich nicht, ich will uns schon helfen.“ Und als die Alten eingeschlafen waren, stand er auf, zog sein Röcklein an, machte die Unterthüre auf und schlich sich hinaus. Da schien der Mond ganz helle, und die weißen Kieselsteine, die vor dem Haus lagen, glänzten wie lauter Batzen. Hänsel bückte sich und steckte so viel in sein Rocktäschlein, als nur hinein wollten.",
+        " Dann gieng er wieder zurück, sprach zu Grethel „sei getrost, liebes Schwesterchen und schlaf nur ruhig ein, Gott wird uns nicht verlassen,“ und legte sich wieder in sein Bett. Als der Tag anbrach, noch ehe die Sonne aufgegangen war, kam schon die Frau und weckte die beiden Kinder, „steht auf, ihr Faullenzer, wir wollen in den Wald gehen und Holz holen.“ Dann gab sie jedem ein Stückchen Brot und sprach „da habt ihr etwas für den Mittag, aber eßts nicht vorher auf, weiter kriegt ihr nichts.“ Grethel nahm das Brot unter die Schürze, weil Hänsel die Steine in der Tasche hatte.",
+        " Danach machten sie sich alle zusammen auf den Weg nach dem Wald. Als sie ein Weilchen gegangen waren, stand Hänsel still und guckte nach dem Haus zurück und that das wieder und immer wieder. Der Vater sprach „Hänsel, was guckst du da und bleibst zurück, hab Acht und vergiß deine Beine nicht.“ „Ach, Vater,“ sagte Hänsel, „ich sehe nach meinem weißen Kätzchen, das sitzt oben auf dem Dach und will mir Ade sagen.“ Die Frau sprach „Narr, das ist dein Kätzchen nicht, das ist die Morgensonne, die auf den Schornstein scheint.“ ",
+        "Hänsel aber hatte nicht nach dem Kätzchen gesehen, sondern immer einen von den blanken Kieselsteinen aus seiner Tasche auf den Weg geworfen. Als sie mitten in den Wald gekommen waren, sprach der Vater „nun sammelt Holz, ihr Kinder, ich will ein Feuer anmachen, damit ihr nicht friert.“ Hänsel und Grethel trugen Reisig zusammen, einen kleinen Berg hoch. Das Reisig ward angezündet, und als die Flamme recht hoch brannte, sagte die Frau „nun legt euch ans Feuer, ihr Kinder und ruht euch aus, wir gehen in den Wald und hauen Holz. Wenn wir fertig sind, kommen wir wieder und holen euch ab.“",
       ],
     },
   ],
@@ -58,6 +74,8 @@ export let dummyText = new Map([
 export let langOptions = new Map([
   ["enfr", "en-fr"],
   ["fren", "fr-en"],
+  ["deen", "de-en"],
+  ["spen", "sp-en"],
 ])
 
 export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-neutral-900 bg-purple-800`
@@ -68,17 +86,4 @@ export let diffBtnColors = {
   easy: "data-[state=on]:bg-green-800 hover:bg-green-800",
   wk: "",
   null: "data-[state=on]:bg-purple-800 hover:bg-purple-800",
-}
-
-export function findDiff(word) {
-  try {
-    return wordDb.get(word).diff
-  } catch {
-    return undefined
-  }
-}
-
-export function findEntry(word) {
-  if (wordDb.has(word)) return wordDb.get(word)
-  else return ""
 }

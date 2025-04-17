@@ -1,7 +1,7 @@
 "use client"
 
 import { createContext, useEffect, useState } from "react"
-import { dummyText } from "../../constants/constants"
+import { exampleTexts } from "../../constants/constants"
 import useStorage from "@/src/hooks/useStorage"
 import { useTheme } from "next-themes"
 
@@ -10,7 +10,7 @@ export const AppContext = createContext()
 export default function AppProvider({ children }) {
   const [activeWordObj, setActiveWordObj] = useState("")
   const [entry, setEntry] = useState("")
-  const [presetText, setPresetText] = useState(dummyText.get("dracula"))
+  const [presetText, setPresetText] = useState(exampleTexts.get("hunchback"))
   const [langOption, setLangOption] = useState(
     presetText.lang == "en" ? "enfr" : `${presetText.lang}en`,
   )
@@ -24,7 +24,7 @@ export default function AppProvider({ children }) {
   }, [])
 
   function changeText({ lang, key }) {
-    setPresetText(dummyText.get(key))
+    setPresetText(exampleTexts.get(key))
     setLangOption(lang == "en" ? "enfr" : `${lang}en`)
     setPage(0)
   }

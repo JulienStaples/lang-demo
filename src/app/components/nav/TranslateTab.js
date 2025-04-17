@@ -79,6 +79,8 @@ export default function TranslateTab() {
     { key: "en", text: "en" },
     { key: "fr", text: "fr" },
     { key: "la", text: "la" },
+    { key: "sp", text: "sp" },
+    { key: "de", text: "de" },
   ]
 
   function changeWordLang({ key }) {
@@ -181,7 +183,7 @@ export default function TranslateTab() {
         >
           <a
             target="_blank"
-            href={`https://www.wordreference.com/${langOption}/${activeWord}`}
+            href={`${!(langOption === "spen") ? "https://www.wordreference.com/" + langOption + "/" + activeWord : "https://www.wordreference.com/es/en/translation.asp?spen=" + activeWord}`}
             className="absolute inset-0"
           />
           translate
