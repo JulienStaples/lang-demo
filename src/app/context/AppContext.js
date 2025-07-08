@@ -2,7 +2,7 @@
 
 import { createContext, useEffect, useState } from "react"
 import { exampleTexts } from "../../constants/constants"
-import useStorage from "@/src/hooks/useStorage"
+import useStorage from "@/hooks/useStorage"
 import { useTheme } from "next-themes"
 
 export const AppContext = createContext()

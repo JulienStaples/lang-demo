@@ -10,7 +10,7 @@ import {
   useSidebar,
   SidebarHeader,
   SidebarFooter,
-} from "@/src/components/ui/sidebar"
+} from "@/components/ui/sidebar"
 import { Button } from "./ui/button"
 import { Separator } from "./ui/separator"
 import { Home, Info, Settings } from "lucide-react"

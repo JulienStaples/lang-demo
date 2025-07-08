@@ -4,7 +4,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select"
+} from "@/components/ui/select"
 import { useState } from "react"
 
 export default function AppSelect(props) {

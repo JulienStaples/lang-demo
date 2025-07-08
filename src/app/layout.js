@@ -1,7 +1,7 @@
 import "./globals.css"
 import AppProvider from "./context/AppContext"
 import NavProvider from "./context/NavContext"
-import { ThemeProvider } from "@/src/components/theme-provider"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata = {
   title: "lang-demo",

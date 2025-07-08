@@ -19,25 +19,25 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/src/components/ui/table"
+} from "@/components/ui/table"
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
   DropdownMenuContent,
   DropdownMenuTrigger,
-} from "@/src/components/ui/dropdown-menu"
+} from "@/components/ui/dropdown-menu"
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/src/components/ui/select"
+} from "@/components/ui/select"
 
-import { Button } from "@/src/components/ui/button"
-import { Input } from "@/src/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
 import { ChevronLeft, ChevronRight, MoreVertical } from "lucide-react"
-import { Label } from "@/src/components/ui/label"
+import { Label } from "@/components/ui/label"
 
 export function DataTable({ columns, data }) {
   const [sorting, setSorting] = React.useState([])

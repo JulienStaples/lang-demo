@@ -1,7 +1,7 @@
 import React from "react"
 import { ChevronLeft, ChevronRight, FilePenLine } from "lucide-react"
-import { Button } from "@/src/components/ui/button"
-import { Progress } from "@/src/components/ui/progress"
+import { Button } from "@/components/ui/button"
+import { Progress } from "@/components/ui/progress"
 
 export default function Footer(props) {
   const { presetText, page, setPage, exitAnim } = props

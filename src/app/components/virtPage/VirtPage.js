@@ -3,7 +3,7 @@
 import { useEffect, useContext, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
 import { useAnimate } from "framer-motion"
-import { enterExitVari, spanVari } from "@/src/constants/virtPageAnims"
+import { enterExitVari, spanVari } from "@/constants/virtPageAnims"
 import TitleBar from "./TitleBar"
 import ReadingView from "./ReadingView"
 import EditView from "./EditView"

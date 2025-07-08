@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { enterExitVari } from "@/src/constants/virtPageAnims"
+import { enterExitVari } from "@/constants/virtPageAnims"
 
 export default function EditView(props) {
   const { editBox, presetText, page } = props

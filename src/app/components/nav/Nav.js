@@ -2,11 +2,11 @@
 
 import { useContext } from "react"
 import { NavContext } from "../../context/NavContext"
-import { AppContext } from "@/src/app/context/AppContext"
-import { AppSidebar } from "@/src/components/app-sidebar"
-import { SidebarProvider } from "@/src/components/ui/sidebar"
+import { AppContext } from "@/app/context/AppContext"
+import { AppSidebar } from "@/components/app-sidebar"
+import { SidebarProvider } from "@/components/ui/sidebar"
 import { Database, Languages, SearchIcon } from "lucide-react"
-import { exampleTexts, langOptions } from "@/src/constants/constants"
+import { exampleTexts, langOptions } from "@/constants/constants"
 
 export default function Nav() {
   const { updateTab, tab, tabsPane } = useContext(NavContext)

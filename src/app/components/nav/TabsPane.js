@@ -1,9 +1,9 @@
 "use client"
 
 import { useContext } from "react"
-import { NavContext } from "@/src/app/context/NavContext"
+import { NavContext } from "@/app/context/NavContext"
 import { motion } from "framer-motion"
-import { useIsMobile } from "@/src/hooks/use-mobile"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function TabsPane() {
   const { tab, scope, tabsPane, exitAnim } = useContext(NavContext)

@@ -2,17 +2,17 @@
 
 import { useContext, useEffect, useRef, useState } from "react"
 import { AppContext } from "../../context/AppContext"
-import { NavContext } from "@/src/app/context/NavContext"
+import { NavContext } from "@/app/context/NavContext"
 import Words from "../virtPage/Words"
-import { diffBtnColors } from "@/src/constants/constants"
+import { diffBtnColors } from "@/constants/constants"
 import { motion } from "framer-motion"
-import AppTextarea from "@/src/components/app-textarea"
-import { Button } from "@/src/components/ui/button"
-import { ToggleGroup, ToggleGroupItem } from "@/src/components/ui/toggle-group"
-import AppSelect from "@/src/components/app-select"
-import { wordDb } from "@/src/lib/wordDb"
-import useStorage from "@/src/hooks/useStorage"
-import { useIsMobile } from "@/src/hooks/use-mobile"
+import AppTextarea from "@/components/app-textarea"
+import { Button } from "@/components/ui/button"
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import AppSelect from "@/components/app-select"
+import { wordDb } from "@/lib/wordDb"
+import useStorage from "@/hooks/useStorage"
+import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function TranslateTab() {
   const { activeWordObj, langOption, presetText } = useContext(AppContext)

@@ -2,8 +2,8 @@
 
 import Words from "../../virtPage/Words"
 import { ArrowUpDown } from "lucide-react"
-import { Button } from "@/src/components/ui/button"
-import { diffWordColors } from "@/src/constants/constants"
+import { Button } from "@/components/ui/button"
+import { diffWordColors } from "@/constants/constants"
 
 export const columns = [
   {
