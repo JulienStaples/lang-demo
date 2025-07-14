@@ -23,7 +23,9 @@ export default function TabsPane() {
   if (isMobile && tabsPane) {
     return (
       <motion.div
-        onClick={(e) => e.target.id === "tabs-pane" && exitAnim()}
+        onClick={(e) =>
+          (e.target as HTMLElement).id === "tabs-pane" && exitAnim()
+        }
         ref={scope}
         initial={{ originX: "left", scaleX: 0 }}
         animate={{ scaleX: 1, transition: { duration: 0.1 } }}

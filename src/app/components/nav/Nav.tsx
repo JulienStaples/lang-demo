@@ -17,19 +17,22 @@ export default function Nav() {
       icon: Languages,
       title: "Translate",
       id: "translate-tab",
-      action: (e) => updateTab(e.currentTarget.id),
+      action: (e: React.MouseEvent<HTMLButtonElement>) =>
+        updateTab(e.currentTarget.id),
     },
     {
       icon: SearchIcon,
       title: "Details",
       id: "details-tab",
-      action: (e) => updateTab(e.currentTarget.id),
+      action: (e: React.MouseEvent<HTMLButtonElement>) =>
+        updateTab(e.currentTarget.id),
     },
     {
       icon: Database,
       title: "Database",
       id: "db-tab",
-      action: (e) => updateTab(e.currentTarget.id),
+      action: (e: React.MouseEvent<HTMLButtonElement>) =>
+        updateTab(e.currentTarget.id),
     },
   ]
 
