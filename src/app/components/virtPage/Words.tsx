@@ -5,10 +5,14 @@ import { motion } from "framer-motion"
 import { spanVari, wordVari } from "../../../constants/virtPageAnims"
 import { NavContext } from "@/app/context/NavContext"
 import { wordDb } from "@/lib/wordDb"
-
 import nlp from "compromise"
 
-export default function Words(props) {
+type WordsProps = {
+  words: string
+  single: boolean | undefined
+}
+
+export default function Words(props: WordsProps) {
   const { words, single = false } = props
   const { setActiveWordObj, setEntry } = useContext(AppContext)
   const { updateTab } = useContext(NavContext)
@@ -20,7 +24,7 @@ export default function Words(props) {
     return nlp(words).termList()
   }
 
-  function handleClick(wordObj) {
+  function handleClick(wordObj: Term) {
     setActiveWordObj(wordObj)
     setEntry(wordDb.get(wordObj.normal)?.entry || undefined)
 
