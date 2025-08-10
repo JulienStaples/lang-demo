@@ -20,7 +20,13 @@ export type PresetText = {
   body: string[]
 }
 
-export type Entry = { word: string; diff: string; lang: string }
+export type Entry = {
+  word: string
+  diff: string | undefined
+  lang: string
+  def: string | undefined
+  parent: string | undefined
+}
 
 export type TabKey = "translate-tab" | "details-tab" | "db-tab"
 

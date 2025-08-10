@@ -1,3 +1,4 @@
+import { PresetText, Term } from "@/types/types"
 import Words from "./Words"
 
 type TitleBarProps = {

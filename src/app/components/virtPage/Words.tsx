@@ -6,6 +6,7 @@ import { spanVari, wordVari } from "../../../constants/virtPageAnims"
 import { NavContext } from "@/app/context/NavContext"
 import { wordDb } from "@/lib/wordDb"
 import nlp from "compromise"
+import { Term } from "@/types/types"
 
 type WordsProps = {
   words: string
@@ -15,7 +16,7 @@ type WordsProps = {
 export default function Words(props: WordsProps) {
   const { words, single = false } = props
   const { setActiveWordObj, setEntry } = useContext(AppContext)!
-  const { updateTab } = useContext(NavContext)
+  const { updateTab } = useContext(NavContext)!
 
   const wordObjs = useMemo(() => parser(), [words])
 

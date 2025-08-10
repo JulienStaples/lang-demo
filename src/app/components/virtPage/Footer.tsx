@@ -2,6 +2,7 @@ import React from "react"
 import { ChevronLeft, ChevronRight, FilePenLine } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
+import { PresetText } from "@/types/types"
 
 type FooterProps = {
   presetText: PresetText

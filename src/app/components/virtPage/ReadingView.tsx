@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import { enterExitVari } from "../../../constants/virtPageAnims"
 import Words from "./Words"
+import { PresetText } from "@/types/types"
 
 type ReadingViewProps = {
   presetText: PresetText

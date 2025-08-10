@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { enterExitVari } from "@/constants/virtPageAnims"
+import { PresetText } from "@/types/types"
 
 type EditViewProps = {
   editBox: React.Ref<HTMLTextAreaElement>

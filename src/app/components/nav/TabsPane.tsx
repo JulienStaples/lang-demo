@@ -6,7 +6,7 @@ import { motion } from "framer-motion"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function TabsPane() {
-  const { tab, scope, tabsPane, exitAnim } = useContext(NavContext)
+  const { tab, scope, tabsPane, exitAnim } = useContext(NavContext)!
   const isMobile = useIsMobile()
 
   if (!isMobile) {
