@@ -1,6 +1,11 @@
 import Words from "./Words"
 
-export default function TitleBar(props) {
+type TitleBarProps = {
+  presetText: PresetText
+  activeWordObj: Term | undefined
+}
+
+export default function TitleBar(props: TitleBarProps) {
   const { presetText, activeWordObj } = props
 
   return (
