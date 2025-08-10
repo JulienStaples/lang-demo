@@ -1,4 +1,4 @@
-type diff = null | "wk" | "easy" | "med" | "hard"
+type Diff = undefined | "wk" | "easy" | "med" | "hard"
 
 type Term = {
   text: string

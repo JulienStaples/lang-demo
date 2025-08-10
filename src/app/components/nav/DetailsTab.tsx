@@ -6,9 +6,9 @@ import { motion } from "framer-motion"
 import { wordDb } from "@/lib/wordDb"
 
 export default function DetailsTab() {
-  const { activeWordObj } = useContext(AppContext)
+  const { activeWordObj } = useContext(AppContext)!
 
-  const activeEntry = wordDb.get(activeWordObj.normal)
+  const activeEntry = wordDb.get(activeWordObj?.normal)
 
   return (
     <motion.div

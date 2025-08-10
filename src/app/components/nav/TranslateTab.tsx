@@ -15,18 +15,17 @@ import useStorage from "@/hooks/useStorage"
 import { useIsMobile } from "@/hooks/use-mobile"
 
 export default function TranslateTab() {
-  const { activeWordObj, langOption, presetText } = useContext(AppContext)
-  const { updateTab } = useContext(NavContext)
-  const { exitAnim } = useContext(NavContext)
-  const defBox = useRef()
-  const parentBox = useRef()
+  const { activeWordObj, langOption, presetText } = useContext(AppContext)!
+  const { updateTab, exitAnim } = useContext(NavContext)!
+  const defBox = useRef<HTMLTextAreaElement>(null)
+  const parentBox = useRef<HTMLTextAreaElement>(null)
   const { syncStorage } = useStorage()
   const isMobile = useIsMobile()
 
   const activeWord = activeWordObj?.normal
   const activeEntry = wordDb.get(activeWord)
 
-  const [wordLang, setWordLang] = useState()
+  const [wordLang, setWordLang] = useState<string | undefined>()
 
   //this is only to force ui update on mobile
   const [uiDiff, setUiDiff] = useState(activeEntry?.diff ?? undefined)
@@ -35,13 +34,13 @@ export default function TranslateTab() {
     setWordLang(activeEntry?.lang ?? presetText.lang)
   }, [activeWordObj])
 
-  function saveEntry(diff) {
+  function saveEntry(diff: Diff) {
     const newDiff = diff || (activeEntry?.diff ?? "hard")
 
     const newEntryObj = {
-      word: activeWordObj.text,
-      def: defBox.current.value || undefined,
-      parent: parentBox.current.value || undefined,
+      word: activeWordObj?.text,
+      def: defBox.current?.value || undefined,
+      parent: parentBox.current?.value || undefined,
       diff: newDiff,
       lang: wordLang,
     }
@@ -64,7 +63,7 @@ export default function TranslateTab() {
     exitAnim()
   }
 
-  function handleDiffChange(diff) {
+  function handleDiffChange(diff: Diff) {
     if (!activeWord) return
     if (!activeEntry) return saveEntry(diff)
 
@@ -83,7 +82,7 @@ export default function TranslateTab() {
     { key: "de", text: "de" },
   ]
 
-  function changeWordLang({ key }) {
+  function changeWordLang({ key }: { key: string }) {
     setWordLang(key)
   }
 
@@ -119,7 +118,7 @@ export default function TranslateTab() {
             className="w-fit gap-0 self-start rounded-sm border"
             type="single"
             value={activeEntry?.diff ?? undefined}
-            onValueChange={(value) => handleDiffChange(value)}
+            onValueChange={(value) => handleDiffChange(value as Diff)}
           >
             <ToggleGroupItem
               value="wk"
@@ -164,7 +163,7 @@ export default function TranslateTab() {
           <Button
             disabled={!activeWord}
             className="grow bg-green-800 text-white hover:bg-green-600 active:bg-green-800"
-            onClick={() => saveEntry(null)}
+            onClick={() => saveEntry(undefined)}
           >
             save
           </Button>
