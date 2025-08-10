@@ -9,12 +9,12 @@ import nlp from "compromise"
 
 type WordsProps = {
   words: string
-  single: boolean | undefined
+  single?: boolean
 }
 
 export default function Words(props: WordsProps) {
   const { words, single = false } = props
-  const { setActiveWordObj, setEntry } = useContext(AppContext)
+  const { setActiveWordObj, setEntry } = useContext(AppContext)!
   const { updateTab } = useContext(NavContext)
 
   const wordObjs = useMemo(() => parser(), [words])

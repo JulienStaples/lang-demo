@@ -2,7 +2,12 @@ import { motion } from "framer-motion"
 import { enterExitVari } from "../../../constants/virtPageAnims"
 import Words from "./Words"
 
-export default function ReadingView(props) {
+type ReadingViewProps = {
+  presetText: PresetText
+  page: number
+}
+
+export default function ReadingView(props: ReadingViewProps) {
   const { presetText, page } = props
 
   return (
