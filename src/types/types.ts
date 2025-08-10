@@ -18,3 +18,5 @@ type PresetText = {
 }
 
 type Entry = { word: string; diff: string; lang: string }
+
+type TabKey = "translate-tab" | "details-tab" | "db-tab"

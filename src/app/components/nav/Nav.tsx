@@ -1,38 +1,46 @@
 "use client"
 
-import { useContext } from "react"
+import { ForwardRefExoticComponent, RefAttributes, useContext } from "react"
 import { NavContext } from "../../context/NavContext"
 import { AppContext } from "@/app/context/AppContext"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
-import { Database, Languages, SearchIcon } from "lucide-react"
+import { Database, Languages, LucideProps, SearchIcon } from "lucide-react"
 import { exampleTexts, langOptions } from "@/constants/constants"
 
-export default function Nav() {
-  const { updateTab, tab, tabsPane } = useContext(NavContext)
-  const { changeText, setLang } = useContext(AppContext)
+type TabItems = {
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >
+  title: string
+  id: TabKey
+  action: (e: React.MouseEvent<HTMLButtonElement>) => void
+}[]
 
-  const tabItems = [
+export default function Nav() {
+  const { updateTab, tab, tabsPane } = useContext(NavContext)!
+  const { changeText, setLang } = useContext(AppContext)!
+
+  const tabItems: TabItems = [
     {
       icon: Languages,
       title: "Translate",
       id: "translate-tab",
-      action: (e: React.MouseEvent<HTMLButtonElement>) =>
-        updateTab(e.currentTarget.id),
+      action: (e) => updateTab(e.currentTarget.id as TabKey),
     },
     {
       icon: SearchIcon,
       title: "Details",
       id: "details-tab",
       action: (e: React.MouseEvent<HTMLButtonElement>) =>
-        updateTab(e.currentTarget.id),
+        updateTab(e.currentTarget.id as TabKey),
     },
     {
       icon: Database,
       title: "Database",
       id: "db-tab",
       action: (e: React.MouseEvent<HTMLButtonElement>) =>
-        updateTab(e.currentTarget.id),
+        updateTab(e.currentTarget.id as TabKey),
     },
   ]
 
@@ -55,7 +63,7 @@ export default function Nav() {
     <nav>
       <SidebarProvider defaultOpen={false}>
         <AppSidebar
-          tabKey={tab.key}
+          tabKey={tab?.key}
           tabsPane={tabsPane}
           items={tabItems}
           langItems={langItems}
