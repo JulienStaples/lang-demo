@@ -3,7 +3,14 @@ import { ChevronLeft, ChevronRight, FilePenLine } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Progress } from "@/components/ui/progress"
 
-export default function Footer(props) {
+type FooterProps = {
+  presetText: PresetText
+  page: number
+  setPage: React.Dispatch<React.SetStateAction<number>>
+  exitAnim: () => void
+}
+
+export default function Footer(props: FooterProps) {
   const { presetText, page, setPage, exitAnim } = props
   const progress = page === 0 ? 0 : (page + 1) / presetText.body.length
 
