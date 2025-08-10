@@ -151,7 +151,7 @@ export default function TranslateTab() {
           </ToggleGroup>
 
           <AppSelect
-            placeholder={wordLang}
+            placeholder={wordLang || ""}
             items={langItems}
             action={changeWordLang}
           />
