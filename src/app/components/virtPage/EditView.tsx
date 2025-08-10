@@ -1,7 +1,13 @@
 import { motion } from "framer-motion"
 import { enterExitVari } from "@/constants/virtPageAnims"
 
-export default function EditView(props) {
+type EditViewProps = {
+  editBox: React.Ref<HTMLTextAreaElement>
+  presetText: PresetText
+  page: number
+}
+
+export default function EditView(props: EditViewProps) {
   const { editBox, presetText, page } = props
 
   return (

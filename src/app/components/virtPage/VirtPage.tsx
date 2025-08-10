@@ -12,7 +12,7 @@ import Footer from "./Footer"
 export default function VirtPage() {
   const { presetText, page, setPage, activeWordObj } = useContext(AppContext)!
   const [scope, animate] = useAnimate()
-  const editBox = useRef<HTMLInputElement>(null)
+  const editBox = useRef<HTMLTextAreaElement>(null)
 
   const [view, setView] = useState<"reading" | "edit">("reading")
 
