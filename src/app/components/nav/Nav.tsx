@@ -1,21 +1,13 @@
 "use client"
 
-import { ForwardRefExoticComponent, RefAttributes, useContext } from "react"
+import { useContext } from "react"
 import { NavContext } from "../../context/NavContext"
 import { AppContext } from "@/app/context/AppContext"
 import { AppSidebar } from "@/components/app-sidebar"
 import { SidebarProvider } from "@/components/ui/sidebar"
-import { Database, Languages, LucideProps, SearchIcon } from "lucide-react"
+import { Database, Languages, SearchIcon } from "lucide-react"
 import { exampleTexts, langOptions } from "@/constants/constants"
-
-type TabItems = {
-  icon: ForwardRefExoticComponent<
-    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
-  >
-  title: string
-  id: TabKey
-  action: (e: React.MouseEvent<HTMLButtonElement>) => void
-}[]
+import { TabItems, TabKey } from "@/types/types"
 
 export default function Nav() {
   const { updateTab, tab, tabsPane } = useContext(NavContext)!

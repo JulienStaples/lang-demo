@@ -1,6 +1,9 @@
-type Diff = undefined | "wk" | "easy" | "med" | "hard"
+import { LucideProps } from "lucide-react"
+import { ForwardRefExoticComponent, RefAttributes } from "react"
 
-type Term = {
+export type Diff = undefined | "wk" | "easy" | "med" | "hard"
+
+export type Term = {
   text: string
   pre: string
   post: string
@@ -11,12 +14,21 @@ type Term = {
   chunk?: string | undefined
 }
 
-type PresetText = {
+export type PresetText = {
   title: string
   lang: string
   body: string[]
 }
 
-type Entry = { word: string; diff: string; lang: string }
+export type Entry = { word: string; diff: string; lang: string }
 
-type TabKey = "translate-tab" | "details-tab" | "db-tab"
+export type TabKey = "translate-tab" | "details-tab" | "db-tab"
+
+export type TabItems = {
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >
+  title: string
+  id: TabKey
+  action: (e: React.MouseEvent<HTMLButtonElement>) => void
+}[]

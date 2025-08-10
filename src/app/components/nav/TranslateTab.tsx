@@ -13,6 +13,7 @@ import AppSelect from "@/components/app-select"
 import { wordDb } from "@/lib/wordDb"
 import useStorage from "@/hooks/useStorage"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { Diff } from "@/types/types"
 
 export default function TranslateTab() {
   const { activeWordObj, langOption, presetText } = useContext(AppContext)!

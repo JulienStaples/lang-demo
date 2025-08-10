@@ -6,6 +6,7 @@ import DetailsTab from "../components/nav/DetailsTab"
 import DbSearchTab from "../components/nav/dbTab/DbTab"
 import { AnimationScope, Segment, useAnimate } from "framer-motion"
 import { useIsMobile } from "@/hooks/use-mobile"
+import { TabKey } from "@/types/types"
 
 type NavContextProviderProps = {
   children: React.ReactNode

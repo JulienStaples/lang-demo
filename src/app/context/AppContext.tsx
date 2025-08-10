@@ -4,6 +4,7 @@ import React, { createContext, useEffect, useState } from "react"
 import { exampleTexts } from "../../constants/constants"
 import useStorage from "@/hooks/useStorage"
 import { useTheme } from "next-themes"
+import { Term, Entry, PresetText } from "@/types/types"
 
 type AppContextProviderProps = {
   children: React.ReactNode
