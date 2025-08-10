@@ -23,7 +23,7 @@ export default function TranslateTab() {
   const { syncStorage } = useStorage()
   const isMobile = useIsMobile()
 
-  const activeWord = activeWordObj.normal
+  const activeWord = activeWordObj?.normal
   const activeEntry = wordDb.get(activeWord)
 
   const [wordLang, setWordLang] = useState()

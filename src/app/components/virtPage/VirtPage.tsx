@@ -10,7 +10,7 @@ import EditView from "./EditView"
 import Footer from "./Footer"
 
 export default function VirtPage() {
-  const { presetText, page, setPage, activeWordObj } = useContext(AppContext)
+  const { presetText, page, setPage, activeWordObj } = useContext(AppContext)!
   const [scope, animate] = useAnimate()
   const editBox = useRef<HTMLInputElement>(null)
 
@@ -28,7 +28,7 @@ export default function VirtPage() {
   function toggleView() {
     if (view === "reading") return setView("edit")
 
-    presetText.body[page] = editBox.current?.value
+    presetText.body[page] = editBox.current?.value || ""
     setView("reading")
   }
 
