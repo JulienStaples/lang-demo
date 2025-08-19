@@ -7,23 +7,13 @@ import {
 } from "@/components/ui/select"
 import { useState } from "react"
 
-type AppSelectProps = {
-  placeholder: string
-  action: ({ key }: { key: string }) => void
-  items: { key: string; text: string }[]
-}
-
-export default function AppSelect(props: AppSelectProps) {
+export default function AppSelect(props) {
   const { placeholder, action, items } = props
 
-  const [value, setValue] = useState<string>("")
+  const [value, setValue] = useState("")
 
   return (
-    <Select
-      onValueChange={(item: { key: string; text: string }) => (
-        setValue(item.text), action(item)
-      )}
-    >
+    <Select onValueChange={(item) => (setValue(item.text), action(item))}>
       <SelectTrigger className="max-w-[180px]">
         <SelectValue placeholder={placeholder}>{value}</SelectValue>
       </SelectTrigger>
