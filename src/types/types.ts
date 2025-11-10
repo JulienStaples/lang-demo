@@ -38,3 +38,9 @@ export type TabItems = {
   id: TabKey
   action: (e: React.MouseEvent<HTMLButtonElement>) => void
 }[]
+
+export type TranslationObj = {
+  text: [string]
+  source: string
+  target: string
+}
