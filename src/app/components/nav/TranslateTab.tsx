@@ -14,6 +14,8 @@ import { wordDb } from "@/lib/wordDb"
 import useStorage from "@/hooks/useStorage"
 import { useIsMobile } from "@/hooks/use-mobile"
 import { Diff } from "@/types/types"
+import fetchTranslation from "@/utils/fetchTranslation"
+import TranslateBlock from "./TranslateBlock"
 
 export default function TranslateTab() {
   const { activeWordObj, langOption, presetText } = useContext(AppContext)!
@@ -27,11 +29,13 @@ export default function TranslateTab() {
   const activeEntry = wordDb.get(activeWord)
 
   const [wordLang, setWordLang] = useState<string | undefined>()
+  const [translation, setTranslation] = useState<string | undefined>()
 
   //this is only to force ui update on mobile
   const [uiDiff, setUiDiff] = useState(activeEntry?.diff ?? undefined)
 
   useEffect(() => {
+    setTranslation(searchCache())
     setWordLang(activeEntry?.lang ?? presetText.lang)
   }, [activeWordObj])
 
@@ -62,6 +66,32 @@ export default function TranslateTab() {
 
     if (!isMobile) return updateTab("translate-tab")
     exitAnim()
+  }
+
+  async function handleTranslation() {
+    if (translation) return
+
+    const deepLLangs = findDeeplLangs()
+
+    const fetchedTranslation = await fetchTranslation({
+      text: [activeWordObj?.text || ""],
+      source: deepLLangs?.source || "",
+      target: deepLLangs?.target || "",
+    })
+
+    setTranslation(fetchedTranslation)
+    sessionStorage.setItem(activeWordObj?.text || "", fetchedTranslation)
+
+    function findDeeplLangs() {
+      if (langOption == "enfr") return { source: "EN", target: "FR" }
+      if (langOption == "fren") return { source: "FR", target: "EN" }
+      if (langOption == "deen") return { source: "DE", target: "EN" }
+      if (langOption == "spen") return { source: "ES", target: "EN" }
+    }
+  }
+
+  function searchCache() {
+    return sessionStorage.getItem(activeWordObj?.text || "") || undefined
   }
 
   function handleDiffChange(diff: Diff) {
@@ -178,7 +208,7 @@ export default function TranslateTab() {
           </Button>
         </div>
         <Button
-          disabled={!activeWord}
+          disabled={!activeWord || langOption == "laen"}
           className="relative w-full rounded-md bg-blue-800 text-white hover:bg-blue-600 active:bg-blue-900"
         >
           <a
@@ -186,8 +216,23 @@ export default function TranslateTab() {
             href={`${!(langOption === "spen") ? "https://www.wordreference.com/" + langOption + "/" + activeWord : "https://www.wordreference.com/es/en/translation.asp?spen=" + activeWord}`}
             className="absolute inset-0"
           />
-          translate
+          look-up
         </Button>
+      </div>
+      <div className="flex w-full flex-col justify-center gap-3">
+        <Button
+          disabled={!activeWord || langOption == "laen"}
+          className="relative w-full rounded-md bg-purple-800 text-white hover:bg-purple-600 active:bg-purple-900"
+          onClick={() => handleTranslation()}
+        >
+          AI Translate
+        </Button>
+        {translation && (
+          <TranslateBlock
+            translation={translation}
+            origin={activeWordObj?.text || ""}
+          />
+        )}
       </div>
     </motion.div>
   )
