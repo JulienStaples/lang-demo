@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { DataTable } from "./data-table"
 import { columns } from "./columns"
-import { wordDb } from "@/lib/wordDb"
+import { wordDb } from "@/utils/wordDb"
 
 export default function DbSearchTab() {
   return (

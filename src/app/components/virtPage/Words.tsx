@@ -4,7 +4,7 @@ import { diffWordColors } from "@/constants/constants"
 import { motion } from "framer-motion"
 import { spanVari, wordVari } from "../../../constants/virtPageAnims"
 import { NavContext } from "@/app/context/NavContext"
-import { wordDb } from "@/lib/wordDb"
+import { wordDb } from "@/utils/wordDb"
 import nlp from "compromise"
 import { Term } from "@/types/types"
 
