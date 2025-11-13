@@ -1,14 +1,15 @@
-import React from "react"
-import { Copy, InfoIcon, Save, SaveIcon } from "lucide-react"
+import React, { RefObject } from "react"
+import { Copy, InfoIcon, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 type TranslateBlockProps = {
   translation: string
   origin: string
+  defBox: RefObject<HTMLTextAreaElement | null>
 }
 
 export default function TranslateBlock(props: TranslateBlockProps) {
-  const { translation, origin } = props
+  const { translation, origin, defBox } = props
 
   return (
     <div className="flex content-center items-start justify-center gap-4">
@@ -24,8 +25,13 @@ export default function TranslateBlock(props: TranslateBlockProps) {
             <Button onClick={() => navigator.clipboard.writeText(translation)}>
               <Copy />
             </Button>
-            <Button>
-              <SaveIcon />
+            <Button
+              onClick={() =>
+                defBox.current &&
+                (defBox.current.value = `${translation}, ${defBox.current.value}`)
+              }
+            >
+              <Plus />
             </Button>
           </div>
           <Button>

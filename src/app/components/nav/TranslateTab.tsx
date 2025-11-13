@@ -231,6 +231,7 @@ export default function TranslateTab() {
           <TranslateBlock
             translation={translation}
             origin={activeWordObj?.text || ""}
+            defBox={defBox}
           />
         )}
       </div>
