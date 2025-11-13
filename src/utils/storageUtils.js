@@ -1,5 +1,5 @@
 import { exampleData } from "../constants/constants"
-import { wordDb } from "../utils/wordDb"
+import { wordDb } from "./wordDb"
 
 export default function useStorage() {
   function initStorage() {
