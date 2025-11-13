@@ -1,4 +1,4 @@
-export let exampleTexts = new Map([
+export const exampleTexts = new Map([
   [
     "hunchback",
     {
@@ -71,16 +71,16 @@ export let exampleTexts = new Map([
   ],
 ])
 
-export let langOptions = new Map([
+export const langOptions = new Map([
   ["enfr", "en-fr"],
   ["fren", "fr-en"],
   ["deen", "de-en"],
   ["spen", "sp-en"],
 ])
 
-export let diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-neutral-900 bg-purple-800`
+export const diffWordColors = `data-[diff=hard]:bg-orange-800 data-[diff=med]:bg-yellow-800 data-[diff=easy]:bg-green-800 data-[diff=wk]:bg-neutral-900 bg-purple-800`
 
-export let diffBtnColors = {
+export const diffBtnColors = {
   hard: "data-[state=on]:bg-orange-800 hover:bg-orange-800",
   med: "data-[state=on]:bg-yellow-800 hover:bg-yellow-800",
   easy: "data-[state=on]:bg-green-800 hover:bg-green-800",
