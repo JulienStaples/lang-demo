@@ -8,6 +8,7 @@ import TitleBar from "./TitleBar"
 import ReadingView from "./ReadingView"
 import EditView from "./EditView"
 import Footer from "./Footer"
+import Chatbot from "@/app/components/chatbot/Chatbot"
 
 export default function VirtPage() {
   const { presetText, page, setPage, activeWordObj } = useContext(AppContext)!
@@ -59,6 +60,8 @@ export default function VirtPage() {
         setPage={setPage}
         exitAnim={exitAnim}
       />
+
+      <Chatbot />
     </div>
   )
 }
