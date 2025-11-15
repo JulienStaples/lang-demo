@@ -1,6 +1,11 @@
 import React, { RefObject } from "react"
-import { Copy, InfoIcon, Plus } from "lucide-react"
+import { Copy, Info, Plus } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 type TranslateBlockProps = {
   translation: string
@@ -22,10 +27,14 @@ export default function TranslateBlock(props: TranslateBlockProps) {
         </div>
         <div className="flex justify-between">
           <div className="flex gap-6">
-            <Button onClick={() => navigator.clipboard.writeText(translation)}>
+            <Button
+              size={"sm"}
+              onClick={() => navigator.clipboard.writeText(translation)}
+            >
               <Copy />
             </Button>
             <Button
+              size={"sm"}
               onClick={() =>
                 defBox.current &&
                 (defBox.current.value = `${translation}, ${defBox.current.value}`)
@@ -34,9 +43,22 @@ export default function TranslateBlock(props: TranslateBlockProps) {
               <Plus />
             </Button>
           </div>
-          <Button>
-            <InfoIcon />
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size={"icon"}>
+                <Info />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              className="flex w-[20em] flex-col gap-6 p-3"
+              align="start"
+              side="top"
+            >
+              {
+                "Translations can be inaccurate at times. Consider using the look-up button to get a more accurate definition."
+              }
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </div>
